@@ -1,589 +1,728 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <!-- Stats -->
-                <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media align-items-stretch">
-                                    <div class="p-2 text-center bg-primary bg-darken-2">
-                                        <i class="icon-camera font-large-2 white"></i>
-                                    </div>
-                                    <div class="p-2 bg-gradient-x-primary white media-body">
-                                        <h5>Products</h5>
-                                        <h5 class="text-bold-400 mb-0"><i class="ft-plus"></i> 28</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media align-items-stretch">
-                                    <div class="p-2 text-center bg-danger bg-darken-2">
-                                        <i class="icon-user font-large-2 white"></i>
-                                    </div>
-                                    <div class="p-2 bg-gradient-x-danger white media-body">
-                                        <h5>New Users</h5>
-                                        <h5 class="text-bold-400 mb-0"><i class="ft-arrow-up"></i>1,238</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media align-items-stretch">
-                                    <div class="p-2 text-center bg-warning bg-darken-2">
-                                        <i class="icon-basket-loaded font-large-2 white"></i>
-                                    </div>
-                                    <div class="p-2 bg-gradient-x-warning white media-body">
-                                        <h5>New Orders</h5>
-                                        <h5 class="text-bold-400 mb-0"><i class="ft-arrow-down"></i> 4,658</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media align-items-stretch">
-                                    <div class="p-2 text-center bg-success bg-darken-2">
-                                        <i class="icon-wallet font-large-2 white"></i>
-                                    </div>
-                                    <div class="p-2 bg-gradient-x-success white media-body">
-                                        <h5>Total Profit</h5>
-                                        <h5 class="text-bold-400 mb-0"><i class="ft-arrow-up"></i> 5.6 M</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Stats -->
-                <!--Product sale & buyers -->
-                <div class="row match-height">
-                    <div class="col-xl-8 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Products Sales</h4>
-                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <div id="products-sales" class="height-300"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Recent Buyers</h4>
-                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-content px-1">
-                                <div id="recent-buyers" class="media-list height-300 position-relative">
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Kristopher Candy <span class="font-medium-4 float-right pt-1">$1,021</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-primary">Electronics</span><span class="badge badge-warning ml-1">Decor</span></p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-away"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-8.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Lawrence Fowler <span class="font-medium-4 float-right pt-1">$2,021</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-danger">Appliances</span></p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-busy"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-9.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Linda Olson <span class="font-medium-4 float-right pt-1">$1,112</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-primary">Electronics</span> <span class="badge badge-success ml-1">Office</span></p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-10.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Roy Clark <span class="font-medium-4 float-right pt-1">$2,815</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-warning">Decor</span> <span class="badge badge-danger ml-1">Appliances</span></p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-11.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Kristopher Candy <span class="font-medium-4 float-right pt-1">$2,021</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-primary">Electronics</span><span class="badge badge-warning ml-1">Decor</span></p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media border-0">
-                                        <div class="media-left pr-1">
-                                            <span class="avatar avatar-md avatar-away"><img class="media-object rounded-circle" src="app-assets/images/portrait/small/avatar-s-12.png" alt="Generic placeholder image">
-                                                <i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body w-100">
-                                            <h6 class="list-group-item-heading">Lawrence Fowler <span class="font-medium-4 float-right pt-1">$1,321</span></h6>
-                                            <p class="list-group-item-text mb-0"><span class="badge badge-danger">Appliances</span></p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Product sale & buyers -->
-                <!--Recent Orders & Monthly Salse -->
-                <div class="row match-height">
-                    <div class="col-xl-8 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Recent Orders</h4>
-                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <p>Total paid invoices 240, unpaid 150. <span class="float-right"><a href="project-summary.html" target="_blank">Invoice Summary <i class="ft-arrow-right"></i></a></span></p>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="recent-orders" class="table table-hover mb-0 ps-container ps-theme-default">
-                                        <thead>
-                                            <tr>
-                                                <th>SKU</th>
-                                                <th>Invoice#</th>
-                                                <th>Customer Name</th>
-                                                <th>Status</th>
-                                                <th>Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-truncate">PO-10521</td>
-                                                <td class="text-truncate"><a href="#">INV-001001</a></td>
-                                                <td class="text-truncate">Elizabeth W.</td>
-                                                <td class="text-truncate"><span class="badge badge-success">Paid</span></td>
-                                                <td class="text-truncate">$ 1200.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">PO-532521</td>
-                                                <td class="text-truncate"><a href="#">INV-01112</a></td>
-                                                <td class="text-truncate">Doris R.</td>
-                                                <td class="text-truncate"><span class="badge badge-warning">Overdue</span></td>
-                                                <td class="text-truncate">$ 5685.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">PO-05521</td>
-                                                <td class="text-truncate"><a href="#">INV-001012</a></td>
-                                                <td class="text-truncate">Andrew D.</td>
-                                                <td class="text-truncate"><span class="badge badge-success">Paid</span></td>
-                                                <td class="text-truncate">$ 152.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">PO-15521</td>
-                                                <td class="text-truncate"><a href="#">INV-001401</a></td>
-                                                <td class="text-truncate">Megan S.</td>
-                                                <td class="text-truncate"><span class="badge badge-success">Paid</span></td>
-                                                <td class="text-truncate">$ 1450.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">PO-32521</td>
-                                                <td class="text-truncate"><a href="#">INV-008101</a></td>
-                                                <td class="text-truncate">Walter R.</td>
-                                                <td class="text-truncate"><span class="badge badge-warning">Overdue</span></td>
-                                                <td class="text-truncate">$ 685.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body sales-growth-chart">
-                                    <div id="monthly-sales" class="height-250"></div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-title mb-1 text-center">
-                                    <h6>Total monthly Sales.</h6>
-                                </div>
-                                <div class="chart-stats text-center">
-                                    <a href="#" class="btn btn-sm btn-primary mr-1">Statistics <i class="ft-bar-chart"></i></a> <span class="text-muted">for the last year.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/Recent Orders & Monthly Salse -->
-                <!-- Social & Weather -->
-                <div class="row match-height">
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card bg-gradient-x-danger">
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <div class="animated-weather-icons text-center float-left">
-                                        <svg version="1.1" id="cloudHailAlt2" class="climacon climacon_cloudHailAlt climacon-blue-grey climacon-darken-2 height-100" viewBox="15 15 70 70">
-                                            <g class="climacon_iconWrap climacon_iconWrap-cloudHailAlt">
-                                                <g class="climacon_wrapperComponent climacon_wrapperComponent-hailAlt">
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
-                                                        <circle cx="42" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
-                                                        <circle cx="49.999" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
-                                                        <circle cx="57.998" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
-                                                        <circle cx="42" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
-                                                        <circle cx="49.999" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
-                                                        <circle cx="57.998" cy="65.498" r="2"></circle>
-                                                    </g>
-                                                </g>
-                                                <g class="climacon_wrapperComponent climacon_wrapperComponent-cloud">
-                                                    <path class="climacon_component climacon_component-stroke climacon_component-stroke_cloud" d="M63.999,64.941v-4.381c2.39-1.384,3.999-3.961,3.999-6.92c0-4.417-3.581-8-7.998-8c-1.602,0-3.084,0.48-4.334,1.291c-1.23-5.317-5.974-9.29-11.665-9.29c-6.626,0-11.998,5.372-11.998,11.998c0,3.549,1.55,6.728,3.999,8.924v4.916c-4.776-2.768-7.998-7.922-7.998-13.84c0-8.835,7.162-15.997,15.997-15.997c6.004,0,11.229,3.311,13.966,8.203c0.663-0.113,1.336-0.205,2.033-0.205c6.626,0,11.998,5.372,11.998,12C71.998,58.863,68.656,63.293,63.999,64.941z"></path>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <div class="weather-details text-center">
-                                        <span class="block white darken-1">Snow</span>
-                                        <span class="font-large-2 block white darken-4">-5&deg;</span>
-                                        <span class="font-medium-4 text-bold-500 white darken-1">London, UK</span>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-gradient-x-danger border-0">
-                                    <div class="row">
-                                        <div class="col-4 text-center display-table-cell white">
-                                            <i class="me-wind font-large-1 lighten-3 align-middle"></i> <span class="align-middle">2MPH</span>
-                                        </div>
-                                        <div class="col-4 text-center display-table-cell white">
-                                            <i class="me-sun2 font-large-1 lighten-3 align-middle"></i> <span class="align-middle">2%</span>
-                                        </div>
-                                        <div class="col-4 text-center display-table-cell white">
-                                            <i class="me-thermometer font-large-1 lighten-3 align-middle"></i> <span class="align-middle">13.0&deg;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card bg-gradient-x-info white">
-                            <div class="card-content">
-                                <div class="card-body text-center">
-                                    <div class="mb-2">
-                                        <i class="fa fa-twitter font-large-2"></i>
-                                    </div>
-                                    <div class="tweet-slider">
-                                        <ul>
-                                            <li>Congratulations to Rob Jones in accounting for winning our <span class="yellow">#NFL</span> football pool!
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Contests are a great thing to partner on. Partnerships immediately <span class="yellow">#DOUBLE</span> the reach.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Puns, humor, and quotes are great content on <span class="yellow">#Twitter</span>. Find some related to your business.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Are there <span class="yellow">#common-sense</span> facts related to your business? Combine them with a great photo.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card bg-gradient-x-primary white">
-                            <div class="card-content">
-                                <div class="card-body text-center">
-                                    <div class="mb-2">
-                                        <i class="fa fa-facebook font-large-2"></i>
-                                    </div>
-                                    <div class="fb-post-slider">
-                                        <ul>
-                                            <li>Congratulations to Rob Jones in accounting for winning our #NFL football pool!
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Contests are a great thing to partner on. Partnerships immediately #DOUBLE the reach.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Puns, humor, and quotes are great content on #Twitter. Find some related to your business.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                            <li>Are there #common-sense facts related to your business? Combine them with a great photo.
-                                                <p class="text-italic pt-1">- John Doe</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Social & Weather -->
-                <!-- Basic Horizontal Timeline -->
-                <div class="row match-height">
-                    <div class="col-xl-8 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Horizontal Timeline</h4>
-                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        <section class="cd-horizontal-timeline">
-                                            <div class="timeline">
-                                                <div class="events-wrapper">
-                                                    <div class="events">
-                                                        <ol>
-                                                            <li><a href="#0" data-date="16/01/2015" class="selected">16 Jan</a></li>
-                                                            <li><a href="#0" data-date="28/02/2015">28 Feb</a></li>
-                                                            <li><a href="#0" data-date="20/04/2015">20 Mar</a></li>
-                                                            <li><a href="#0" data-date="20/05/2015">20 May</a></li>
-                                                            <li><a href="#0" data-date="09/07/2015">09 Jul</a></li>
-                                                            <li><a href="#0" data-date="30/08/2015">30 Aug</a></li>
-                                                            <li><a href="#0" data-date="15/09/2015">15 Sep</a></li>
-                                                        </ol>
-                                                        <span class="filling-line" aria-hidden="true"></span>
-                                                    </div>
-                                                    <!-- .events -->
-                                                </div>
-                                                <!-- .events-wrapper -->
-                                                <ul class="cd-timeline-navigation">
-                                                    <li><a href="#0" class="prev inactive">Prev</a></li>
-                                                    <li><a href="#0" class="next">Next</a></li>
-                                                </ul>
-                                                <!-- .cd-timeline-navigation -->
-                                            </div>
-                                            <!-- .timeline -->
-                                            <div class="events-content">
-                                                <ol>
-                                                    <li class="selected" data-date="16/01/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-5.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="28/02/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="20/04/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="20/05/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-8.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="09/07/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-9.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="30/08/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                    <li data-date="15/09/2015">
-                                                        <blockquote class="blockquote border-0">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <img class="media-object img-xl mr-1" src="app-assets/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    Sometimes life is going to hit you in the head with a brick. Don't lose faith.
-                                                                </div>
-                                                            </div>
-                                                            <footer class="blockquote-footer text-right">Steve Jobs
-                                                                <cite title="Source Title">Entrepreneur</cite>
-                                                            </footer>
-                                                        </blockquote>
-                                                        <p class="lead mt-2">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at.
-                                                        </p>
-                                                    </li>
-                                                </ol>
-                                            </div>
-                                            <!-- .events-content -->
-                                        </section>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Basic Card</h4>
-                            </div>
-                            <div class="card-content">
-                                <img class="img-fluid" src="app-assets/images/carousel/06.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                            <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
-                                <span class="float-left">3 hours ago</span>
-                                <span class="float-right">
-                                    <a href="#" class="card-link">Read More <i class="fa fa-angle-right"></i></a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Basic Horizontal Timeline -->
+<!-- Loader -->
+<div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
+<div class="wrapper dashborad-h">
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group m-0 pull-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="#">Urora</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Dashboard</h4>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- END: Content-->
+        <!-- end page title end breadcrumb -->
+        <div class="row">
+            <!-- Column -->
+            <div class="col-sm-12 col-md-6 col-xl-3">
+                <div class="card bg-danger m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-google-physical-web"></i>
+                                </div>
+                            </div>
+                            <div class="col-8 ml-auto align-self-center text-center">
+                                <div class="m-l-10 text-white float-right">
+                                    <h5 class="mt-0 round-inner">18090</h5>
+                                    <p class="mb-0 ">Visits Today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="card bg-info m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-account-multiple-plus"></i>
+                                </div>
+                            </div>
+                            <div class="col-8 text-center ml-auto align-self-center">
+                                <div class="m-l-10 text-white float-right">
+                                    <h5 class="mt-0 round-inner">562</h5>
+                                    <p class="mb-0 ">New Users</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="card bg-success m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex row">
+                            <div class="col-3 align-self-center">
+                                <div class="round ">
+                                    <i class="mdi mdi-basket"></i>
+                                </div>
+                            </div>
+                            <div class="col-8 ml-auto align-self-center text-center">
+                                <div class="m-l-10 text-white float-right">
+                                    <h5 class="mt-0 round-inner">7514</h5>
+                                    <p class="mb-0 ">New Orders</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="card bg-primary m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-calculator"></i>
+                                </div>
+                            </div>
+                            <div class="col-8 ml-auto align-self-center text-center">
+                                <div class="m-l-10 text-white float-right">
+                                    <h5 class="mt-0 round-inner">$32874</h5>
+                                    <p class="mb-0">Total Sales</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xl-5">
+                <div class="card m-b-30">
+                    <div class="card-body metro-widget">
+                        <h5 class="header-title mt-0 pb-3">Statistics</h5>
+                        <div id="morris-bar-example"></div>
+                        <div class="row text-center d-flex justify-content-around">                                    
+                            <div class="col-4">
+                                <p class="mb-0 font-14">New Orders</p>
+                                <div class="live-tile m-0 w-100" data-mode="carousel" data-direction="horizontal" data-delay="3900" data-height="10">
+                                    <div>
+                                        <small class="text-muted"> today</small>
+                                        <h3 class=" text-dark">1,088
+                                            <small>
+                                                <i class="mdi mdi-menu-down text-danger"></i>
+                                            </small>
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">yesterday</small>
+                                        <h3 class="text-dark">1,420
+                                            <small>
+                                                <i class="mdi mdi-menu-up text-success"></i>
+                                            </small>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <p class="mb-0 font-14">Visits</p>
+                                <div class="live-tile m-0 w-100" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="10">
+                                    <div>
+                                        <small class="text-muted"> today</small>
+                                        <h3 class=" text-dark">1,955</h3>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">yesterday</small>
+                                        <h3 class="text-dark">2,091</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <p class="mb-0 font-14">Bounce Rate</p>
+                                <div class="live-tile m-0 w-100" data-mode="carousel" data-direction="vertical" data-delay="4200" data-height="10">
+                                    <div>
+                                        <small class="text-muted">Minmum</small>
+                                        <h3 class=" text-dark">3.8 %
+                                            <small>
+                                                <i class="mdi mdi-menu-up text-success"></i>
+                                            </small>
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Maximum</small>
+                                        <h3 class="text-dark">7.1 %
+                                            <small>
+                                                <i class="mdi mdi-menu-down text-danger"></i>
+                                            </small>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-7">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h5 class="header-title mt-0 pb-3">Revenue </h5>
+                        <div id="morris-area-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-4">
+                <div class="card m-b-30 h-360">
+                    <div class="card-body">
+                        <h5 class="header-title mt-0 pb-3">Product Stock </h5>
+                        <div class="row">
+                            <div class="col-8">
+                                <div id="animating-donut" class="ct-chart ct-golden-section"></div>
+                            </div>
+                            <div class="col-4 stock-detail">
+                                <p>
+                                    <i class="mdi mdi-cellphone text-primary mr-2 mt-3 font-24"></i>20% Mobiles</p>
+                                <p>
+                                    <i class="mdi mdi-tablet-android text-success mr-2 mt-3 font-24"></i>20% Tablets</p>
+                                <p>
+                                    <i class="mdi mdi-laptop text-danger mr-2 mt-3 font-24"></i>20% Laptops</p>
+                                <p>
+                                    <i class="mdi mdi-television text-info mr-2 mt-3 font-24"></i>40% Televisions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-5">
+                <div class="card m-b-30 h-360">
+                    <div class="card-body">
+                        <h5 class="header-title mt-0">Order Status </h5>
+                        <div class="row">
+                            <div class="col-6 align-self-center text-center">
+                                <h6 class="text-muted">Todays Perfomance</h6>
+                            </div>
+                            <div class="col-6 align-self-center text-center">
+                                <h6 class="font-40">
+                                    <i class="mdi mdi-menu-up text-success"></i>52 %</h6>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <span class="float-right">18%</span>
+                            <span class="badge badge-boxed  badge-danger text-center mb-2">Delivered</span>
+                            <span class="float-left">82%</span>
+
+                            <div class="progress mt-1">
+                                <div class="progress-bar" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <span class="float-right">45%</span>
+                            <span class="badge badge-boxed  badge-success mb-2">Shipped</span>
+                            <span class="float-left">55%</span>
+
+                            <div class="progress mt-1">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <span class="float-right">70%</span>
+                            <span class="badge badge-boxed badge-warning text-center mb-2">Pending</span>
+                            <span class="float-left">30%</span>
+
+                            <div class="progress mt-1">
+                                <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <span class="float-right text-danger">Late</span>
+                            <span class="float-left text-primary">On Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-3">
+                <div class="card m-b-30 border-0">
+                    <div class="card-body  text-center">
+                        <img src="{{ asset('template/assets/images/users/avatar-5.jpg') }}" alt="" class="rounded-circle mx-auto d-block w-25">
+
+                        <div class="text-center pt-1">
+                            <h5>Robert N. Carlile</h5>
+                            <p class="text-muted">Founder of Company</p>
+                            <button class="btn btn-block btn-raised btn-info mb-3">Follow</button>
+                        </div>
+                        <div class="row text-center profile-block">
+                            <div class="col-6 align-self-center py-2 border-right">
+                                <h3 class="profile-count">
+                                    <b class="font-22">15,521</b>
+                                </h3>
+                                <p class="mb-0">Followers</p>
+                            </div>
+                            <div class="col-6 align-self-center py-2">
+                                <h3 class="profile-count">
+                                    <b class="font-22">772</b>
+                                </h3>
+                                <p class="mb-0">Followings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-xl-6">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h5 class="header-title mb-3 mt-0">Order List</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0 w-60">Product</th>
+                                        <th class="border-top-0">Pro Name</th>
+                                        <th class="border-top-0">Country</th>
+                                        <th class="border-top-0">Order Date/Time</th>
+                                        <th class="border-top-0">Pcs.</th>
+                                        <th class="border-top-0">Amount ($)</th>
+                                        <th class="border-top-0">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="" src="{{ asset('template/assets/images/products/pro1.png') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            Chair
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/us_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>3/09/2018 4:29 PM</td>
+                                        <td>2</td>
+                                        <td> $ 50</td>
+                                        <td>
+                                            <span class="badge badge-boxed  badge-success">Shipped</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="" src="{{ asset('template/assets/images/products/pro2.png') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            Mobile
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/french_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>3/15/2018 1:09 PM</td>
+                                        <td>1</td>
+                                        <td> $ 70</td>
+                                        <td>
+                                            <span class="badge badge-boxed  badge-danger">Delivered</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="" src="{{ asset('template/assets/images/products/pro3.png') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            LED
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/spain_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>3/18/2018 12:09 PM</td>
+                                        <td>3</td>
+                                        <td> $ 200</td>
+                                        <td>
+                                            <span class="badge badge-boxed badge-warning">Pending</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="" src="{{ asset('template/assets/images/products/pro4.png') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            Chair
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/russia_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>3/27/2018 8:27 PM</td>
+                                        <td>2</td>
+                                        <td> $ 20</td>
+                                        <td>
+                                            <span class="badge badge-boxed  badge-success">Shipped</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="" src="{{ asset('template/assets/images/products/pro2.png') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            Mobile
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/italy_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>4/01/2018 5:09 PM</td>
+                                        <td>1</td>
+                                        <td> $ 150</td>
+                                        <td>
+                                            <span class="badge badge-boxed badge-warning">Pending</span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>                                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <div class="card m-b-30">
+                    <div class="card-body new-user">
+                        <h5 class="header-title mb-3 mt-0">New Users</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">Users</th>
+                                        <th class="border-top-0">Name</th>
+                                        <th class="border-top-0">Country</th>
+                                        <th class="border-top-0">Reviews</th>
+                                        <th class="border-top-0">Socials</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('template/assets/images/users/avatar-2.jpg') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            <a href="javascript:void(0);">Ruby T. Curd</a>
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/us_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star-half text-warning"></i>
+                                            <i class="mdi mdi-star-outline text-warning"></i>
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-facebook text-primary"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-linkedin text-danger"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-twitter-alt text-info"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('template/assets/images/users/avatar-3.jpg') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            <a href="javascript:void(0);">William A. Johnson</a>
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/french_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star-half text-warning"></i>
+                                            <i class="mdi mdi-star-outline text-warning"></i>
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-facebook text-primary"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-linkedin text-danger"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-twitter-alt text-info"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('template/assets/images/users/avatar-4.jpg') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            <a href="javascript:void(0);">Bobby M. Gray</a>
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/spain_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star-half text-warning"></i>
+                                            <i class="mdi mdi-star-outline text-warning"></i>
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-facebook text-primary"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-linkedin text-danger"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-twitter-alt text-info"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('template/assets/images/users/avatar-5.jpg') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            <a href="javascript:void(0);">Robert N. Carlile</a>
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/russia_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star-half text-warning"></i>
+                                            <i class="mdi mdi-star-outline text-warning"></i>
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-facebook text-primary"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-linkedin text-danger"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-twitter-alt text-info"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('template/assets/images/users/avatar-6.jpg') }}" alt="user" width="40"> </td>
+                                        <td>
+                                            <a href="javascript:void(0);">Ruby T. Curd</a>
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('template/assets/images/flags/italy_flag.jpg') }}" alt="" width="30">
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star text-warning"></i>
+                                            <i class="mdi mdi-star-half text-warning"></i>
+                                            <i class="mdi mdi-star-outline text-warning"></i>
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-facebook text-primary"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-linkedin text-danger"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <i class="ti-twitter-alt text-info"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-5">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="owl-carousel">
+                            <div class="owl-inner row">
+                                <div class="col-2">
+                                    <img src="{{ asset('template/assets/images/users/avatar-1.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="col-10">
+                                    <p>"Lorem Ipsum is simply dummy text of the and typesetting industry. A
+                                        list is perfect for defining terms."</p>
+                                    <h6 class="text-right mr-1 mb-0">- Robert Kennedy</h6>
+                                </div>
+                            </div>
+                            <div class="owl-inner row">
+                                <div class="col-2">
+                                    <img src="{{ asset('template/assets/images/users/avatar-2.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="col-10">
+                                    <p>"Lorem Ipsum is simply dummy text of the and typesetting industry. A
+                                        list is perfect for defining terms."</p>
+                                    <h6 class="text-right mr-1  mb-0">- William Brewer</h6>
+                                </div>
+                            </div>
+                            <div class="owl-inner row">
+                                <div class="col-2">
+                                    <img src="{{ asset('template/assets/images/users/avatar-3.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="col-10">
+                                    <p>"Lorem Ipsum is simply dummy text of the and typesetting industry. A
+                                        list is perfect for defining terms."</p>
+                                    <h6 class="text-right mr-1  mb-0">- Steven Gonzalez</h6>
+                                </div>
+                            </div>
+                            <div class="owl-inner row">
+                                <div class="col-2">
+                                    <img src="{{ asset('template/assets/images/users/avatar-4.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="col-10">
+                                    <p>"Lorem Ipsum is simply dummy text of the and typesetting industry. A
+                                        list is perfect for defining terms."</p>
+                                    <h6 class="text-right mb-0 mr-1">- Stephen Gaines</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h5 class="header-title mt-0 pb-2">Calendar</h5>
+                        <div id="v-cal">
+                            <div class="vcal-header">
+                                <button class="vcal-btn" data-calendar-toggle="previous">
+                                    <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="vcal-header__label" data-calendar-label="month">
+                                    March 2017
+                                </div>
+
+                                <button class="vcal-btn" data-calendar-toggle="next">
+                                    <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="vcal-week">
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+                            </div>
+                            <div class="vcal-body" data-calendar-area="month"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-7">
+                <div class="card m-b-30">
+                    <div class="card-body dash-map">
+                        <h5 class="header-title mt-0 pb-3">World Market </h5>
+                        <div class="row mb-2">
+                            <div class="col-6 col-sm-3 border-right usa">
+                                <p class="data-attributes text-center">
+                                    <span data-peity='{ "fill": ["#6954cd", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>7/10</span>
+                                </p>
+                                <h6 class="text-muted">USA
+                                    <span class="float-right">70%</span>
+                                </h6>
+                            </div>
+                            <div class="col-6 col-sm-3 border-right afri">
+                                <p class="data-attributes text-center">
+                                    <span data-peity='{ "fill": ["#0fb795", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>6/10</span>
+                                </p>
+                                <h6 class="text-muted">Africa
+                                    <span class="float-right">60%</span>
+                                </h6>
+                            </div>
+                            <div class="col-6 col-sm-3 border-right ">
+                                <p class="data-attributes text-center ind">
+                                    <span data-peity='{ "fill": ["#eb6296", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>5/10</span>
+                                </p>
+                                <h6 class="text-muted">India
+                                    <span class="float-right">50%</span>
+                                </h6>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <p class="data-attributes text-center can">
+                                    <span data-peity='{ "fill": ["#f5b741", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>4/10</span>
+                                </p>
+                                <h6 class="text-muted">Canada
+                                    <span class="float-right">40%</span>
+                                </h6>
+                            </div>
+                        </div>
+                        <div id="world-map-markers"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+    </div> <!-- end container -->
+</div>
 @endsection

@@ -1,54 +1,43 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Urora - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Mannatthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/favicon.ico') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/unslider.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/weather-icons/climacons.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/fonts/meteocons/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/morris.css') }}">
-    <!-- END: Vendor CSS-->
+    <!--Morris Chart CSS -->
+    <link href="{{ asset('template/assets/plugins/fullcalendar/vanillaCalendar.css') }}" rel="stylesheet" type="text/css"  />
+    <link href="{{ asset('template/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('template/assets/plugins/chartist/css/chartist.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/plugins/morris/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/plugins/metro/MetroJs.min.css') }}">
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/colors.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/components.css') }}">
-    <!-- END: Theme CSS-->
+    <link  href="{{ asset('template/assets/plugins/carousel/owl.carousel.min.css') }}" rel="stylesheet">
+    <link  href="{{ asset('template/assets/plugins/carousel/owl.theme.default.min.css') }}" rel="stylesheet">
 
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/horizontal-menu.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/fonts/simple-line-icons/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/timeline.css') }}">
-    <!-- END: Page CSS-->
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-    <!-- END: Custom CSS-->
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
 </head>
-<body class="horizontal-layout horizontal-menu 2-columns  " data-open="click" data-menu="horizontal-menu" data-col="2-columns">
-    @include('layouts.top-menu')
-    @include('layouts.top-sub-menu')    
+<body>
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        @include('layouts.top-menu')
+        @include('layouts.top-sub-menu')    
+    </header>
+    <!-- end topbar-main -->
 
     @yield('content')
 
@@ -56,29 +45,31 @@
     <div class="drag-target"></div>
     @include('layouts.footer')
 
-    
+    <!-- Scripts -->
+    <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/bootstrap-material-design.js') }}"></script>
+    <script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/detect.js') }}"></script>
+    <script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('template/assets/js/waves.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
 
-    <!-- BEGIN: Vendor JS-->
-    <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('app-assets/vendors/js/ui/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/charts/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/charts/raphael-min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/charts/morris.min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/extensions/unslider-min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/timeline/horizontal-timeline.js') }}"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="{{ asset('app-assets/js/core/app-menu.js') }}"></script>
-    <script src="{{ asset('app-assets/js/core/app.js') }}"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="{{ asset('app-assets/js/scripts/ui/breadcrumbs-with-stats.js') }}"></script>
-    <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
-    <!-- END: Page JS-->
+    <script src="{{ asset('template/assets/plugins/carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/fullcalendar/vanillaCalendar.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/peity/jquery.peity.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/chartist/js/chartist.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/chartist/js/chartist-plugin-tooltip.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/metro/MetroJs.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('template/assets/plugins/morris/morris.min.js') }}"></script>  
+    <script src="{{ asset('template/assets/pages/dashborad.js') }}"></script>
+    <script src="{{ asset('template/assets/js/app.js') }}"></script>
+    <script src="{{ asset('js/init.js') }}" defer></script>
 </body>
 </html>
