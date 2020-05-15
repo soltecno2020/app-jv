@@ -3,9 +3,8 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu text-center">
-
                 <li class="has-submenu ">
-                    <a href="index.html"><i class="mdi mdi-home"></i>Home</a>
+                    <a href="{{ url('/') }}"><i class="mdi mdi-home"></i>Home</a>
                 </li>
                 
                 <li class="has-submenu">
@@ -31,6 +30,15 @@
                     
                 <li class="has-submenu ">
                     <a href="cuotas.html"><i class="mdi mdi-cash"></i>Cuotas</a>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#"><i class="mdi mdi-cards"></i>Administración</a>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="{{ route('tipoEventos.index') }}">Tipo Eventos</a>
+                        </li>
+                    </ul>
                 </li>
             </ul><!-- End navigation menu -->
         </div> <!-- end #navigation -->
