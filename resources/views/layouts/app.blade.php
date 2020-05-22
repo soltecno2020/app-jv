@@ -20,6 +20,8 @@
     <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/css/bootstrap-switch.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- jQuery  -->
     <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
@@ -32,7 +34,8 @@
     <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
     <script src="{{ asset('template/assets/js/waves.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
-    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>    
+    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+
 </head>
 <body>
     <!-- Navigation Bar-->

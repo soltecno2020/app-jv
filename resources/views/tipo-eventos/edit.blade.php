@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -100,6 +101,8 @@
 </div>
 
 <!-- App js -->
+<script src="{{ asset('template/assets/js/bootstrap-switch.js') }}"></script>
+<script src="{{ asset('template/assets/js/bootstrap-switch.min.js') }}"></script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
 $(document).ready(function(){
