@@ -11,8 +11,9 @@
 
         <!-- Page-Title -->
         <div class="row">
-            <div class="col-sm-12">
+           <div class="col-sm-12">
                 <div class="page-title-box">
+                    <!--
                     <div class="btn-group m-0 pull-right">
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li class="breadcrumb-item"><a href="#">Urora</a></li>
@@ -20,9 +21,11 @@
                             <li class="breadcrumb-item active">Datatable</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Datatable</h4>
+                -->
+                    <h4 class="page-title"></h4>
                 </div>
             </div>
+
         </div>
         <!-- end page title end breadcrumb -->
         <div class="row">
@@ -48,7 +51,6 @@
                         <div>                                
                             <p class="text-muted font-14">Esta pantalla permitirá crear distintos tipos de eventos.</code>
                             </p> 
-                            <a href="{{ route('tipoEventos.create') }}" class="btn btn-primary float-left">Añadir tipo de evento</a>
                         </div>
                         <table id="datatable" class="table table-bordered">
                             <thead>
@@ -78,6 +80,7 @@
                             	@endif
                             </tbody>
                         </table>
+                        <a href="{{ route('tipoEventos.create') }}" class="btn btn-primary float-left">Añadir tipo de evento</a>
                     </div>
                 </div>
             </div> <!-- end col -->
