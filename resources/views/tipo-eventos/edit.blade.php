@@ -9,6 +9,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
+                    <!--
                     <div class="btn-group m-0 pull-right">
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li class="breadcrumb-item"><a href="#">Urora</a></li>
@@ -17,6 +18,7 @@
                         </ol>
                     </div>
                     <h4 class="page-title">Crear tipo de evento</h4>
+                    -->
                 </div>
             </div>
         </div>
@@ -38,7 +40,7 @@
                                 <div class="card m-b-30">
                                         <div class="card-body">
                                             <h4 class="mt-0 header-title">Datos del tipo de evento</h4>
-                                            <p class="text-muted font-14"><code class="text-danger">Todos los campos son requeridos *</code></p>
+                                            <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
                                             <div class="general-label">
                                                 <form method="POST" action="{{ route('tipoEventos.update', $tipoEvento->id) }}" class="mb-0">
                                                 @csrf
