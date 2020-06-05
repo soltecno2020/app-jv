@@ -16,3 +16,6 @@ Route::prefix('tipoEventos')->group(function() {
         'uses' => 'TipoEventosController@cambiarEstado',
     ]);
 });
+
+
+Route::resource('tipoConsultas', 'TipoConsultasController');
