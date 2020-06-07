@@ -2056,7 +2056,7 @@ code {
   Tables
 ===================*/
 .table {
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
 }
 
 th {
@@ -2064,7 +2064,7 @@ th {
 }
 
 .table > tbody > tr > td, .table > tfoot > tr > td, .table > thead > tr > td {
-  padding: 14px 12px;
+  padding: 0px 12px;
   vertical-align: middle;
 }
 
@@ -2203,6 +2203,10 @@ select.form-control-sm:not([size]):not([multiple]),
 
 .table-rep-plugin .table-wrapper .btn-toolbar .btn-default {
   border: 1px solid #797979;
+}
+
+.container-fluid{
+  width: 100% !important;
 }
 
 /* ==============

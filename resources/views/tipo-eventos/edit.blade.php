@@ -36,7 +36,7 @@
                 <div class=" m-b-30">
                     <div class="">
                         <div class="row">
-                            <div class="col-md-12 col-xl-12">
+                            <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                         <div class="card-body">
                                             <h4 class="mt-0 header-title">Datos del tipo de evento</h4>
@@ -64,7 +64,24 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $tipoEvento->estado) }}">
+                                                        <label for="estado" class="bmd-label-static">Estado</label>
+                                                        <div class="mt-3">
+                                                            <div class="mb-0">
+                                                                <div class="switch">
+                                                                    <label>
+                                                                    @if($tipoEvento->estado == 1)
+                                                                    <input type="checkbox" class="switchEstado" checked>
+                                                                        <span id="lSwitchEstado" name="lSwitchEstado" class="text-success">Activo</span>
+                                                                    </label>
+                                                                    @else
+                                                                    <input type="checkbox" class="switchEstado">
+                                                                        <span id="lSwitchEstado" name="lSwitchEstado" class="text-danger">Inactivo</span>
+                                                                    </label>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $tipoEvento->estado) }}" class="mt-3" hidden="">
                                                         @error('estado')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">

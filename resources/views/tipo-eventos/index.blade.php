@@ -47,40 +47,60 @@
                 @endif
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <div class="float-left">
                             <h4 class="mt-0 header-title">Tipo de evento</h4>
-                        <div>                                
+                        </div>
+                        <div class="float-right">
+                            <a href="{{ route('tipoEventos.create') }}" class="btn btn-primary float-left">Añadir tipo de evento</a>
+                        </div>
+                        <div class="pt-5">
                             <p class="text-muted font-14">Esta pantalla permitirá crear distintos tipos de eventos.</code>
                             </p> 
+                        </div>                        
+                        <div class="pt-0">
+                            <table id="datatable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th class="text-center">Estado</th>
+                                        <th class="text-right">Acciones</th>
+                                    </tr>
+                                </thead>                                    
+                                <tbody>
+                                	@if(count($tipoEventos) > 0)
+                                		@foreach($tipoEventos as $tipoEvento)
+                                		<tr>
+                                			<td>{{ $tipoEvento->id }}</td>
+                                			<td>{{ $tipoEvento->nombre }}</td>
+                                			<td class="text-center">
+                                                @if($tipoEvento->estado == 1)                                                     
+                                                    <a id="{{ $tipoEvento->id }}" href="" class="estado" title="Click para cambiar estado">
+                                                        <i class="fa fa-check fa-2x text-success"></i>
+                                                    </a>
+                                                @else 
+                                                    <a id="{{ $tipoEvento->id }}" href="" class="estado" title="Click para cambiar estado">
+                                                        <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td>              
+                                                <div class="float-right">
+                                                    <div class="icon-demo-content row">
+                                                        <a href="{{ route('tipoEventos.edit', $tipoEvento->id) }}">
+                                                            <div class="col-sm-6 m-0">
+                                                                <i class="mdi mdi-table-edit m-0"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                		</tr>
+                                		@endforeach
+                                	@endif
+                                </tbody>
+                            </table>                        
                         </div>
-                        <table id="datatable" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Estado</th>
-                                    <th class="text-right">Acciones</th>
-                                </tr>
-                            </thead>                                    
-                            <tbody>
-                            	@if(count($tipoEventos) > 0)
-                            		@foreach($tipoEventos as $tipoEvento)
-                            		<tr>
-                            			<td>{{ $tipoEvento->id }}</td>
-                            			<td>{{ $tipoEvento->nombre }}</td>
-                            			<td>
-                                            @if($tipoEvento->estado == 1) 
-                                                <a id="{{ $tipoEvento->id }}" href="" class="estado"><i class="fa fa-check text-success"></i></a>
-                                            @else 
-                                                <a id="{{ $tipoEvento->id }}" href="" class="estado"><i class="fa fa-window-close text-danger"></i></a>
-                                            @endif
-                                        </td>
-                                        <td class="text-right"><a href="{{ route('tipoEventos.edit', $tipoEvento->id) }}"><i class="mdi mdi-table-edit"></i></a></td>
-                            		</tr>
-                            		@endforeach
-                            	@endif
-                            </tbody>
-                        </table>
-                        <a href="{{ route('tipoEventos.create') }}" class="btn btn-primary float-left">Añadir tipo de evento</a>
                     </div>
                 </div>
             </div> <!-- end col -->

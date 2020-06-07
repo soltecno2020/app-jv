@@ -16,7 +16,7 @@ class CreateTipoConsultasTable extends Migration
         Schema::create('tipo_consultas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',45);
-            $table->bigInteger('estado')->unsiged();
+            $table->bigInteger('estado')->unsigned();
             $table->timestamps();
         });
     }
