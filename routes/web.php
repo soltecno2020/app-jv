@@ -19,3 +19,9 @@ Route::prefix('tipoEventos')->group(function() {
 
 
 Route::resource('tipoConsultas', 'TipoConsultasController');
+Route::prefix('tipoConsultas')->group(function() {
+	Route::post('/cambiarEstado', [
+        'as'   => 'tipoConsultas.cambiarEstado',
+        'uses' => 'TipoConsultasController@cambiarEstado',
+    ]);
+});

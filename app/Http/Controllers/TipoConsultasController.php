@@ -2,83 +2,129 @@
 
 namespace App\Http\Controllers;
 
+use App\TipoConsultas;
 use Illuminate\Http\Request;
+use Validator;
+use Session;
+use Exception;
 
 class TipoConsultasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $tipoConsultas = TipoConsultas::all();
+        return view('tipo-consultas.index', compact('tipoConsultas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return view('tipo-consultas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        try{
+            $validator = Validator::make($request->all(), [
+                'nombre' => 'required|min:2|max:45|string',
+                'estado' => 'required|numeric',
+            ]);
+            if($validator->fails()){
+                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                return redirect('tipoConsultas/create')
+                            ->withErrors($validator)
+                            ->withInput();
+            }            
+            $tipoConsulta = tipoConsultas::create([
+                'nombre'    => $request->nombre,
+                'estado'    => $request->estado,
+            ]);
+            Session::flash('success', 'Acabas de crear el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            return redirect()->route('tipoConsultas.index');
+        }catch(Exception $e){
+            Session::flash('error', 'Ha ocurrido un error.');
+            return redirect('tipoConsultas/create')
+                            ->withErrors($validator)
+                            ->withInput();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $tipoConsulta = TipoConsultas::find($id);
+        return view('tipo-consultas.edit', compact('tipoConsulta'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $validator = Validator::make($request->all(), [
+                'nombre' => 'required|min:2|max:45|string',
+                'estado' => 'required|numeric',
+            ]);
+            if($validator->fails()){
+                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                return redirect()->route('tipoConsultas.edit', $id)
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+            $tipoConsulta = TipoConsultas::find($id);
+            $tipoConsulta->nombre = $request->nombre;
+            $tipoConsulta->estado = $request->estado;
+            $tipoConsulta->save();            
+            Session::flash('success', 'Acabas de actualizar el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            return redirect()->route('tipoConsultas.index');
+        }catch(Exception $e){
+            Session::flash('error', 'Ha ocurrido un error.');
+            return redirect('tipoConsultas/edit')
+                            ->withErrors($validator)
+                            ->withInput();
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+    public function cambiarEstado(Request $request)
+    {
+        try{
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|numeric',
+            ]);
+            if($validator->fails()){
+                return response()->json([
+                    'code' => 400,
+                    'message' => 'error',
+                    'data' => $validator->messages()
+                ]);
+            }
+            $tipoConsulta = TipoConsultas::find($request->id);
+            $estado = $tipoConsulta->estado == 1 ? 2 : 1;
+            $tipoConsulta->estado = $estado;
+            $tipoConsulta->save();        
+            return response()->json([
+                'code' => 200,
+                'message' => 'success',
+                'tipoConsulta' => $tipoConsulta
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'code' => 401,
+                'message' => 'error',
+                'data' => 'Ha ocurrido un error.'
+            ]);
+        }
     }
 }

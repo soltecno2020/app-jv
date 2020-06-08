@@ -38,6 +38,9 @@
                         <li class="">
                             <a href="{{ route('tipoEventos.index') }}">Tipo Eventos</a>
                         </li>
+                        <li class="">
+                            <a href="{{ route('tipoConsultas.index') }}">Tipo Consultas</a>
+                        </li>
                     </ul>
                 </li>
             </ul><!-- End navigation menu -->
