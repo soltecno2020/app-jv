@@ -25,3 +25,11 @@ Route::prefix('tipoConsultas')->group(function() {
         'uses' => 'TipoConsultasController@cambiarEstado',
     ]);
 });
+
+Route::resource('formularioscontactos', 'FormulariosContactosController');
+Route::prefix('formularioscontactos')->group(function() {
+	Route::post('/cambiarEstado', [
+        'as'   => 'formularioscontactos.cambiarEstado',
+        'uses' => 'FormulariosContactosController@cambiarEstado',
+    ]);
+});
