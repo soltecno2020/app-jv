@@ -16,7 +16,7 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="noticia.html"><i class="mdi mdi-newspaper"></i>Noticia</a>
+                    <a href="{{ route('noticias.index') }}"><i class="mdi mdi-newspaper"></i>Noticia</a>
                 </li>        
 
 
