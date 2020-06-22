@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -17,14 +16,15 @@
                             <li class="breadcrumb-item active">Form Elements</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Crear tipo de evento</h4>
                     -->
+                    <!--<h4 class="page-title">Crear tipo de evento</h4>
+                        -->
                 </div>
             </div>
         </div>
         <!-- end page title end breadcrumb -->
         <div class="row">
-            <div class="col-md-12 col-xl-12">
+            <div class="col-md-12 col-xl-12 ">
                 @if(Session::has('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,26 +33,21 @@
                     <strong>Error!</strong> {{ Session::get('error') }}.
                 </div>
                 @endif
-                <div class=" m-b-30">
+                <div class="m-b-30">
                     <div class="">
                         <div class="row">
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                         <div class="card-body">
                                             <h4 class="mt-0 header-title">Datos de la vivienda</h4>
-                                            <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
+                                            <p class="alert alert-danger alert-dismissible fade show">Todos los campos son requeridos</p>
                                             <div class="general-label">
-                                                <form method="POST" action="{{ route('tipoConsultas.update', $tipoConsultas->id) }}" class="mb-0">
+                                                <form method="POST" action="{{ route('viviendas.store') }}" class="mb-0">
                                                 @csrf
-                                                @method('PUT')
-                                                    <div class="form-group">
-                                                        <label for="id" class="bmd-label-floating ">ID</label>
-                                                        <input type="text" class="form-control" id="id" name="id" value="{{ $tipoConsultas->id }}" disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $tipoConsultas->nombre) }}">
-                                                        @error('nombre')
+                                                    <div class="form-group is-focused">
+                                                        <label for="direccion" class="bmd-label-floating ">Direccion</label>
+                                                        <input type="text" class="form-control" id="direccion" name="direccion" autofocus>
+                                                        @error('direccion')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
                                                                     <strong>
@@ -63,25 +58,47 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group">
+                                                     <div class="form-group is-focused">
+                                                        <label for="jefe_hogar" class="bmd-label-floating ">Jefe Hogar</label>
+                                                        <input type="text" class="form-control" id="jefe_hogar" name="jefe_hogar" autofocus>
+                                                        @error('jefe_hogar')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group is-focused">
+                                                        <label for="cantidad_habitantes" class="bmd-label-floating ">Cantidad Habitantes</label>
+                                                        <input type="text" class="form-control" id="cantidad_habitantes" name="cantidad_habitantes" autofocus>
+                                                        @error('cantidad_habitantes')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">                                                        
                                                         <label for="estado" class="bmd-label-static">Estado</label>
                                                         <div class="mt-3">
                                                             <div class="mb-0">
                                                                 <div class="switch">
                                                                     <label>
-                                                                    @if($viviendas->estado == 1)
                                                                     <input type="checkbox" class="switchEstado" checked>
                                                                         <span id="lSwitchEstado" name="lSwitchEstado" class="text-success">Activo</span>
                                                                     </label>
-                                                                    @else
-                                                                    <input type="checkbox" class="switchEstado">
-                                                                        <span id="lSwitchEstado" name="lSwitchEstado" class="text-danger">Inactivo</span>
-                                                                    </label>
-                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $tipoConsultas->estado) }}" class="mt-3" hidden="">
+                                                        <input type="text" id="estado" name="estado" value="1" class="mt-3" hidden="">
                                                         @error('estado')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -92,19 +109,9 @@
                                                             </ul>                                                                
                                                             </span>
                                                         @enderror
-                                                    </div>                                                    
-                                                    <!--<div class="form-group">
-                                                        <label for="estado" class="bmd-label-floating">Estado</label>
-                                                        <form class="mb-0 mt-2">
-                                                            <div class="switch">
-                                                                <label>                                                                
-                                                                    <input type="checkbox" checked>
-                                                                </label>
-                                                            </div>
-                                                        </form>
-                                                    </div>-->
-                                                    <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
-                                                    <a href="{{ route('tipoConsultas.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary btn-raised mb-0">Añadir nuevo</button>
+                                                    <a href="{{ route('viviendas.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                                 </form>
                                             </div>
                                         </div>
@@ -115,17 +122,14 @@
                 </div>
             </div>
         </div><!-- end row -->
-
     </div> <!-- end container -->
 </div>
 
 <!-- App js -->
-<script src="{{ asset('template/assets/js/bootstrap-switch.js') }}"></script>
-<script src="{{ asset('template/assets/js/bootstrap-switch.min.js') }}"></script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
 $(document).ready(function(){
-	
+
 });
 </script>
 @endsection

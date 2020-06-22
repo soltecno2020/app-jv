@@ -12,7 +12,7 @@
                 </li>    
 
                 <li class="has-submenu">
-                    <a href="vivienda.html"><i class="mdi mdi-home-variant"></i>Vivienda</a>
+                    <a href="{{ route('viviendas.index') }}"><i class="mdi mdi-home-variant"></i>Vivienda</a>
                 </li>
 
                 <li class="has-submenu">
