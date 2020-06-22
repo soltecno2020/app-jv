@@ -33,3 +33,13 @@ Route::prefix('formularioscontactos')->group(function() {
         'uses' => 'FormulariosContactosController@cambiarEstado',
     ]);
 });
+
+Route::resource('viviendas', 'ViviendasController');
+Route::prefix('viviendas')->group(function() {
+    Route::post('/cambiarEstado', [
+        'as'   => 'viviendas.cambiarEstado',
+        'uses' => 'ViviendasController@cambiarEstado',
+    ]);
+});
+
+Route::resource('noticias', 'NoticiasController');
