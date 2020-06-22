@@ -14,7 +14,7 @@ class CreateViviendasTable extends Migration
     public function up()
     {
         Schema::create('viviendas', function (Blueprint $table) {
-            $table->id(1);
+            $table->id();
             $table->string('direccion', 45);
             $table->string('jefe_hogar', 45);
             $table->integer('cantidad_habitantes');

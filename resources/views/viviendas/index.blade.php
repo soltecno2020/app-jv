@@ -91,7 +91,7 @@
                                             <td>              
                                                 <div class="float-right">
                                                     <div class="icon-demo-content row">
-                                                        <a href="{{ route('viviendas.index', $viviendas->id) }}">
+                                                        <a href="{{ route('viviendas.edit', $viviendas->id) }}">
                                                             <div class="col-sm-6 m-0">
                                                                 <i class="mdi mdi-table-edit m-0"></i>
                                                             </div>
