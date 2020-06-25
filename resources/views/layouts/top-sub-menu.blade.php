@@ -8,7 +8,7 @@
                 </li>
                 
                 <li class="has-submenu">
-                    <a href="usuario.html"><i class="mdi mdi-account-box"></i>Usuario</a>
+                    <a href="#"><i class="mdi mdi-account-box"></i>Usuario</a>
                 </li>    
 
                 <li class="has-submenu">
@@ -16,20 +16,29 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="{{ route('noticias.index') }}"><i class="mdi mdi-newspaper"></i>Noticia</a>
+                    <a href="#"><i class="mdi mdi-newspaper"></i>Noticia</a>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="{{ route('noticias.index') }}">Lista de noticias</a>
+                        </li>
+                        <li class="">
+                            <a href="#">Ver noticias</a>
+                        </li>
+                    </ul>
+                    
                 </li>        
 
 
                 <li class="has-submenu ">
-                    <a href="calendar.html"><i class="mdi mdi-calendar-clock"></i>Calendario</a>
+                    <a href="#"><i class="mdi mdi-calendar-clock"></i>Calendario</a>
                 </li>
 
                 <li class="has-submenu ">
-                    <a href="contacto.html"><i class="mdi mdi-pencil-box"></i>Contacto</a>
+                    <a href="#"><i class="mdi mdi-pencil-box"></i>Contacto</a>
                 </li>
                     
                 <li class="has-submenu ">
-                    <a href="cuotas.html"><i class="mdi mdi-cash"></i>Cuotas</a>
+                    <a href="#"><i class="mdi mdi-cash"></i>Cuotas</a>
                 </li>
 
                 <li class="has-submenu">
