@@ -46,7 +46,7 @@
                                                 @csrf
                                                     <div class="form-group is-focused">
                                                         <label for="direccion" class="bmd-label-floating ">Direccion</label>
-                                                        <input type="text" class="form-control" id="direccion" name="direccion" autofocus>
+                                                        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}" autofocus>
                                                         @error('direccion')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -60,7 +60,7 @@
                                                     </div>
                                                      <div class="form-group is-focused">
                                                         <label for="jefe_hogar" class="bmd-label-floating ">Jefe Hogar</label>
-                                                        <input type="text" class="form-control" id="jefe_hogar" name="jefe_hogar" autofocus>
+                                                        <input type="text" class="form-control" id="jefe_hogar" name="jefe_hogar" value="{{ old('jefe_hogar') }}" autofocus>
                                                         @error('jefe_hogar')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="form-group is-focused">
                                                         <label for="cantidad_habitantes" class="bmd-label-floating ">Cantidad Habitantes</label>
-                                                        <input type="text" class="form-control" id="cantidad_habitantes" name="cantidad_habitantes" autofocus>
+                                                        <input type="text" class="form-control" id="cantidad_habitantes" name="cantidad_habitantes" value="{{ old('cantidad_habitantes') }}" autofocus>
                                                         @error('cantidad_habitantes')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">

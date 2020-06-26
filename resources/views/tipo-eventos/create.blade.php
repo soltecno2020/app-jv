@@ -46,7 +46,7 @@
                                                 @csrf
                                                     <div class="form-group is-focused">
                                                         <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre" name="nombre" autofocus>
+                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" autofocus>
                                                         @error('nombre')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">

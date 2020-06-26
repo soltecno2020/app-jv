@@ -46,7 +46,7 @@
                                             @csrf
                                                 <div class="form-group is-focused">
                                                     <label for="titulo" class="bmd-label-floating ">Titulo</label>
-                                                    <input type="text" class="form-control" id="titulo" name="titulo" autofocus>
+                                                    <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old('titulo') }}" autofocus>
                                                     @error('titulo')
                                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                             <li class="parsley-required">
@@ -60,7 +60,7 @@
                                                 </div>
                                                     <div class="form-group is-focused">
                                                     <label for="descripcion_corta" class="bmd-label-floating ">Descripcion corta</label>
-                                                    <input type="text" class="form-control" id="descripcion_corta" name="descripcion_corta" autofocus>
+                                                    <input type="text" class="form-control" id="descripcion_corta" name="descripcion_corta" value="{{ old('descripcion_corta') }}" autofocus>
                                                     @error('descripcion_corta')
                                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                             <li class="parsley-required">
@@ -74,7 +74,7 @@
                                                 </div>
                                                 <div class="form-group is-focused">
                                                     <h5 class="mt-0 header-title">Descripcion larga</h5>
-                                                    <textarea id="elm1" name="descripcion_larga" autofocus></textarea>
+                                                    <textarea id="elm1" name="descripcion_larga" autofocus>{{ old('descripcion_larga') }}</textarea>
                                                     @error('descripcion_larga')
                                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                             <li class="parsley-required">
@@ -111,7 +111,7 @@
                                                     @enderror
                                                 </div>
                                                 <button type="submit" class="btn btn-primary btn-raised mb-0">Crear noticia</button>
-                                                <a href="{{ route('viviendas.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                                <a href="{{ route('noticias.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>
