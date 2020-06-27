@@ -50,3 +50,4 @@ Route::prefix('noticias')->group(function() {
         'uses' => 'NoticiasController@cambiarEstado',
     ]);
 });
+Route::resource('eventos', 'EventosController');
