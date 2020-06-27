@@ -16,18 +16,8 @@
                 </li>
 
                 <li class="has-submenu">
-                    <a href="#"><i class="mdi mdi-newspaper"></i>Noticia</a>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="{{ route('noticias.index') }}">Lista de noticias</a>
-                        </li>
-                        <li class="">
-                            <a href="#">Ver noticias</a>
-                        </li>
-                    </ul>
-                    
+                    <a href="{{ route('noticias.mostrar') }}"><i class="mdi mdi-newspaper"></i>Noticia</a>
                 </li>        
-
 
                 <li class="has-submenu ">
                     <a href="#"><i class="mdi mdi-calendar-clock"></i>Calendario</a>
@@ -49,6 +39,9 @@
                         </li>
                         <li class="">
                             <a href="{{ route('tipoConsultas.index') }}">Tipo Consultas</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('noticias.index') }}">Crear noticias</a>
                         </li>
                     </ul>
                 </li>

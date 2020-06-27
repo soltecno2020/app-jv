@@ -56,7 +56,8 @@ class NoticiasController extends Controller
 
     public function show($id)
     {
-        //
+        $noticias = Noticias::paginate(2);
+        return view('noticias.show', compact('noticias'));
     }
 
     public function edit($id)
@@ -131,5 +132,11 @@ class NoticiasController extends Controller
                 'data' => 'Ha ocurrido un error.'
             ]);
         }
-    }    
+    }  
+    
+    public function mostrar()
+    {
+        $noticias = Noticias::paginate(2);
+        return view('noticias.mostrar', compact('noticias'));
+    }
 }

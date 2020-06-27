@@ -64,8 +64,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Titulo</th>
-                                        <th>Creado por</th>
-                                        <th>Actualizado por</th>
+                                        <th>Creada por</th>
+                                        <th>Actualizada por</th>
                                         <th>Fecha de creacion</th>
                                         <th>Fecha de actualizacion</th>
                                         <th class="text-center">Estado</th>
