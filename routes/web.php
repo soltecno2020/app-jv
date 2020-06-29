@@ -51,3 +51,6 @@ Route::prefix('noticias')->group(function() {
     ]);
 });
 Route::resource('eventos', 'EventosController');
+
+
+Route::resource('imagenes', 'ImagenesController');
