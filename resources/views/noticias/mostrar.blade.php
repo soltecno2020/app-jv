@@ -42,26 +42,33 @@
                         <h3 class="mt-0 header-title">{{ $noticia->titulo }}</h3>
                         <h6 class="mt-0 header">{{ $noticia->descripcion_corta }}</h6>
                         <p class="text-muted font-14"><?php echo "$noticia->descripcion_larga"; ?></p>
-                        
-                        <div class="">
-                            <blockquote class="blockquote mb-0">
-                                <footer class="blockquote-footer">Creador: <cite title="Source Title">{{ $noticia->user_created_id }}</cite></footer>
-                            </blockquote>
-                        </div>
                         <br>
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/23.jpg') }}" alt="First slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/22.jpg') }}" alt="Second slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/25.jpg') }}" alt="Thirt slide">
-                                </div>
-                            </div>
+                            <!-- if(count($imagenes)>0)-->
+                                <!-- foreach($imagenes as $imagen)-->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/23.jpg') }}" alt="First slide"><!-- src=" $imagen->ruta " -->
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/22.jpg') }}" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/25.jpg') }}" alt="Thirt slide">
+                                        </div>
+                                    </div>
+                                <!-- endforeach-->
+                            <!-- endif-->
                         </div> 
+                        <br>
+                        <div class="">
+                            <blockquote class="blockquote mb-0">
+                                <footer class="blockquote-footer float-left">Creador: <cite title="Source Title">{{ $noticia->user_created_id }}</cite></footer>
+                            </blockquote>
+                            <blockquote class="blockquote mb-0">
+                                <footer class="blockquote-footer float-right">Fecha de noticia: <cite title="Source Title"><?php $fecha = date("d/m/Y", strtotime($noticia->created_at)); echo $fecha; ?></cite></footer>
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -56,8 +56,7 @@ class NoticiasController extends Controller
 
     public function show($id)
     {
-        $noticias = Noticias::paginate(2);
-        return view('noticias.show', compact('noticias'));
+        //
     }
 
     public function edit($id)

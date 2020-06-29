@@ -146,13 +146,7 @@
     </div> <!-- end container -->
 </div>
 
-<!--Wysiwig js-->
-<script>
-    tinymce.init({
-        selector: 'elm1',  // change this value according to your HTML
-        language_URL: 'public/template/assets/plugins/tinymce/langs/es_MX.js'  // site absolute URL
-    });
-</script>    
+<!--Wysiwig js-->   
 <script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/pages/form-editor-init.js') }}"></script>
 

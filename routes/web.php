@@ -51,3 +51,9 @@ Route::prefix('noticias')->group(function() {
     ]);
 });
 Route::resource('eventos', 'EventosController');
+Route::prefix('eventos')->group(function() {
+    Route::post('/cambiarEstado', [
+        'as'   => 'eventos.cambiarEstado',
+        'uses' => 'EventosController@cambiarEstado',
+    ]);
+});
