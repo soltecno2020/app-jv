@@ -43,6 +43,7 @@ File: Calendar init js
             var y = date.getFullYear();
 
             $('#calendar').fullCalendar({
+                locale: 'Es',
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -161,7 +162,7 @@ File: Calendar init js
 
         }
         else {
-            alert("Calendar plugin is not installed");
+            alert("Plugin de calendario no instalado");
         }
     },
     //init

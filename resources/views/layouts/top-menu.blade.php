@@ -4,7 +4,7 @@
         <!-- Logo container-->
         <div class="logo">
             <!-- Text Logo -->
-            <!--<a href="index.html" class="logo">-->
+            <!--<a href="{{ url('/') }}" class="logo">-->
             <!--Urora-->
             <!--</a>-->
             <!-- Image Logo -->
@@ -26,7 +26,7 @@
                     <div class="list-inline-item hide-phone app-search">
                         <form role="search" class="">
                             <div class="form-group pt-1"> 
-                                <input type="text" class="form-control" placeholder="Search..">
+                                <input type="text" class="form-control" placeholder="Buscar..">
                                 <a href=""><i class="fa fa-search"></i></a>
                             </div>
                         </form>
@@ -41,7 +41,7 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                         <!-- item-->
                         <div class="dropdown-item noti-title align-self-center">
-                            <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
+                            <h5><span class="badge badge-danger float-right">5</span>Mensajes</h5>
                         </div>
 
                         <!-- item-->
@@ -64,7 +64,7 @@
 
                         <!-- All-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
+                            Ver Todos
                         </a>
 
                     </div>
@@ -79,7 +79,7 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                         <!-- item-->
                         <div class="dropdown-item noti-title">
-                            <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
+                            <h5><span class="badge badge-danger float-right">3</span>Notificaciones</h5>
                         </div>
 
                         <!-- item-->
@@ -102,7 +102,7 @@
 
                         <!-- All-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
+                            Ver Todas
                         </a>
 
                     </div>
@@ -116,14 +116,13 @@
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
                             <div class="dropdown-item noti-title">
-                                <h5>Welcome</h5>
+                                <h5>Bienvenido</h5>
                             </div>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Perfil</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-settings m-r-5 text-muted"></i>Configuración</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i>Bloquear</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i>Cerrar Sesión</a>
                         </div>                                                                    
                     </div>
                 </li>
