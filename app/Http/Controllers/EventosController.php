@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Exception;
+use carbon\Carbon;
 
 class EventosController extends Controller
 {
     public function index()
     {
-        $tipoEventos = TipoEventos::all();
-        $eventos = Eventos::all();
+        $tipoEventos = TipoEventos::all();        
+        $eventos = Eventos::with('tipoEvento')->get();
+        //dd($eventos[0]->tipoEvento->nombre);
+        
         return view('eventos.index', compact('eventos','tipoEventos'));
     }
 
@@ -34,18 +37,18 @@ class EventosController extends Controller
                 'descripcion_larga' => 'required|min:2|max:5000|string',
                 'fecha_inicio' => 'required|date',
                 'fecha_termino' => 'required|date',
-                'hora_inicio' => 'required|time',
-                'hora_termino' => 'required|time',
+                //'hora_inicio' => 'required|date_format',
+                //'hora_termino' => 'required|date_format',
                 'lugar' => 'min:2|max:50|string',
                 'estado' => 'required|numeric',
-                'tipo_eventos_id' => 'required|numeric',
+                'tipo_evento_id' => 'required|numeric',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('eventos/create')
                 ->withErrors($validator)
                 ->withInput();
-            }            
+            }
             $eventos = eventos::create([
                 'nombre'    => $request->nombre,
                 'titulo'    => $request->titulo,
@@ -53,17 +56,18 @@ class EventosController extends Controller
                 'descripcion_larga'    => $request->descripcion_larga,
                 'fecha_inicio'    => $request->fecha_inicio,
                 'fecha_termino'    => $request->fecha_termino,
-                'hora_inicio'    => $request->hora_inicio,
-                'hora_termino'    => $request->hora_termino,
+                'hora_inicio'    => Carbon::now()->format('H:i:s'),
+                'hora_termino'    => Carbon::now()->format('H:i:s'),
                 'lugar'    => $request->lugar,
                 'estado'    => $request->estado,
-                'tipo_eventos_id'    => $request->tipo_eventos_id,
+                'tipo_eventos_id'    => $request->tipo_evento_id,
                 'user_created_id'    => 1,
                 'user_updated_id'    => 1,
             ]);
             Session::flash('success', 'Acabas de crear un evento "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('eventos.index');
         }catch(Exception $e){
+            dd($e->getMessage());
             Session::flash('error', 'Ha ocurrido un error');
             return redirect('eventos/create')
             ->withErrors($validator)

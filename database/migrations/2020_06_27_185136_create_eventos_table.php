@@ -27,7 +27,7 @@ class CreateEventosTable extends Migration
             $table->bigInteger('estado')->unsigned();
             $table->bigInteger('tipo_eventos_id')->unsigned();
             $table->bigInteger('user_created_id')->unsigned();
-            $table->bigInteger('user_updated_id')->unsigned();
+            $table->bigInteger('user_updated_id')->unsigned()->nullable(true);
             $table->timestamps();
         });
     }

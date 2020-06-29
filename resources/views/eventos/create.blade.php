@@ -106,10 +106,10 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                    <select class="form-control" name="tipo_eventos_id">
+                                                    <select class="form-control" id="tipo_evento_id" name="tipo_evento_id">
                                                         <option value="0">Seleccione un tipo de evento</option>
                                                     @foreach($tipoEventos as $tipoEvento)
-                                                        <option value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
+                                                        <option {{ old('tipo_evento_id') == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
                                                     @endforeach
                                                     </select>
                                                 </div>
