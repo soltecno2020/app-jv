@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuarios;
 use Illuminate\Http\Request;
-use Validator;
-use Session;
-use Exception;
-use carbon\Carbon;
+use App\User;
 
-class UsuariosController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,18 +14,13 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuarios::all();
+        $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('usuarios.create');
+        //
     }
 
     /**

@@ -57,7 +57,26 @@
                         <div class="pt-5">
                             <p class="text-muted font-14">Esta pantalla permitirá crear editar e visualizar usuarios </code>
                             </p> 
-                        </div>                        
+                        </div>        
+                        <!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active" id="home">...</div>
+  <div class="tab-pane container fade" id="menu1">...</div>
+  <div class="tab-pane container fade" id="menu2">...</div>
+</div>                
                         <div class="pt-0">
                             <table id="datatable" class="table table-bordered">
                                 <thead>
@@ -69,7 +88,7 @@
                                         <th>APELLIDO</th>
                                         <th>PASSWORD</th>
                                         <th>TELEFONO</th>
-                                        <th>RUN</th>
+                                        <th>RUT</th>
                                         <th>FECHA NACIMIENTO</th>
                                         <th>FECHA CREACION</th>
                                         <th class="text-center">Estado</th>
@@ -85,8 +104,13 @@
                                             <td>{{ $usuario->username }}</td>
                                             <td>{{ $usuario->name }}</td>
                                             <td>{{ $usuario->apellido }}</td>
-                                            <td>{{ $usuario->password }}</td>
-                                            <td>{{ $usuario->telefono }}</td>
+                                            <td><code>******</code></td>
+                                            <td></td>
+                                            <td>
+                                                @if($usuario->telefono != 0)
+                                                    {{ $usuario->telefono }}
+                                                @endif
+                                            </td>
                                             <td>{{ $usuario->fecha_nacimiento}}</td>
                                             <td>{{ $usuario->create_at }}</td>
                                             <td class="text-center">
@@ -103,7 +127,7 @@
                                             <td>              
                                                 <div class="float-right">
                                                     <div class="icon-demo-content row">
-                                                        <a href="{{ route('eventos.edit', $evento->id) }}">
+                                                        <a href="{{ route('usuarios.edit', $usuario->id) }}">
                                                             <div class="col-sm-6 m-0">
                                                                 <i class="mdi mdi-table-edit m-0"></i>
                                                             </div>

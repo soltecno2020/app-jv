@@ -66,10 +66,10 @@ Route::prefix('eventos')->group(function() {
 
 Route::resource('imagenes', 'ImagenesController');
 
-Route::resource('usuarios', 'UsuariosController');
+Route::resource('usuarios', 'UserController');
 Route::prefix('usuarios')->group(function() {
     Route::post('/cambiarEstado', [
         'as'   => 'usuarios.cambiarEstado',
-        'uses' => 'UsuariosController@cambiarEstado',
+        'uses' => 'UserController@cambiarEstado',
     ]);
 });
