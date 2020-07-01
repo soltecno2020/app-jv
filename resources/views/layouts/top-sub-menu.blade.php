@@ -24,7 +24,7 @@
                 </li>
 
                 <li class="has-submenu ">
-                    <a href="#"><i class="mdi mdi-pencil-box"></i>Contacto</a>
+                    <a href="{{ route('formularioscontactos.create')}}"><i class="mdi mdi-pencil-box"></i>Contacto</a>
                 </li>
                     
                 <li class="has-submenu ">
@@ -46,6 +46,9 @@
                         </li>
                         <li class="">
                             <a href="{{ route('noticias.index') }}">Crear noticias</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('formularioscontactos.index') }}">Lista de formularios</a>
                         </li>
                     </ul>
                 </li>
