@@ -6,11 +6,6 @@
                 <li class="has-submenu ">
                     <a href="{{ url('/') }}"><i class="mdi mdi-home"></i>Home</a>
                 </li>
-                
-                <li class="has-submenu">
-                    <a href="#"><i class="mdi mdi-account-box"></i>Usuario</a>
-                </li>    
-
                 <li class="has-submenu">
                     <a href="{{ route('viviendas.index') }}"><i class="mdi mdi-home-variant"></i>Vivienda</a>
                 </li>
@@ -35,6 +30,7 @@
                     <a href="{{ route('eventos.index') }}"><i class="mdi mdi-pencil-box"></i>Eventos</a>
                 </li>
 
+                <!--
                 <li class="has-submenu">
                     <a href="#"><i class="mdi mdi-cards"></i>Administración</a>
                     <ul class="submenu">
@@ -51,6 +47,10 @@
                             <a href="{{ route('formularioscontactos.index') }}">Lista de formularios</a>
                         </li>
                     </ul>
+                </li>
+                -->
+                <li class="has-submenu">
+                    <a href="{{ route('administrador') }}"><i class="mdi mdi-cards"></i>Administración</a>
                 </li>
             </ul><!-- End navigation menu -->
         </div> <!-- end #navigation -->

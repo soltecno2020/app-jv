@@ -9,6 +9,12 @@ Route::get('/', function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/administrador', function () {
+    return view('administrador');
+});
+Route::get('/administrador', 'administradorController@index')->name('administrador');
+
+
 Route::resource('tipoEventos', 'TipoEventosController');
 Route::prefix('tipoEventos')->group(function() {
 	Route::post('/cambiarEstado', [
@@ -58,7 +64,12 @@ Route::prefix('eventos')->group(function() {
     ]);
 });
 
-
-
 Route::resource('imagenes', 'ImagenesController');
 
+Route::resource('usuarios', 'UsuariosController');
+Route::prefix('usuarios')->group(function() {
+    Route::post('/cambiarEstado', [
+        'as'   => 'usuarios.cambiarEstado',
+        'uses' => 'UsuariosController@cambiarEstado',
+    ]);
+});
