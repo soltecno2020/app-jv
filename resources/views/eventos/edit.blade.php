@@ -110,30 +110,30 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                                <select class="form-control" name="tipo_eventos_id">
+                                                <select class="form-control" id="tipo_eventos_id" name="tipo_eventos_id">
                                                     <option value="0">Seleccione un tipo de evento</option>
                                                 @foreach($tipoEventos as $tipoEvento)
-                                                    <option value="{{ old('id', $tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
+                                                    <option {{ old('tipo_evento_id') == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted">Fecha de inicio</h6>
-                                                    <input type="text" class="form-control" id="mdate" name="fecha_inicio" value="{{ old('fecha_inicio', $eventos->fecha_inicio) }}">    
+                                                    <input type="text" class="form-control" id="mdate" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
                                                 </div>
                                             </div>
                                             <div class="form-group">    
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted">Fecha de termino</h6>
-                                                    <input type="text" class="form-control" id="mdate" name="fecha_termino" value="{{ old('fecha_termino', $eventos->fecha_termino) }}">   
+                                                    <input type="text" class="form-control" id="mdate" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
                                                 </div>       
                                             </div>       
                                             <div class="form-group">   
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted mt-3">Hora de inicio</h6>
                                                     <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true" autocomplete="false">
-                                                        <input type="text" class="form-control" name="hora_inicio" value="{{ old('hora_inicio', $eventos->hora_inicio) }}"> 
+                                                        <input type="text" class="form-control" name="hora_inicio" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                         </div>
@@ -144,7 +144,7 @@
                                                 <div class="col-md-6">    
                                                     <h6 class="text-muted mt-3">Hora de termino</h6>
                                                     <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                        <input type="text" class="form-control" name="hora_termino" value="{{ old('hora_termino', $eventos->hora_termino) }}"> 
+                                                        <input type="text" class="form-control" name="hora_termino" value="{{ old('hora_termino', \Carbon\Carbon::parse($eventos->hora_termino)->format('H:m')) }}"> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                         </div>

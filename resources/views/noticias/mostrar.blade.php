@@ -44,21 +44,23 @@
                         <p class="text-muted font-14"><?php echo "$noticia->descripcion_larga"; ?></p>
                         <br>
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                            <!-- if(count($imagenes)>0)-->
-                                <!-- foreach($imagenes as $imagen)-->
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/23.jpg') }}" alt="First slide"><!-- src=" $imagen->ruta " -->
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/22.jpg') }}" alt="Second slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('app-assets/images/carousel/25.jpg') }}" alt="Thirt slide">
-                                        </div>
-                                    </div>
-                                <!-- endforeach-->
-                            <!-- endif-->
+                            <div class="carousel-inner">
+                                @if(count($imagenes) > 0)
+                                    @foreach($imagenes as $imagen)
+                                        @if($imagen->estado == 1)
+                                            @if($loop->first) <!-- verifica si el elemento actual es el primero -->
+                                                <div class="carousel-item active">
+                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('template/assets/images/carousel/'.$imagen->nombre.$imagen->extension.'') }}" alt="First slide">
+                                                </div>
+                                            @else
+                                                 <div class="carousel-item">
+                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('template/assets/images/carousel/'.$imagen->nombre.$imagen->extension.'') }}" alt="First slide">
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endforeach   
+                                @endif
+                            </div>
                         </div> 
                         <br>
                         <div class="">
@@ -66,7 +68,7 @@
                                 <footer class="blockquote-footer float-left">Creador: <cite title="Source Title">{{ $noticia->user_created_id }}</cite></footer>
                             </blockquote>
                             <blockquote class="blockquote mb-0">
-                                <footer class="blockquote-footer float-right">Fecha de noticia: <cite title="Source Title"><?php $fecha = date("d/m/Y", strtotime($noticia->created_at)); echo $fecha; ?></cite></footer>
+                                <footer class="blockquote-footer float-right">Fecha de noticia: <cite title="Source Title">{{ \Carbon\Carbon::parse($noticia->created_at)->format('d-m-yy') }}</cite></footer>
                             </blockquote>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Noticias;
+use App\Imagenes;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
@@ -135,7 +136,8 @@ class NoticiasController extends Controller
     
     public function mostrar()
     {
+        $imagenes = Imagenes::all();
         $noticias = Noticias::paginate(2);
-        return view('noticias.mostrar', compact('noticias'));
+        return view('noticias.mostrar', compact('noticias','imagenes'));
     }
 }

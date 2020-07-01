@@ -80,8 +80,8 @@
                                             <td>{{ $noticia->titulo }}</td>
                                             <td>{{ $noticia->user_created_id }}</td>
                                             <td>{{ $noticia->user_updated_id }}</td>
-                                            <td>{{ $noticia->created_at }}</td>
-                                            <td>{{ $noticia->updated_at }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($noticia->created_at)->format('d-m-yy h:i:s') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($noticia->updatedd_at)->format('d-m-yy h:i:s') }}</td>
                                             <td class="text-center">
                                                 @if($noticia->estado == 1)                                                     
                                                     <a id="{{ $noticia->id }}" href="" class="estado" title="Click para cambiar estado">

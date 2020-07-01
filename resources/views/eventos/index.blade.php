@@ -81,10 +81,10 @@
                                             <td>{{ $evento->id }}</td>
                                             <td>{{ $evento->nombre }}</td>
                                             <td>{{ $evento->titulo }}</td>
-                                            <td>{{ $evento->fecha_inicio }}</td>
-                                            <td>{{ $evento->fecha_termino }}</td>
-                                            <td>{{ $evento->hora_inicio }}</td>
-                                            <td>{{ $evento->hora_termino }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($evento->fecha_inicio)->format('d-m-yy') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($evento->fecha_termino)->format('d-m-yy') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($evento->hora_inicio)->format('H:i') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($evento->hora_termino)->format('H:i') }}</td>
                                             <td>
                                                 @foreach($tipoEventos as $tipoEvento)
                                                     @if($evento->tipo_eventos_id == $tipoEvento->id )
