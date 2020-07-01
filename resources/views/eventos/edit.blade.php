@@ -96,7 +96,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group p-3">
                                                 <h5 class="mt-0 header-title">Descripcion larga</h5>
                                                 <textarea id="elm1"  name="descripcion_larga" maxlength="10000" autofocus>{{ old('descripcion_larga', $eventos->descripcion_larga) }}</textarea>
                                                 @error('descripcion_larga')
@@ -110,12 +110,16 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                                <select class="form-control" id="tipo_eventos_id" name="tipo_eventos_id">
-                                                    <option value="0">Seleccione un tipo de evento</option>
-                                                @foreach($tipoEventos as $tipoEvento)
-                                                    <option {{ old('tipo_evento_id') == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
-                                                @endforeach
-                                                </select>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <h6 class="text-muted">Tipo de evento</h6>
+                                                    <select class="form-control" id="tipo_eventos_id" name="tipo_eventos_id">
+                                                        <option value="0">Seleccione un tipo de evento</option>
+                                                    @foreach($tipoEventos as $tipoEvento)
+                                                        <option {{ $eventos->tipo_eventos_id == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
+                                                    @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-6">
@@ -126,7 +130,7 @@
                                             <div class="form-group">    
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted">Fecha de termino</h6>
-                                                    <input type="text" class="form-control" id="mdate" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
+                                                    <input type="text" class="form-control" id="fecha_termino" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
                                                 </div>       
                                             </div>       
                                             <div class="form-group">   
@@ -232,7 +236,10 @@
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
     $(document).ready(function(){
-    
+        $('#fecha_termino').bootstrapMaterialDatePicker({
+            weekStart : 0, 
+            time: false 
+        });
     });
 </script>
 @endsection
