@@ -48,7 +48,7 @@ Route::prefix('viviendas')->group(function() {
     ]);
 });
 
-Route::get('noticias/mostrar', 'NoticiasController@mostrar')->name('noticias.mostrar'); 
+Route::get('noticias/mostrar', 'NoticiasController@mostrar')->name('noticias.mostrar');
 Route::resource('noticias', 'NoticiasController');
 Route::prefix('noticias')->group(function() {
     Route::post('/cambiarEstado', [

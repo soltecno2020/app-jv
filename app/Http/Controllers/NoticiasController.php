@@ -57,7 +57,9 @@ class NoticiasController extends Controller
 
     public function show($id)
     {
-        //
+        $noticias = Noticias::find($id);
+        $imagenes = Imagenes::all();
+        return view('noticias.show', compact('noticias','imagenes'));
     }
 
     public function edit($id)
@@ -137,7 +139,8 @@ class NoticiasController extends Controller
     public function mostrar()
     {
         $imagenes = Imagenes::all();
-        $noticias = Noticias::paginate(2);
+        $noticias = Noticias::paginate(5);
         return view('noticias.mostrar', compact('noticias','imagenes'));
     }
+
 }
