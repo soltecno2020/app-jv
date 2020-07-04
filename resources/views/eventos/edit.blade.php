@@ -113,18 +113,30 @@
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted">Tipo de evento</h6>
-                                                    <select class="form-control" id="tipo_eventos_id" name="tipo_eventos_id">
+                                                    <select class="form-control" id="tipo_evento" name="tipo_evento">
                                                         <option value="0">Seleccione un tipo de evento</option>
                                                     @foreach($tipoEventos as $tipoEvento)
-                                                        <option {{ $eventos->tipo_eventos_id == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
+                                                        @if($tipoEvento->estado == 1)
+                                                            <option {{ $eventos->tipo_eventos_id == $tipoEvento->id ? 'selected' : '' }} value="{{ ($tipoEvento->id) }}">{{ ($tipoEvento->nombre) }}</option>
+                                                        @endif    
                                                     @endforeach
                                                     </select>
+                                                    @error('tipo_evento')
+                                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                            <li class="parsley-required">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </li>
+                                                        </ul>                                                                
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted">Fecha de inicio</h6>
-                                                    <input type="text" class="form-control" id="mdate" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
+                                                    <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
                                                 </div>
                                             </div>
                                             <div class="form-group">    
@@ -137,7 +149,7 @@
                                                 <div class="col-md-6">
                                                     <h6 class="text-muted mt-3">Hora de inicio</h6>
                                                     <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true" autocomplete="false">
-                                                        <input type="text" class="form-control" name="hora_inicio" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
+                                                        <input type="text" class="form-control" name="hora_inicio" autocomplete="off" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                         </div>
@@ -236,6 +248,10 @@
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
     $(document).ready(function(){
+        $('#fecha_inicio').bootstrapMaterialDatePicker({
+            weekStart : 0, 
+            time: false 
+        });
         $('#fecha_termino').bootstrapMaterialDatePicker({
             weekStart : 0, 
             time: false 

@@ -39,9 +39,9 @@ class EventosController extends Controller
                 'fecha_termino' => 'required|date',
                 'hora_inicio' => 'required|date_format:H:i',
                 'hora_termino' => 'required|date_format:H:i',
-                'lugar' => 'min:2|max:50|string',
+                'lugar' => 'required|min:2|max:50|string',
                 'estado' => 'required|numeric',
-                'tipo_evento_id' => 'required|numeric',
+                'tipo_evento' => 'required|numeric|not_in:0',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -60,7 +60,7 @@ class EventosController extends Controller
                 'hora_termino'    =>  Carbon::parse($request->hora_termino)->format('H:i:s'),
                 'lugar'    => $request->lugar,
                 'estado'    => $request->estado,
-                'tipo_eventos_id'    => $request->tipo_evento_id,
+                'tipo_eventos_id'    => $request->tipo_evento,
                 'user_created_id'    => 1,
                 'user_updated_id'    => 1,
             ]);
@@ -99,9 +99,9 @@ class EventosController extends Controller
                 'fecha_termino' => 'required|date',
                 'hora_inicio' => 'required|date_format:H:i',
                 'hora_termino' => 'required|date_format:H:i',
-                'lugar' => 'min:2|max:50|string',
+                'lugar' => 'required|min:2|max:50|string',
                 'estado' => 'required|numeric',
-                'tipo_eventos_id' => 'required|numeric',
+                'tipo_evento' => 'required|numeric|not_in:0',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -120,7 +120,7 @@ class EventosController extends Controller
             $eventos->hora_termino = Carbon::parse($request->hora_termino)->format('H:i:s');
             $eventos->lugar = $request->lugar;
             $eventos->estado = $request->estado;
-            $eventos->tipo_eventos_id = $request->tipo_eventos_id;
+            $eventos->tipo_eventos_id = $request->tipo_evento;
             $eventos->user_updated_id = 1;
             $eventos->save();            
             Session::flash('success', 'Acabas de actualizar el evento "'.strtoupper($request->titulo).'" exitosamente!');
