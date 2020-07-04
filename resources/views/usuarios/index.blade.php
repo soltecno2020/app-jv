@@ -82,15 +82,15 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>EMAIL</th>
-                                        <th>USERNAME</th>
                                         <th>NAME</th>
-                                        <th>APELLIDO</th>
+                                        <th>EMAIL</th>
                                         <th>PASSWORD</th>
+                                        <th>USERNAME</th>
+                                        <th>APELLIDO</th>
                                         <th>TELEFONO</th>
                                         <th>RUT</th>
                                         <th>FECHA NACIMIENTO</th>
-                                        <th>FECHA CREACION</th>
+                                        <th>VIVIENDA</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
@@ -100,19 +100,19 @@
                                         @foreach($usuarios as $usuario)
                                         <tr>
                                             <td>{{ $usuario->id }}</td>
-                                            <td>{{ $usuario->email }}</td>
-                                            <td>{{ $usuario->username }}</td>
                                             <td>{{ $usuario->name }}</td>
+                                             <td>{{ $usuario->email }}</td>
+                                            <td><code>****</code></td>
+                                            <td>{{ $usuario->username }}</td>
                                             <td>{{ $usuario->apellido }}</td>
-                                            <td><code>******</code></td>
-                                            <td></td>
                                             <td>
                                                 @if($usuario->telefono != 0)
                                                     {{ $usuario->telefono }}
                                                 @endif
                                             </td>
-                                            <td>{{ $usuario->fecha_nacimiento}}</td>
-                                            <td>{{ $usuario->create_at }}</td>
+                                            <td>{{ $usuario->rut }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->format('d-m-yy') }}</td>
+                                            <td>{{ $usuario->vivienda_id }}</td>
                                             <td class="text-center">
                                                 @if($usuario->estado == 1)                                                     
                                                     <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
@@ -178,7 +178,7 @@ $(document).ready(function(){
         e.preventDefault();
         var id = this.id;
         $.ajax({
-            url: 'eventos/cambiarEstado',
+            url: 'usuarios/cambiarEstado',
             type:'POST',
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -191,10 +191,10 @@ $(document).ready(function(){
                 }else if(data.code == 401){
                     alert('error 401');
                 }else if(data.code == 200){ 
-                    if(data.eventos.estado == 2){
+                    if(data.usuarios.estado == 2){
                         $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
                         $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
-                    }else if(data.eventos.estado == 1){
+                    }else if(data.usuarios.estado == 1){
                         $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
                         $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
                     }
