@@ -66,8 +66,8 @@ class UserController extends Controller
                 'vivienda_id' => $request->vivienda_id,
                 'estado' => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de crear una vivienda "'.strtoupper($request->username).'" exitosamente!');
-            return redirect()->route('viviendas.index');
+            Session::flash('success', 'Acabas de crear una usuario "'.strtoupper($request->username).'" exitosamente!');
+            return redirect()->route('usuarios.index');
         }catch(Exception $e){
             dd($e->getMessage());
             Session::flash('error', 'Ha ocurrido un error');
