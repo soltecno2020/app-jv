@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!-- Dropzone css -->
+<link href="{{ asset('template/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
+
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -42,9 +46,9 @@
                                         <h4 class="mt-0 header-title">Datos de la noticia</h4>
                                         <p class="alert alert-danger alert-dismissible fade show">Todos los campos son requeridos</p>
                                         <div class="general-label">
-                                            <form method="POST" action="{{ route('noticias.store') }}" class="mb-0">
+                                            <form method="POST" action="{{ route('noticias.store') }}" class="mb-0" enctype="multipart/form-data">
                                             @csrf
-                                                <div class="form-group is-focused">
+                                                <div class="form-group">
                                                     <label for="titulo" class="bmd-label-floating ">Titulo</label>
                                                     <input type="text" class="form-control" id="titulo" name="titulo" maxlength="50" value="{{ old('titulo') }}" autofocus>
                                                     @error('titulo')
@@ -58,7 +62,7 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                    <div class="form-group is-focused">
+                                                <div class="form-group">
                                                     <label for="descripcion_corta" class="bmd-label-floating ">Descripcion corta</label>
                                                     <input type="text" class="form-control" id="descripcion_corta" name="descripcion_corta" maxlength="100" value="{{ old('descripcion_corta') }}" autofocus>
                                                     @error('descripcion_corta')
@@ -72,7 +76,11 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group is-focused">
+                                                <div class="form-group">
+                                                    <label for="imagen" class="bmd-label-floating ">Subir imagen</label>
+                                                    <input type="file" class="dropify" id="imagen" name="imagen">
+                                                </div>
+                                                <div class="form-group">
                                                     <h5 class="mt-0 header-title">Descripcion larga</h5>
                                                     <textarea id="elm1" name="descripcion_larga" maxlength="10000" autofocus>{{ old('descripcion_larga') }}</textarea>
                                                     @error('descripcion_larga')
@@ -125,6 +133,10 @@
     </div> <!-- end container -->
 </div>
 
+<!-- Dropzone js -->
+<script src="{{ asset('template/assets/plugins/dropify/js/dropify.min.js') }}"></script>
+<script src="{{ asset('template/assets/pages/upload-init.js') }}"></script>
+
 <!--Wysiwig js-->   
 <script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/pages/form-editor-init.js') }}"></script>
@@ -132,8 +144,5 @@
 <!-- App js -->
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
-$(document).ready(function(){
-
-});
 </script>
 @endsection

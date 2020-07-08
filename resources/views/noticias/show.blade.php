@@ -41,11 +41,11 @@
                                         @if($imagen->estado == 1)
                                             @if($loop->first) <!-- verifica si el elemento actual es el primero -->
                                                 <div class="carousel-item active">
-                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('template/assets/images/carousel/'.$imagen->nombre.$imagen->extension.'') }}" alt="First slide">
+                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('storage/imagenes/noticias/definitiva/'.$imagen->nombre.'') }}" alt=" Imagen {{ $imagen->nombre }}">
                                                 </div>
                                             @else
                                                  <div class="carousel-item">
-                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('template/assets/images/carousel/'.$imagen->nombre.$imagen->extension.'') }}" alt="First slide">
+                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('storage/imagenes/noticias/definitiva/'.$imagen->nombre.'') }}" alt=" Imagen {{ $imagen->nombre }}">
                                                 </div>
                                             @endif
                                         @endif
