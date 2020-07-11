@@ -36,6 +36,21 @@ class NoticiasController extends Controller
                 return redirect('noticias/create')
                 ->withErrors($validator)
                 ->withInput();
+            }
+            if ($request->hasFile('imagen')) {
+                $file = $request->file('imagen');
+                $name = time().$file->getClientOriginalName();
+                $ext = $file->getClientOriginalExtension(); 
+                $file->move(storage_path().'/imagenes/noticias/temp/',$name);
+                
+                $imagenes = imagenes::create([
+                    'nombre'    => $name,
+                    'tipo'    => 'noticia',
+                    'extension'    => '.'.$ext,
+                    'portada'    => 'no',
+                    'estado'    => 1,
+                    'relacion_id'    => 1,
+                ]);
             }            
             $noticias = noticias::create([
                 'titulo'    => $request->titulo,
@@ -48,6 +63,7 @@ class NoticiasController extends Controller
             Session::flash('success', 'Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('noticias.index');
         }catch(Exception $e){
+            dd($e);
             Session::flash('error', 'Ha ocurrido un error');
             return redirect('noticias/create')
             ->withErrors($validator)
@@ -57,7 +73,9 @@ class NoticiasController extends Controller
 
     public function show($id)
     {
-        //
+        $noticias = Noticias::find($id);
+        $imagenes = Imagenes::all();
+        return view('noticias.show', compact('noticias','imagenes'));
     }
 
     public function edit($id)
@@ -137,7 +155,8 @@ class NoticiasController extends Controller
     public function mostrar()
     {
         $imagenes = Imagenes::all();
-        $noticias = Noticias::paginate(2);
+        $noticias = Noticias::paginate(5);
         return view('noticias.mostrar', compact('noticias','imagenes'));
     }
+
 }

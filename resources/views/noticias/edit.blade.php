@@ -119,17 +119,7 @@
                                                             </ul>                                                                
                                                             </span>
                                                         @enderror
-                                                    </div>                                                    
-                                                    <!--<div class="form-group">
-                                                        <label for="estado" class="bmd-label-floating">Estado</label>
-                                                        <form class="mb-0 mt-2">
-                                                            <div class="switch">
-                                                                <label>                                                                
-                                                                    <input type="checkbox" checked>
-                                                                </label>
-                                                            </div>
-                                                        </form>
-                                                    </div>-->
+                                                    </div>
                                                     <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
                                                     <a href="{{ route('noticias.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                                 </form>
