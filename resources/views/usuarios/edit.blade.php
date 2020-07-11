@@ -65,7 +65,7 @@
                                                         <input type="text" class="form-control" id="id" name="id" value="{{ $usuarios->id }}" disabled>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="name" class="bmd-label-floating ">Name</label>
+                                                        <label for="name" class="bmd-label-floating ">Nombre</label>
                                                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $usuarios->name) }}">
                                                         @error('name')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
@@ -93,7 +93,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="password" class="bmd-label-floating ">Password</label>
+                                                        <label for="password" class="bmd-label-floating ">Contraseña</label>
                                                         <input type="text" class="form-control" id="password" name="password" value="{{ old('password', $usuarios->password) }}">
                                                         @error('password')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
@@ -178,18 +178,15 @@
                                                     </div>
                                                     
                                                     <div class="form-group">
-                                                        <label for="vivienda_id" class="bmd-label-floating ">Vivienda</label>
-                                                        <input type="text" class="form-control" id="vivienda_id" name="vivienda_id" value="{{ old('vivienda_id', $usuarios->vivienda_id) }}">
-                                                        @error('vivienda_id')
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
+                                                        <div class="col-md-6">
+                                                    <h6 class="text-muted">Tipo de vivienda</h6>
+                                                    <select class="form-control" id="vivienda_id" name="vivienda_id">
+                                                        <option value="0">Seleccione una vivienda</option>
+                                                    @foreach($viviendas as $vivienda)
+                                                        <option {{ $usuarios->vivienda_id == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
+                                                    @endforeach
+                                                    </select>
+                                                </div>
                                                     </div>
                                                 
                                                     <div class="form-group">

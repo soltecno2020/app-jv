@@ -52,7 +52,7 @@
                                                 <form method="POST" action="{{ route('usuarios.store') }}" class="mb-0">
                                                 @csrf
                                                     <div class="form-group is-focused">
-                                                        <label for="name" class="bmd-label-floating ">Name</label>
+                                                        <label for="name" class="bmd-label-floating ">Nombre</label>
                                                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autofocus>
                                                         @error('name')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
@@ -65,7 +65,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-group">
                                                         <label for="email" class="bmd-label-floating ">Email</label>
                                                         <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" autofocus>
                                                         @error('email')
@@ -79,9 +79,9 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
-                                                        <label for="password" class="bmd-label-floating ">Password</label>
-                                                        <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}" autofocus>
+                                                    <div class="form-group">
+                                                        <label for="password" class="bmd-label-floating ">Contraseña</label>
+                                                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" autofocus>
                                                         @error('password')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -93,7 +93,21 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-group">
+                                                        <label for="password" class="bmd-label-floating ">Confirmar Contraseña</label>
+                                                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" autofocus>
+                                                        @error('password')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="username" class="bmd-label-floating ">Username</label>
                                                         <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" autofocus>
                                                         @error('username')
@@ -107,7 +121,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-group">
                                                         <label for="apellido" class="bmd-label-floating ">Apellido</label>
                                                         <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" autofocus>
                                                         @error('apellido')
@@ -121,7 +135,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-group">
                                                         <label for="telefono" class="bmd-label-floating ">Telefono</label>
                                                         <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }}" autofocus>
                                                         @error('telefono')
@@ -135,7 +149,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-group">
                                                         <label for="rut" class="bmd-label-floating ">Rut</label>
                                                         <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}" autofocus>
                                                         @error('rut')
@@ -149,7 +163,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
+                                                    <div class="form-groupd">
                                                         <label for="fecha_nacimiento" class="bmd-label-floating ">Fecha nacimiento</label>
                                                          <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
                                                         @error('fecha_nacimiento') 
@@ -163,19 +177,12 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group is-focused">
-                                                        <label for="vivienda_id" class="bmd-label-floating ">Vivienda</label>
-                                                         <input type="text" class="form-control" id="vivienda_id" name="vivienda_id" value="{{ old('vivienda_id') }}">
-                                                        @error('vivienda_id') 
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
+                                                   <select class="form-control" id="vivienda_id" name="vivienda_id">
+                                                        <option value="0">Seleccione una vivienda</option>
+                                                    @foreach($viviendas as $vivienda)
+                                                        <option {{ old('vivienda_id') == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
+                                                    @endforeach
+                                                    </select>
                                                     </div>
                                                     <div class="form-group">                                                        
                                                         <label for="estado" class="bmd-label-static">Estado</label>

@@ -73,3 +73,6 @@ Route::prefix('usuarios')->group(function() {
         'uses' => 'UserController@cambiarEstado',
     ]);
 });
+
+Route::resource('calendario', 'CalendarioController');
+

@@ -82,15 +82,15 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>NAME</th>
+                                        <th>NOMBRE</th>
                                         <th>EMAIL</th>
-                                        <th>PASSWORD</th>
+                                        <th>CONTRASEÑA</th>
                                         <th>USERNAME</th>
                                         <th>APELLIDO</th>
                                         <th>TELEFONO</th>
                                         <th>RUT</th>
                                         <th>FECHA NACIMIENTO</th>
-                                        <th>VIVIENDA</th>
+                                        <th>Tipo de vivienda</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
@@ -112,7 +112,13 @@
                                             </td>
                                             <td>{{ $usuario->rut }}</td>
                                             <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->format('d-m-yy') }}</td>
-                                            <td>{{ $usuario->vivienda_id }}</td>
+                                            <td>
+                                                @foreach($viviendas as $vivienda)
+                                                    @if($usuario->vivienda_id == $vivienda->id )
+                                                        {{ $vivienda->direccion }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td class="text-center">
                                                 @if($usuario->estado == 1)                                                     
                                                     <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
