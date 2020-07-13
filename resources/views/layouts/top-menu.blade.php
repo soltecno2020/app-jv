@@ -9,8 +9,7 @@
             <!--</a>-->
             <!-- Image Logo -->
             <a href="{{ url('/') }}" class="logo">
-                <img src="{{ asset('template/assets/images/logo-sm.png') }}" alt="" height="50" class="logo-small">
-                <img src="{{ asset('template/assets/images/logo-h-lg.png') }}" alt="" class="logo-large">
+                <img src="{{ asset('template/assets/images/Captura.png') }}" alt="" width="45%" class="img-fluid">
             </a>
 
         </div>

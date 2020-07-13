@@ -64,7 +64,7 @@ body {
   line-height: 1.45;
   color: #404e67;
   text-align: left;
-  background-color: #f5f7fa; }
+  background-color: ; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -3947,7 +3947,9 @@ input[type="button"].btn-block {
     -webkit-justify-content: space-between;
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between; }
+    justify-content: space-between; 
+    background-color: #CCAF60;
+  }
 
 .navbar-brand {
   display: inline-block;
@@ -3976,6 +3978,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
+
   .navbar-nav .nav-link {
     padding-right: 0;
     padding-left: 0; }
@@ -4027,7 +4030,9 @@ input[type="button"].btn-block {
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
     padding-right: 0;
-    padding-left: 0; } }
+    padding-left: 0; 
+    background-color: #CCAF60; 
+    } }
 
 @media (min-width: 576px) {
   .navbar-expand-sm {

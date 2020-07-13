@@ -63,7 +63,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tipo de evento</th>
+                                        <th>Tipo de Consulta</th>
                                         <th>Descripciòn</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>

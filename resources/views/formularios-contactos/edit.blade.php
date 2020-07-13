@@ -44,7 +44,7 @@
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Datos del Evento</h4>
+                                        <h4 class="mt-0 header-title">Datos del Formulario</h4>
                                         <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
                                         <div class="general-label">
                                             <form method="POST" action="{{ route('formularioscontactos.update', $formularioContactos->id) }}" class="mb-0">
@@ -54,28 +54,29 @@
                                                     <label for="id" class="bmd-label-floating ">ID</label>
                                                     <input type="text" class="form-control" id="id" name="id" value="{{ $formularioContactos->id }}" disabled>
                                                 </div>
-                                                <div class="form-group is-focused">
-                                                <label for="descripcion" class="bmd-label-floating ">Descripcion</label>
-                                                <input type="text" class="form-control" id="alloptions" name="descripcion" maxlength="45" value="{{ old('descripcion', $formularioContactos->descripcion) }}" autofocus>
-                                                @error('descripcion')
-                                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                        <li class="parsley-required">
-                                                            <strong>
-                                                                {{ $message }}
-                                                            </strong>
-                                                        </li>
-                                                    </ul>                                                                
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div>
+                                                <div>
                                                 <select class="form-control" name="tipo_consultas_id">
-                                                    <option value="0">Seleccione un tipo de evento</option>
-                                                @foreach($tipoConsultas as $tipoConsulta)
-                                                    <option value="{{ old('id', $tipoConsulta->id) }}">{{ ($tipoConsulta->nombre) }}</option>
-                                                @endforeach
+                                                    <option value="0">Seleccione un tipo de Consulta</option>
+                                                    @foreach($tipoConsultas as $tipoConsulta)
+                                                        @if($tipoConsulta->estado == 1)
+                                                            <option {{ $formularioContactos->tipo_consultas_id == $tipoConsulta->id ? 'selected' : '' }} value="{{ ($tipoConsulta->id) }}">{{ ($tipoConsulta->nombre) }}</option>
+                                                        @endif 
+                                                    @endforeach
                                                 </select>
-                                            </div>
+                                                </div>
+                                                <div class="form-group is-focused">
+                                                    <label for="descripcion" class="bmd-label-floating ">Descripcion</label>
+                                                    <input type="text" class="form-control" id="alloptions" name="descripcion" maxlength="45" value="{{ old('descripcion', $formularioContactos->descripcion) }}" autofocus>
+                                                    @error('descripcion')
+                                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                            <li class="parsley-required">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </li>
+                                                        </ul>                                                                
+                                                    @enderror
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="estado" class="bmd-label-static">Estado</label>
                                                     <div class="mt-3">

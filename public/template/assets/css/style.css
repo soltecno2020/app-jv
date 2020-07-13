@@ -1341,8 +1341,8 @@ code {
 }
 
 .btn-primary {
-  background-color: #3f51b5 !important;
-  border: 1px solid #3f51b5 !important;
+  background-color: #797468 !important;
+  border: 1px solid #CCAF60 !important;
   color: #ffffff !important;
 }
 
@@ -1552,7 +1552,7 @@ code {
 }
 
 .card-primary {
-  background-color: #3f51b5;
+  background-color: #CCAF60;
   border-color: #3f51b5;
 }
 
@@ -3206,7 +3206,7 @@ select.form-control:not([size]):not([multiple]),
 }
 
 .wrapper-page .card {
-  border: 7px groove #3f51b5;
+  border: 7px groove #CCAF60;
   border-radius: 10px;
 }
 
@@ -3351,7 +3351,7 @@ body {
 }
 
 #topnav .navbar-custom {
-  background-color: #4558be;
+  background-color: #797468;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   padding-left: 0;
 }
@@ -3445,7 +3445,7 @@ body {
 }
 
 #topnav .navigation-menu > li > a:active {
-  color: #ffffff;
+  color: #CCAF60;
 }
 
 #topnav .navigation-menu > li > a i {
@@ -3458,7 +3458,7 @@ body {
   vertical-align: middle;
   width: 25px;
   height: 25px;
-  background-color: #7280ce;
+  background-color: #CCAF60;
   border-radius: 3px;
   margin-top: -4px;
 }
@@ -3468,7 +3468,7 @@ body {
 }
 
 #topnav .has-submenu.active a i {
-  background-color: rgba(9, 216, 158, 0.8);
+  background-color: #CA7474;
 }
 
 /* Notification */
@@ -3834,7 +3834,7 @@ body {
     display: block;
   }
   #topnav .navigation-menu > li > a {
-    color: #3f51b5;
+    color: #B2AA95;
     padding: 15px;
   }
   #topnav .navigation-menu > li > a i {
@@ -4032,6 +4032,7 @@ File: Responsive
   }
   .navbar-custom {
     padding-left: 5px;
+    color: #797468;
   }
   .content-page > .content {
     padding: 20px;

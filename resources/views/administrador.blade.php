@@ -11,7 +11,7 @@
                 <div class="display-table-cell">
                     <diV class="container">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
@@ -19,7 +19,7 @@
                                                 <i class="mdi mdi-account"></i>Usuario</a>
                                             </a>
                                             <a href="index.html">
-                                                <h2>BLABALBABALD;ASDLAS;DLAS</h2>
+                                                
                                             </a>
                                         </div>
                                         <div class="px-3 pb-3">
@@ -42,7 +42,7 @@
                                                 <i class="mdi mdi-account"></i>Tipo Consultas</a>
                                             </a>
                                             <a href="index.html">
-                                                <h2>BLABALBABALD;ASDLAS;DLAS</h2>
+                                                
                                             </a>
                                         </div>
                                         <div class="px-3 pb-3">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
@@ -66,7 +66,7 @@
                                                 <i class="mdi mdi-pencil-box"></i>Tipo Eventos</a>
                                             </a>
                                             <a href="index.html">
-                                                <h2>BLABALBABALD;ASDLAS;DLAS</h2>
+                                                
                                             </a>
                                         </div>
                                         <div class="px-3 pb-3">
@@ -88,7 +88,7 @@
                                                 <i class="mdi mdi-newspaper"></i>Noticias</a>
                                             </a>
                                             <a href="index.html">
-                                                <h2>BLABALBABALD;ASDLAS;DLAS</h2>
+                                                
                                             </a>
                                         </div>
                                         <div class="px-3 pb-3">
@@ -103,6 +103,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
@@ -110,7 +112,7 @@
                                                 <i class="mdi mdi-pencil-box"></i>Formulario</a>
                                             </a>
                                             <a href="index.html">
-                                                <h2>BLABALBABALD;ASDLAS;DLAS</h2>
+                                                
                                             </a>
                                         </div>
                                         <div class="px-3 pb-3">
@@ -125,10 +127,12 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </diV>
                 </div>
             </div>
+        </div>
 
 <!-- Required datatable js -->
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
