@@ -25,10 +25,11 @@
                 <li class="has-submenu ">
                     <a href="#"><i class="mdi mdi-cash"></i>Cuotas</a>
                 </li>
-
+                <!--
                 <li class="has-submenu ">
                     <a href="{{ route('eventos.index') }}"><i class="mdi mdi-pencil-box"></i>Eventos</a>
                 </li>
+                -->
 
                 <!--
                 <li class="has-submenu">

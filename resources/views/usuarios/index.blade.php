@@ -58,39 +58,23 @@
                             <p class="text-muted font-14">Esta pantalla permitirá crear editar e visualizar usuarios </code>
                             </p> 
                         </div>        
-                        <!-- Nav tabs -->
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-  </li>
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane container active" id="home">...</div>
-  <div class="tab-pane container fade" id="menu1">...</div>
-  <div class="tab-pane container fade" id="menu2">...</div>
+
 </div>                
                         <div class="pt-0">
                             <table id="datatable" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>NOMBRE</th>
-                                        <th>EMAIL</th>
-                                        <th>CONTRASEÑA</th>
-                                        <th>USERNAME</th>
-                                        <th>APELLIDO</th>
-                                        <th>TELEFONO</th>
-                                        <th>RUT</th>
-                                        <th>FECHA NACIMIENTO</th>
-                                        <th>Tipo de vivienda</th>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Rut</th>
+                                        <th>Email</th>
+                                        <th>Contraseña</th>
+                                        <th>Nombre de usuario</th>
+                                        <th>Telefono</th>
+                                        <th>Fecha nacimiento</th>
+                                        <th>Vivienda</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
@@ -101,16 +85,16 @@
                                         <tr>
                                             <td>{{ $usuario->id }}</td>
                                             <td>{{ $usuario->name }}</td>
+                                            <td>{{ $usuario->apellido }}</td>
+                                            <td>{{ $usuario->rut }}</td>
                                              <td>{{ $usuario->email }}</td>
                                             <td><code>****</code></td>
                                             <td>{{ $usuario->username }}</td>
-                                            <td>{{ $usuario->apellido }}</td>
                                             <td>
                                                 @if($usuario->telefono != 0)
                                                     {{ $usuario->telefono }}
                                                 @endif
                                             </td>
-                                            <td>{{ $usuario->rut }}</td>
                                             <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->format('d-m-yy') }}</td>
                                             <td>
                                                 @foreach($viviendas as $vivienda)

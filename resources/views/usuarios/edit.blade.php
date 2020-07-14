@@ -79,6 +79,34 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="apellido" class="bmd-label-floating ">Apellido</label>
+                                                        <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido', $usuarios->apellido) }}">
+                                                        @error('apellido')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="rut" class="bmd-label-floating ">Rut</label>
+                                                        <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut', $usuarios->rut) }}">
+                                                        @error('rut')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
+                                                    </div>                                                    
+                                                    <div class="form-group">
                                                         <label for="email" class="bmd-label-floating ">Email</label>
                                                         <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $usuarios->email) }}">
                                                         @error('email')
@@ -107,23 +135,9 @@
                                                         @enderror
                                                     </div>
                                                      <div class="form-group">
-                                                        <label for="username" class="bmd-label-floating ">Username </label>
+                                                        <label for="username" class="bmd-label-floating ">Nombre de usuario </label>
                                                         <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $usuarios->username) }}">
                                                         @error('username')
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="apellido" class="bmd-label-floating ">Apellido</label>
-                                                        <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido', $usuarios->apellido) }}">
-                                                        @error('apellido')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
                                                                     <strong>
@@ -138,20 +152,6 @@
                                                         <label for="telefono" class="bmd-label-floating ">Telefono</label>
                                                         <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono', $usuarios->telefono) }}">
                                                         @error('telefono')
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="rut" class="bmd-label-floating ">Rut</label>
-                                                        <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut', $usuarios->rut) }}">
-                                                        @error('rut')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
                                                                     <strong>

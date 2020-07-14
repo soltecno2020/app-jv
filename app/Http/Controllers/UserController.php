@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Exception;
+use Hash;
 use carbon\Carbon;
 
 class UserController extends Controller
@@ -30,8 +31,8 @@ class UserController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:2|max:45|string',
-                'email' => 'required|min:2|max:45|string',
-                'password' => 'required|min:2|max:45|string',
+                'email' => 'required|min:2|max:45|string|unique:users',
+                'password' => 'required|min:2|max:45|string|confirmed',
                 'username' => 'required|min:2|max:45|string',
                 'apellido' => 'required|min:2|max:45|string',
                 'telefono' => 'required|min:2|integer',
@@ -39,6 +40,14 @@ class UserController extends Controller
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'name.required' => 'Debe ingresar un nombre',
+                'email.required' => 'Debe ingresar un email',
+                'telefono.integer' => 'Debe ingresar un numero ej:56940321',
+                'username.required' => 'Debe ingresar un nombre de usuario',
+                'apellido.required' => 'Debe ingresar un apellido',
+                'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -49,7 +58,7 @@ class UserController extends Controller
             $usuarios = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'username' => $request->username,
                 'apellido'  => $request->apellido,
                 'telefono'=> $request->telefono,
@@ -91,10 +100,20 @@ class UserController extends Controller
                 'username' => 'required|min:2|max:45|string',
                 'apellido' => 'required|min:2|max:45|string',
                 'telefono' => 'required|min:2|integer',
-                'rut' => 'required|min:2|max:45|String',
                 'fecha_nacimiento' => 'required|min:2|max:45|date',
                 'vivienda_id' => 'required|numeric',
                 'estado' => 'required|numeric',
+                'rut' =>['required',
+                          'string',
+                          'max:20',
+                          'unique:users',
+                          function ($attribute, $value, $fail){
+                            $validarRut = $this->valida_rut($value);
+                            if(!$validarRut){
+                                $fail('Ingrese un rut valido.');
+                            }
+                          },
+                        ],
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -144,7 +163,7 @@ class UserController extends Controller
                     'data' => $validator->messages()
                 ]);
             }
-            $usuarios = Viviendas::find($request->id);
+            $usuarios = User::find($request->id);
             $estado = $usuarios->estado == 1 ? 2 : 1;
             $usuarios->estado = $estado;
             $usuarios->save();        
@@ -160,5 +179,34 @@ class UserController extends Controller
                 'data' => 'Ha ocurrido un error.'
             ]);
         }
+
+        function valida_rut($rut)
+        {
+            try{
+                $rut = preg_replace('/[*k0-9]/i', '',$rut);
+                $dv = substr($rut, -1);
+                $numero = substr($rut, 0, strlen($rut)-1);
+                $i = 2;
+                $suma =0;
+                foreach (array_reverse(str_split($numero)) as $v)
+                {
+                    if($i==8)
+                        $i = 2;
+                    $suma +=$v * $i;
+                    ++$i;
+                }
+                $dvr = 11 - ($suma % 11);
+                if($dvr ==11)
+                    $dvr =0;
+                if($dvr ==10)
+                    $dvr ='K';
+                if($dvr == strcasecmp($dv))
+                    return true;
+                else
+                    return false;
+            }catch(Exception $e){
+                return false;
+            }
+        }    
     } 
 }

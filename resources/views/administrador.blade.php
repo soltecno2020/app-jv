@@ -10,6 +10,18 @@
             <div class="display-table">
                 <div class="display-table-cell">
                     <diV class="container">
+                         <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center pt-3">
+                                            <a href="index.html">
+                                                <h3>Menu administrador</a></h3>
+                                            </a>
+                                            <a href="index.html">                            
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card">
@@ -34,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <br> 
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
@@ -81,6 +93,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br> 
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
@@ -121,6 +134,29 @@
                                                 <div class="form-group text-right row m-t-20">
                                                     <div class="col-12">
                                                         <a href="{{ route('formularioscontactos.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Formularios</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>                         
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center pt-3">
+                                            <a href="index.html">
+                                                <i class="mdi mdi-pencil-box"></i>Eventos</a>
+                                            </a>
+                                            <a href="index.html">
+                                                
+                                            </a>
+                                        </div>
+                                        <div class="px-3 pb-3">
+                                            <form class="form-horizontal m-t-20 mb-0" action="index.html">
+                        
+                                                <div class="form-group text-right row m-t-20">
+                                                    <div class="col-12">
+                                                        <a href="{{ route('eventos.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Eventos</a>
                                                     </div>
                                                 </div>
                                             </form>
