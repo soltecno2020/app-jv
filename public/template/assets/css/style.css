@@ -1584,12 +1584,12 @@ code {
   Pagination
 ===================*/
 .page-link {
-  color: #3f51b5;
+  color: #807038;
 }
 
 .page-item.active .page-link {
-  background-color: #3f51b5;
-  border-color: #3f51b5;
+  background-color: #DAAC0E;
+  border-color: #DAAC0E;
 }
 
 .page-link:focus, .page-link:hover {

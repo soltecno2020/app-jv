@@ -39,19 +39,19 @@
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                         <div class="card-body">
-                                            <h4 class="mt-0 header-title">Datos de la vivienda</h4>
+                                            <h4 class="mt-0 header-title">Datos del tipo de consulta</h4>
                                             <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
                                             <div class="general-label">
-                                                <form method="POST" action="{{ route('tipoConsultas.update', $tipoConsultas->id) }}" class="mb-0">
+                                                <form method="POST" action="{{ route('tipoConsultas.update', $tipoConsulta->id) }}" class="mb-0">
                                                 @csrf
                                                 @method('PUT')
                                                     <div class="form-group">
                                                         <label for="id" class="bmd-label-floating ">ID</label>
-                                                        <input type="text" class="form-control" id="id" name="id" value="{{ $tipoConsultas->id }}" disabled>
+                                                        <input type="text" class="form-control" id="id" name="id" value="{{ $tipoConsulta->id }}" disabled>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $tipoConsultas->nombre) }}">
+                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $tipoConsulta->nombre) }}">
                                                         @error('nombre')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -69,7 +69,7 @@
                                                             <div class="mb-0">
                                                                 <div class="switch">
                                                                     <label>
-                                                                    @if($viviendas->estado == 1)
+                                                                    @if($tipoConsulta->estado == 1)
                                                                     <input type="checkbox" class="switchEstado" checked>
                                                                         <span id="lSwitchEstado" name="lSwitchEstado" class="text-success">Activo</span>
                                                                     </label>
@@ -81,7 +81,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $tipoConsultas->estado) }}" class="mt-3" hidden="">
+                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $tipoConsulta->estado) }}" class="mt-3" hidden="">
                                                         @error('estado')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -93,16 +93,6 @@
                                                             </span>
                                                         @enderror
                                                     </div>                                                    
-                                                    <!--<div class="form-group">
-                                                        <label for="estado" class="bmd-label-floating">Estado</label>
-                                                        <form class="mb-0 mt-2">
-                                                            <div class="switch">
-                                                                <label>                                                                
-                                                                    <input type="checkbox" checked>
-                                                                </label>
-                                                            </div>
-                                                        </form>
-                                                    </div>-->
                                                     <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
                                                     <a href="{{ route('tipoConsultas.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                                 </form>

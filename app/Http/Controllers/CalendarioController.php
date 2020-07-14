@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Eventos;
+use App\TipoEventos;
 use Illuminate\Http\Request;
+use Validator;
+use Session;
+use Exception;
+use carbon\Carbon;
 
 class CalendarioController extends Controller
 {
@@ -13,7 +19,12 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        //
+        return view('calendario.index');
+    }
+
+    public function get_eventos(){
+        $eventos = Eventos::select("id","titulo as title", "fecha_inicio as start", "fecha_termino as end")->get()->toArray();
+        return response()->json($eventos);
     }
 
     /**

@@ -44,8 +44,12 @@
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Datos del Evento</h4>
-                                        <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
+                                        <div class="col-sm-12">
+                                            <h4 class="mt-0 header-title">Datos del Evento</h4>
+                                        </div>
+                                        <div class="col-sm-12">  
+                                            <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
+                                        </div>
                                         <div class="general-label">
                                             <form method="POST" action="{{ route('eventos.update', $eventos->id) }}" class="mb-0">
                                             @csrf
@@ -56,42 +60,44 @@
                                                         <input type="text" class="form-control" id="id" name="id" value="{{ $eventos->id }}" disabled>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6"> 
-                                                    <div class="form-group">
-                                                        <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="nombre" maxlength="45" value="{{ old('nombre', $eventos->nombre) }}" autofocus>
-                                                        @error('nombre')
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
+                                                <div class="row grid-col p-3">
+                                                    <div class="col-sm-6"> 
+                                                        <div class="form-group">
+                                                            <label for="nombre" class="bmd-label-floating ">Nombre</label>
+                                                            <input type="text" class="form-control" id="alloptions" name="nombre" maxlength="45" autocomplete="off" value="{{ old('nombre', $eventos->nombre) }}" autofocus>
+                                                            @error('nombre')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6"> 
+                                                        <div class="form-group">
+                                                            <label for="titulo" class="bmd-label-floating ">Titulo</label>
+                                                            <input type="text" class="form-control" id="alloptions" name="titulo" maxlength="20" autocomplete="off" value="{{ old('titulo', $eventos->titulo) }}">
+                                                            @error('titulo')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6"> 
-                                                    <div class="form-group">
-                                                        <label for="titulo" class="bmd-label-floating ">Titulo</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="titulo" maxlength="20" value="{{ old('titulo', $eventos->titulo) }}">
-                                                        @error('titulo')
-                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                <li class="parsley-required">
-                                                                    <strong>
-                                                                        {{ $message }}
-                                                                    </strong>
-                                                                </li>
-                                                            </ul>                                                                
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6"> 
+                                                <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label for="descripcion_corta" class="bmd-label-floating ">Descripcion corta</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="descripcion_corta" maxlength="200" value="{{ old('descripcion_corta', $eventos->descripcion_corta) }}">
+                                                        <input type="text" class="form-control" id="alloptions" name="descripcion_corta" maxlength="60" autocomplete="off" value="{{ old('descripcion_corta', $eventos->descripcion_corta) }}">
                                                         @error('descripcion_corta')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -119,7 +125,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <h6 class="text-muted">Tipo de evento</h6>
                                                         <select class="form-control" id="tipo_evento" name="tipo_evento">
                                                             <option value="0">Seleccione un tipo de evento</option>
@@ -141,44 +147,42 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="row grid-col p-3">
                                                     <div class="col-md-6">
-                                                        <h6 class="text-muted">Fecha de inicio</h6>
-                                                        <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">    
-                                                    <div class="col-md-6">
-                                                        <h6 class="text-muted">Fecha de termino</h6>
-                                                        <input type="text" class="form-control" id="fecha_termino" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
-                                                    </div>       
-                                                </div>       
-                                                <div class="form-group">   
-                                                    <div class="col-md-6">
-                                                        <h6 class="text-muted mt-3">Hora de inicio</h6>
-                                                        <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true" autocomplete="false">
-                                                            <input type="text" class="form-control" name="hora_inicio" autocomplete="off" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                            </div>
+                                                        <div class="form-group">
+                                                            <label for="fecha_inicio" class="bmd-label-floating">Fecha inicio</label>
+                                                            <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="fecha_termino" class="bmd-label-floating">Fecha termino</label>
+                                                            <input type="text" class="form-control" id="fecha_termino" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
+                                                        </div>       
+                                                    </div>   
                                                 </div>
-                                                <div class="form-group">     
+                                                <div class="row grid-col p-3">
                                                     <div class="col-md-6">    
-                                                        <h6 class="text-muted mt-3">Hora de termino</h6>
-                                                        <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                            <input type="text" class="form-control" name="hora_termino" value="{{ old('hora_termino', \Carbon\Carbon::parse($eventos->hora_termino)->format('H:m')) }}"> 
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                                        <div class="form-group"> 
+                                                            <label for="hora_inicio" class="bmd-label-floating">Hora inicio</label>
+                                                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true" autocomplete="false">
+                                                                <input type="text" class="form-control" name="hora_inicio" autocomplete="off" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6"> 
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">     
+                                                            <label for="hora_termino" class="bmd-label-floating">Hora termino</label>
+                                                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                                                                <input type="text" class="form-control" name="hora_termino" value="{{ old('hora_termino', \Carbon\Carbon::parse($eventos->hora_termino)->format('H:m')) }}"> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label for="lugar" class="bmd-label-floating ">Lugar de encuentro</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="lugar" maxlength="200" value="{{ old('lugar', $eventos->lugar) }}" autofocus>
+                                                        <input type="text" class="form-control" id="alloptions" name="lugar" maxlength="200" autocomplete="off" value="{{ old('lugar', $eventos->lugar) }}" autofocus>
                                                         @error('lugar')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -223,8 +227,8 @@
                                                         @enderror
                                                     </div>
                                                 </div>                                                    
-                                                <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
-                                                <a href="{{ route('eventos.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                                <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Actualizar</button>
+                                                <a href="{{ route('eventos.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>

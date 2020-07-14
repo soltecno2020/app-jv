@@ -38,17 +38,24 @@
                         <div class="row">
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
-                                        <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="col-sm-12">
                                             <h4 class="mt-0 header-title">Datos del tipo de evento</h4>
+                                        </div>
+                                        <div class="col-sm-12">
                                             <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
-                                            <div class="general-label">
-                                                <form method="POST" action="{{ route('tipoEventos.update', $tipoEvento->id) }}" class="mb-0">
-                                                @csrf
-                                                @method('PUT')
+                                        </div>
+                                        <div class="general-label">
+                                            <form method="POST" action="{{ route('tipoEventos.update', $tipoEvento->id) }}" class="mb-0">
+                                            @csrf
+                                            @method('PUT')
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="id" class="bmd-label-floating ">ID</label>
                                                         <input type="text" class="form-control" id="id" name="id" value="{{ $tipoEvento->id }}" disabled>
                                                     </div>
+                                                </div>
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="nombre" class="bmd-label-floating ">Nombre</label>
                                                         <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $tipoEvento->nombre) }}">
@@ -63,6 +70,8 @@
                                                             </span>
                                                         @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="estado" class="bmd-label-static">Estado</label>
                                                         <div class="mt-3">
@@ -92,22 +101,13 @@
                                                             </ul>                                                                
                                                             </span>
                                                         @enderror
-                                                    </div>                                                    
-                                                    <!--<div class="form-group">
-                                                        <label for="estado" class="bmd-label-floating">Estado</label>
-                                                        <form class="mb-0 mt-2">
-                                                            <div class="switch">
-                                                                <label>                                                                
-                                                                    <input type="checkbox" checked>
-                                                                </label>
-                                                            </div>
-                                                        </form>
-                                                    </div>-->
-                                                    <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
-                                                    <a href="{{ route('tipoEventos.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
-                                                </form>
-                                            </div>
+                                                    </div>  
+                                                </div>                                                  
+                                                <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Actualizar</button>
+                                                <a href="{{ route('tipoEventos.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                            </form>
                                         </div>
+                                    </div>
                                 </div>
                             </div> <!-- end col -->                                                                                                              
                         </div> <!-- end row -->

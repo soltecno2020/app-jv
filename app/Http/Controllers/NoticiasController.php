@@ -63,7 +63,6 @@ class NoticiasController extends Controller
             Session::flash('success', 'Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('noticias.index');
         }catch(Exception $e){
-            dd($e);
             Session::flash('error', 'Ha ocurrido un error');
             return redirect('noticias/create')
             ->withErrors($validator)

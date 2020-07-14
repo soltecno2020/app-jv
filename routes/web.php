@@ -75,4 +75,5 @@ Route::prefix('usuarios')->group(function() {
 });
 
 Route::resource('calendario', 'CalendarioController');
+Route::get('calendario/get', 'CalendarioController@get_eventos')->name('eventos.get');
 
