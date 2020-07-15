@@ -37,17 +37,24 @@
                         <div class="row">
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
-                                        <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="col-sm-12">
                                             <h4 class="mt-0 header-title">Datos de la noticia</h4>
+                                        </div>
+                                        <div class="col-sm-12">
                                             <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
-                                            <div class="general-label">
-                                                <form method="POST" action="{{ route('noticias.update', $noticias->id) }}" class="mb-0">
-                                                @csrf
-                                                @method('PUT')
+                                        </div>
+                                        <div class="general-label">
+                                            <form method="POST" action="{{ route('noticias.update', $noticias->id) }}" class="mb-0">
+                                            @csrf
+                                            @method('PUT')
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="id" class="bmd-label-floating ">ID</label>
                                                         <input type="text" class="form-control" id="id" name="id" value="{{ $noticias->id }}" disabled>
                                                     </div>
+                                                </div>
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="titulo" class="bmd-label-floating ">Titulo</label>
                                                         <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old('titulo', $noticias->titulo) }}">
@@ -62,7 +69,9 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                     <div class="form-group">
+                                                </div>
+                                                <div class="col-sm-12">    
+                                                    <div class="form-group">
                                                         <label for="descripcion_corta" class="bmd-label-floating ">Descripcion Corta</label>
                                                         <input type="text" class="form-control" id="descripcion_corta" name="descripcion_corta" value="{{ old('descripcion_corta', $noticias->descripcion_corta) }}">
                                                         @error('descripcion_corta')
@@ -76,7 +85,9 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                     <div class="form-group">
+                                                </div>
+                                                <div class="col-sm-12">    
+                                                    <div class="form-group">
                                                         <h5 class="mt-0 header-title">Descripcion larga</h5>
                                                         <textarea id="elm1" name="descripcion_larga">{{ old('descripcion_larga', $noticias->descripcion_larga) }}</textarea>
                                                         @error('descripcion_larga')
@@ -90,6 +101,8 @@
                                                             </span>
                                                         @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="estado" class="bmd-label-static">Estado</label>
                                                         <div class="mt-3">
@@ -120,11 +133,12 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
-                                                    <a href="{{ route('noticias.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Actualizar</button>
+                                                <a href="{{ route('noticias.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                            </form>
                                         </div>
+                                    </div>
                                 </div>
                             </div> <!-- end col -->                                                                                                              
                         </div> <!-- end row -->
@@ -139,6 +153,12 @@
 <!--Wysiwig js-->   
 <script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/pages/form-editor-init.js') }}"></script>
+
+<!-- Plugins js -->
+<script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+
+<!-- Plugins Init js -->
+<script src="{{ asset('template/assets/pages/form-advanced.js') }}"></script>
 
 <!-- App js -->
 <script src="{{ asset('template/assets/js/bootstrap-switch.js') }}"></script>

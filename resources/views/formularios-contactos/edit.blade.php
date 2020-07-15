@@ -44,71 +44,81 @@
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Datos del Formulario</h4>
-                                        <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
+                                        <div class="col-sm-12">
+                                            <h4 class="mt-0 header-title">Datos del Formulario</h4>
+                                        </div>
+                                        <div class="col-sm-12">    
+                                            <p class="alert alert-danger alert-dismissible fade show"><code class="text-danger">Todos los campos son requeridos</code></p>
+                                        </div>    
                                         <div class="general-label">
                                             <form method="POST" action="{{ route('formularioscontactos.update', $formularioContactos->id) }}" class="mb-0">
                                             @csrf
                                             @method('PUT')
-                                                <div class="form-group">
-                                                    <label for="id" class="bmd-label-floating ">ID</label>
-                                                    <input type="text" class="form-control" id="id" name="id" value="{{ $formularioContactos->id }}" disabled>
+                                                <div class="col-sm-12">  
+                                                    <div class="form-group">
+                                                        <label for="id" class="bmd-label-floating ">ID</label>
+                                                        <input type="text" class="form-control" id="id" name="id" value="{{ $formularioContactos->id }}" disabled>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-sm-12">  
+                                                    <select class="form-control" name="tipo_consultas_id">
+                                                        <option value="0">Seleccione un tipo de Consulta</option>
+                                                        @foreach($tipoConsultas as $tipoConsulta)
+                                                            @if($tipoConsulta->estado == 1)
+                                                                <option {{ $formularioContactos->tipo_consultas_id == $tipoConsulta->id ? 'selected' : '' }} value="{{ ($tipoConsulta->id) }}">{{ ($tipoConsulta->nombre) }}</option>
+                                                            @endif 
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-                                                <div>
-                                                <select class="form-control" name="tipo_consultas_id">
-                                                    <option value="0">Seleccione un tipo de Consulta</option>
-                                                    @foreach($tipoConsultas as $tipoConsulta)
-                                                        @if($tipoConsulta->estado == 1)
-                                                            <option {{ $formularioContactos->tipo_consultas_id == $tipoConsulta->id ? 'selected' : '' }} value="{{ ($tipoConsulta->id) }}">{{ ($tipoConsulta->nombre) }}</option>
-                                                        @endif 
-                                                    @endforeach
-                                                </select>
+                                                <div class="col-sm-12">  
+                                                    <div class="form-group">
+                                                        <label for="descripcion" class="bmd-label-floating ">Descripcion</label>
+                                                        <input type="text" class="form-control" id="alloptions" name="descripcion" maxlength="45" value="{{ old('descripcion', $formularioContactos->descripcion) }}" autofocus>
+                                                        @error('descripcion')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                        @enderror
+                                                    </div>
                                                 </div>
-                                                <div class="form-group is-focused">
-                                                    <label for="descripcion" class="bmd-label-floating ">Descripcion</label>
-                                                    <input type="text" class="form-control" id="alloptions" name="descripcion" maxlength="45" value="{{ old('descripcion', $formularioContactos->descripcion) }}" autofocus>
-                                                    @error('descripcion')
-                                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                            <li class="parsley-required">
-                                                                <strong>
-                                                                    {{ $message }}
-                                                                </strong>
-                                                            </li>
-                                                        </ul>                                                                
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="estado" class="bmd-label-static">Estado</label>
-                                                    <div class="mt-3">
-                                                        <div class="mb-0">
-                                                            <div class="switch">
-                                                                <label>
-                                                                @if($formularioContactos->estado == 1)
-                                                                <input type="checkbox" class="switchEstado" checked>
-                                                                    <span id="lSwitchEstado" name="lSwitchEstado" class="text-success">Activo</span>
-                                                                </label>
-                                                                @else
-                                                                <input type="checkbox" class="switchEstado">
-                                                                    <span id="lSwitchEstado" name="lSwitchEstado" class="text-danger">Inactivo</span>
-                                                                </label>
-                                                                @endif
+                                                <div class="col-sm-6">  
+                                                    <div class="form-group">
+                                                        <label for="estado" class="bmd-label-static">Estado</label>
+                                                        <div class="mt-3">
+                                                            <div class="mb-0">
+                                                                <div class="switch">
+                                                                    <label>
+                                                                    @if($formularioContactos->estado == 1)
+                                                                    <input type="checkbox" class="switchEstado" checked>
+                                                                        <span id="lSwitchEstado" name="lSwitchEstado" class="text-success">Activo</span>
+                                                                    </label>
+                                                                    @else
+                                                                    <input type="checkbox" class="switchEstado">
+                                                                        <span id="lSwitchEstado" name="lSwitchEstado" class="text-danger">Inactivo</span>
+                                                                    </label>
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <input type="text" id="estado" name="estado" value="{{ old('estado', $formularioContactos->estado) }}" class="mt-3" hidden="">
+                                                        @error('estado')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
                                                     </div>
-                                                    <input type="text" id="estado" name="estado" value="{{ old('estado', $formularioContactos->estado) }}" class="mt-3" hidden="">
-                                                    @error('estado')
-                                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                            <li class="parsley-required">
-                                                                <strong>
-                                                                    {{ $message }}
-                                                                </strong>
-                                                            </li>
-                                                        </ul>                                                                
-                                                        </span>
-                                                    @enderror
-                                                </div>                                                    
-                                                <button type="submit" class="btn btn-primary btn-raised mb-0">Actualizar</button>
-                                                <a href="{{ route('formularioscontactos.index') }}" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                                </div>                                                        
+                                                <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Actualizar</button>
+                                                <a href="{{ route('formularioscontactos.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>

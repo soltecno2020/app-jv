@@ -51,9 +51,11 @@
                         <div class="float-left">
                             <h4 class="mt-0 header-title">Formulario de Contacto</h4>
                         </div>
+                        <!--
                         <div class="float-right">
                             <a href="{{ route('formularioscontactos.create') }}" class="btn btn-primary float-left">Crear Formulario</a>
-                        </div>
+                        </div> 
+                        -->
                         <div class="pt-5">
                             <p class="text-muted font-14">Esta pantalla podras visualizar la lista de formularios.</code>
                             </p> 
@@ -98,7 +100,7 @@
                                                     <div class="icon-demo-content row">
                                                         <a href="{{ route('formularioscontactos.edit', $formulario->id) }}">
                                                             <div class="col-sm-6 m-0">
-                                                                <i class="mdi mdi-table-edit m-0"></i>
+                                                                <i class="mdi mdi-comment-text m-0"></i>
                                                             </div>
                                                         </a>
                                                     </div>

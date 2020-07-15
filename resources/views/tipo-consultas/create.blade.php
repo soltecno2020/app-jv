@@ -51,7 +51,7 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-group is-focused">
                                                             <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" autofocus>
+                                                            <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="30" value="{{ old('nombre') }}" autofocus>
                                                             @error('nombre')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">
@@ -104,6 +104,12 @@
         </div><!-- end row -->
     </div> <!-- end container -->
 </div>
+
+<!-- Plugins js -->
+<script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+
+<!-- Plugins Init js -->
+<script src="{{ asset('template/assets/pages/form-advanced.js') }}"></script>
 
 <!-- App js -->
 <script src="{{ asset('template/assets/js/app.js') }}"></script>

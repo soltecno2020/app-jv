@@ -30,23 +30,28 @@ class UserController extends Controller
     {
         try{
             $validator = Validator::make($request->all(), [
-                'name' => 'required|min:2|max:45|string',
-                'email' => 'required|min:2|max:45|string|unique:users',
-                'password' => 'required|min:2|max:45|string|confirmed',
-                'username' => 'required|min:2|max:45|string',
-                'apellido' => 'required|min:2|max:45|string',
+                'name' => 'required|min:2|max:30|string',
+                'apellido' => 'required|min:2|max:30|string',
+                'rut' => 'required|min:11|max:12|String',
+                'email' => 'required|min:2|max:50|string|unique:users',
+                'password' => 'required|min:2|max:30|string|confirmed',
+                'username' => 'required|min:2|max:30|string',
                 'telefono' => 'required|min:2|integer',
-                'rut' => 'required|min:2|max:45|String',
                 'fecha_nacimiento' => 'required|date',
-                'vivienda_id' => 'required|numeric',
+                'vivienda_id' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
             ],
             [
                 'name.required' => 'Debe ingresar un nombre',
-                'email.required' => 'Debe ingresar un email',
-                'telefono.integer' => 'Debe ingresar un numero ej:56940321',
-                'username.required' => 'Debe ingresar un nombre de usuario',
                 'apellido.required' => 'Debe ingresar un apellido',
+                'rut.required' => 'Debe ingresar un RUT',
+                'email.required' => 'Debe ingresar un email',
+                'email.unique' => 'El email ingresado ya esta registrado',
+                'password.required' => 'Debe ingresar una contraseña',
+                'password.confirmed' => 'Las contraseñas no coinciden',
+                'telefono.required' => 'Debe ingresar un telefono de contacto',
+                'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
+                'username.required' => 'Debe ingresar un nombre de usuario',
                 'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
             ]);
             if($validator->fails()){

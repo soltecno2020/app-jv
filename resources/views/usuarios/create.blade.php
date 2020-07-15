@@ -177,7 +177,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="telefono" class="bmd-label-floating ">Telefono</label>
-                                                                <input type="text" class="form-control" id="alloptions" name="telefono" autocomplete="off" maxlength="11" value="{{ old('telefono') }}" autofocus>
+                                                                <input type="text" class="form-control" id="alloptions" name="telefono" autocomplete="off" maxlength="11" value="{{ old('telefono') }}" onkeypress="return justNumbers(event);" autofocus>
                                                                 @error('telefono')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
