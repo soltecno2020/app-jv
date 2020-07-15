@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Exception;
-
+use Auth;
 
 class ViviendasController extends Controller
 {    

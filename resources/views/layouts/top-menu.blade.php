@@ -120,8 +120,13 @@
                             <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Perfil</a>
                             <a class="dropdown-item" href="#"><i class="mdi mdi-settings m-r-5 text-muted"></i>Configuración</a>
                             <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i>Bloquear</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i>Cerrar Sesión</a>
+                            <div class="dropdown-divider"></div>                            
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="mdi mdi-logout m-r-5 text-muted">Cerrar sesión</i></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>                                                                    
                     </div>
                 </li>

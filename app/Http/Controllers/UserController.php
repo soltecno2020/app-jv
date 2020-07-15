@@ -32,14 +32,24 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:2|max:30|string',
                 'apellido' => 'required|min:2|max:30|string',
-                'rut' => 'required|min:11|max:12|String',
                 'email' => 'required|min:2|max:50|string|unique:users',
                 'password' => 'required|min:2|max:30|string|confirmed',
                 'username' => 'required|min:2|max:30|string',
-                'telefono' => 'required|min:2|integer',
+                'telefono' => 'required',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
+                'rut' => [  'required',
+                            'string',
+                            'max:20',
+                            'unique:users',
+                            function ($attribute, $value, $fail) {
+                                $validarRut = $this->valida_rut($value);
+                                if(!$validarRut){
+                                    $fail('Ingrese un rut válido.');
+                                }
+                            },
+                        ]
             ],
             [
                 'name.required' => 'Debe ingresar un nombre',
@@ -155,7 +165,7 @@ class UserController extends Controller
         //
     }
 
-        public function cambiarEstado(Request $request)
+    public function cambiarEstado(Request $request)
     {
         try{
             $validator = Validator::make($request->all(), [
@@ -183,35 +193,37 @@ class UserController extends Controller
                 'message' => 'error',
                 'data' => 'Ha ocurrido un error.'
             ]);
-        }
+        } 
+    } 
 
-        function valida_rut($rut)
-        {
-            try{
-                $rut = preg_replace('/[*k0-9]/i', '',$rut);
-                $dv = substr($rut, -1);
-                $numero = substr($rut, 0, strlen($rut)-1);
-                $i = 2;
-                $suma =0;
-                foreach (array_reverse(str_split($numero)) as $v)
-                {
-                    if($i==8)
-                        $i = 2;
-                    $suma +=$v * $i;
-                    ++$i;
-                }
-                $dvr = 11 - ($suma % 11);
-                if($dvr ==11)
-                    $dvr =0;
-                if($dvr ==10)
-                    $dvr ='K';
-                if($dvr == strcasecmp($dv))
-                    return true;
-                else
-                    return false;
-            }catch(Exception $e){
-                return false;
+    public function valida_rut($rut)
+    {
+        try{
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut)-1);
+            $i = 2;
+            $suma = 0;
+            foreach(array_reverse(str_split($numero)) as $v)
+            {
+                if($i==8)
+                    $i = 2;
+
+                $suma += $v * $i;
+                ++$i;
             }
-        }    
+            $dvr = 11 - ($suma % 11);
+            
+            if($dvr == 11)
+                $dvr = 0;
+            if($dvr == 10)
+                $dvr = 'K';
+            if($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
+        }catch(Exception $e){
+            return false;
+        }
     } 
 }

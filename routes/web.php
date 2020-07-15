@@ -65,6 +65,12 @@ Route::prefix('eventos')->group(function() {
 });
 
 Route::resource('imagenes', 'ImagenesController');
+Route::prefix('imagenes')->group(function() {
+    Route::post('/subirImagen', [
+        'as'   => 'imagenes.subirImagen',
+        'uses' => 'ImagenesController@subirImagen',
+    ]);
+});
 
 Route::resource('usuarios', 'UserController');
 Route::prefix('usuarios')->group(function() {
