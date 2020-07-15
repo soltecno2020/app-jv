@@ -62,7 +62,7 @@
                                                 </div>
                                                 <div class="row grid-col p-3">
                                                     <div class="col-sm-6"> 
-                                                        <div class="form-group">
+                                                        <div class="form-group is-focused">
                                                             <label for="nombre" class="bmd-label-floating ">Nombre</label>
                                                             <input type="text" class="form-control" id="alloptions" name="nombre" maxlength="45" autocomplete="off" value="{{ old('nombre', $eventos->nombre) }}" autofocus>
                                                             @error('nombre')
@@ -151,13 +151,33 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="fecha_inicio" class="bmd-label-floating">Fecha inicio</label>
-                                                            <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">    
+                                                            <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', \Carbon\Carbon::parse($eventos->fecha_inicio)->format('d-m-yy')) }}">
+                                                            @error('fecha_inicio')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="fecha_termino" class="bmd-label-floating">Fecha termino</label>
-                                                            <input type="text" class="form-control" id="fecha_termino" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">   
+                                                            <input type="text" class="form-control" id="fecha_termino" name="fecha_termino" value="{{ old('fecha_termino', \Carbon\Carbon::parse($eventos->fecha_termino)->format('d-m-yy')) }}">
+                                                            @error('fecha_termino')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror   
                                                         </div>       
                                                     </div>   
                                                 </div>
@@ -167,6 +187,16 @@
                                                             <label for="hora_inicio" class="bmd-label-floating">Hora inicio</label>
                                                             <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true" autocomplete="false">
                                                                 <input type="text" class="form-control" name="hora_inicio" autocomplete="off" value="{{ old('hora_inicio', \Carbon\Carbon::parse($eventos->hora_inicio)->format('H:m')) }}"> 
+                                                                @error('hora_inicio')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
                                                             </div>
                                                         </div>
                                                     </div>
@@ -175,6 +205,16 @@
                                                             <label for="hora_termino" class="bmd-label-floating">Hora termino</label>
                                                             <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
                                                                 <input type="text" class="form-control" name="hora_termino" value="{{ old('hora_termino', \Carbon\Carbon::parse($eventos->hora_termino)->format('H:m')) }}"> 
+                                                                @error('hora_termino')
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
                                                             </div>
                                                         </div>
                                                     </div>

@@ -51,7 +51,7 @@
                                                     <div class="col-sm-12"> 
                                                         <div class="form-group">
                                                             <label for="direccion" class="bmd-label-floating ">Direccion</label>
-                                                            <input type="text" class="form-control" id="alloptions" name="direccion"  maxlength="45" value="{{ old('direccion') }}" autofocus>
+                                                            <input type="text" class="form-control" id="alloptions" name="direccion"  maxlength="45" autocomplete="off" value="{{ old('direccion') }}" autofocus>
                                                             @error('direccion')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">
@@ -67,7 +67,7 @@
                                                     <div class="col-sm-12">    
                                                         <div class="form-group">
                                                             <label for="jefe_hogar" class="bmd-label-floating ">Jefe Hogar</label>
-                                                            <input type="text" class="form-control" id="alloptions" name="jefe_hogar"  maxlength="45" value="{{ old('jefe_hogar') }}" autofocus>
+                                                            <input type="text" class="form-control" id="alloptions" name="jefe_hogar"  maxlength="45" autocomplete="off" value="{{ old('jefe_hogar') }}" autofocus>
                                                             @error('jefe_hogar')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">
@@ -83,7 +83,7 @@
                                                     <div class="col-sm-12">    
                                                         <div class="form-group">
                                                             <label for="cantidad_habitantes" class="bmd-label-floating ">Cantidad Habitantes</label>
-                                                            <input type="text" class="form-control" id="alloptions" name="cantidad_habitantes"  maxlength="2" value="{{ old('cantidad_habitantes') }}" autofocus>
+                                                            <input type="text" class="form-control" id="alloptions" name="cantidad_habitantes"  maxlength="2" autocomplete="off" onkeypress="return justNumbers(event);" value="{{ old('cantidad_habitantes') }}" autofocus>
                                                             @error('cantidad_habitantes')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">
@@ -136,6 +136,17 @@
         </div><!-- end row -->
     </div> <!-- end container -->
 </div>
+
+<script type="text/javascript">
+    function justNumbers(e)
+    {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+    }
+</script>
 
 <!-- Plugins js -->
 <script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>

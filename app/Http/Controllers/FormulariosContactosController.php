@@ -32,9 +32,13 @@ class FormulariosContactosController extends Controller
         try{
 
             $validator = Validator::make($request->all(), [
-                'tipo_consultas_id' => 'required|numeric',
+                'tipo_consultas_id' => 'required|numeric|not_in:0',
                 'descripcion' => 'required|min:2|max:45|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'tipo_consultas_id.not_in' => 'Debe seleccionar un tipo de consulta',
+                'descripcion.required' => 'Debe ingresar una descripción'
             ]);
             if($validator->fails()){
                 //dd($validator);
@@ -75,9 +79,13 @@ class FormulariosContactosController extends Controller
     {
         try{
             $validator = Validator::make($request->all(), [
-                'tipo_consultas_id' => 'required|numeric',
+                'tipo_consultas_id' => 'required|numeric|not_in:0',
                 'descripcion' => 'required|min:2|max:45|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'tipo_consultas_id.not_in' => 'Debe seleccionar un tipo de consulta',
+                'descripcion.required' => 'Debe ingresar una descripción'
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

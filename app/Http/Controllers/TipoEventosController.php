@@ -29,6 +29,9 @@ class TipoEventosController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombre' => 'required|min:2|max:45|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -67,6 +70,9 @@ class TipoEventosController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombre' => 'required|min:2|max:45|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

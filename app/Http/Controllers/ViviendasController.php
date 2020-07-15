@@ -36,8 +36,14 @@ class ViviendasController extends Controller
             $validator = Validator::make($request->all(), [
                 'direccion' => 'required|min:2|max:45|string',
                 'jefe_hogar' => 'required|min:2|max:45|string',
-                'cantidad_habitantes' => 'required|min:2|integer',
+                'cantidad_habitantes' => 'required|min:1|max:99|integer',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'direccion.required' => 'Debe ingresar una direccion',
+                'jefe_hogar.required' => 'Debe ingresar un jefe de hogar',
+                'cantidad_habitantes.required' => 'Debe ingresar la cantidad de habitantes',
+                'cantidad_habitantes.integer' => 'Solo debe ingresar numeros',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -81,8 +87,15 @@ class ViviendasController extends Controller
             $validator = Validator::make($request->all(), [
                 'direccion' => 'required|min:2|max:45|string',
                 'jefe_hogar' => 'required|min:2|max:45|string',
-                'cantidad_habitantes' => 'required|min:2|integer',
+                'cantidad_habitantes' => 'required|min:1|max:99|integer',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'direccion.required' => 'Debe ingresar una direccion',
+                'jefe_hogar.required' => 'Debe ingresar un jefe de hogar',
+                'cantidad_habitantes.required' => 'Debe ingresar la cantidad de habitantes',
+                'cantidad_habitantes.integer' => 'Solo debe ingresar numeros',
+
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

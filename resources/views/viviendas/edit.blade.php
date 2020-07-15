@@ -90,7 +90,7 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label for="cantidad_habitantes" class="bmd-label-floating ">Cantidad Habitantes</label>
-                                                            <input type="text" class="form-control" id="alloptions" autocomplete="off" name="cantidad_habitantes"  maxlength="2" value="{{ old('cantidad_habitantes', $viviendas->cantidad_habitantes) }}">
+                                                            <input type="text" class="form-control" id="alloptions" autocomplete="off" name="cantidad_habitantes"  maxlength="2" onkeypress="return justNumbers(event);" value="{{ old('cantidad_habitantes', $viviendas->cantidad_habitantes) }}">
                                                             @error('cantidad_habitantes')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">
@@ -150,6 +150,17 @@
 
     </div> <!-- end container -->
 </div>
+
+<script type="text/javascript">
+    function justNumbers(e)
+    {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+    }
+</script>
 
 <!-- Plugins js -->
 <script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>

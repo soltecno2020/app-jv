@@ -93,7 +93,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="rut" class="bmd-label-floating ">Rut</label>
-                                                                <input type="text" class="form-control" id="rut" name="rut" minlength="9" maxlength="12" autocomplete="off" value="{{ old('rut') }}" onkeyup="formatoRut(this)" onkeypress="return justNumbers(event);" autofocus>
+                                                                <input type="text" class="form-control" id="rut" name="rut" minlength="9" maxlength="12" autocomplete="off" value="{{ old('rut') }}" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);" autofocus>
                                                                 @error('rut')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -215,6 +215,16 @@
                                                                     <option {{ old('vivienda_id') == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
                                                                 @endforeach
                                                             </select>
+                                                            @error('vivienda_id') 
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -263,15 +273,25 @@
     {rut.value=rut.value.replace(/[.-]/g, '')
     .replace( /^(\d{1,2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4')}
 </script>
-<script type="text/javascript">
-    function justNumbers(e)
-        {
-        var keynum = window.event ? window.event.keyCode : e.which;
-        if ((keynum == 8) || (keynum == 46))
-        return true;
-         
-        return /\d/.test(String.fromCharCode(keynum));
+<script>
+    function caracteresRut(e) {
+        var key = e.keyCode || e.which,
+        tecla = String.fromCharCode(key).toLowerCase(),
+        letras = "0123456789k",
+        especiales = [8, 37, 39, 46],
+        tecla_especial = false;
+
+        for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
         }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        return false;
+        }
+    }
 </script>
 
 <!--Wysiwig js-->   

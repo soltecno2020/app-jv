@@ -33,9 +33,9 @@ class UserController extends Controller
                 'name' => 'required|min:2|max:30|string',
                 'apellido' => 'required|min:2|max:30|string',
                 'email' => 'required|min:2|max:50|string|unique:users',
-                'password' => 'required|min:2|max:30|string|confirmed',
+                'password' => 'required|min:2|max:30|string|',
                 'username' => 'required|min:2|max:30|string',
-                'telefono' => 'required',
+                'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
@@ -58,11 +58,11 @@ class UserController extends Controller
                 'email.required' => 'Debe ingresar un email',
                 'email.unique' => 'El email ingresado ya esta registrado',
                 'password.required' => 'Debe ingresar una contraseña',
-                'password.confirmed' => 'Las contraseñas no coinciden',
                 'telefono.required' => 'Debe ingresar un telefono de contacto',
                 'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
                 'username.required' => 'Debe ingresar un nombre de usuario',
                 'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
+                'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -107,28 +107,42 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-         try{
+        try{
             $validator = Validator::make($request->all(), [
-                'name' => 'required|min:2|max:45|string',
-                'email' => 'required|min:2|max:45|string',
-                'password' => 'required|min:2|max:45|string',
-                'username' => 'required|min:2|max:45|string',
-                'apellido' => 'required|min:2|max:45|string',
-                'telefono' => 'required|min:2|integer',
-                'fecha_nacimiento' => 'required|min:2|max:45|date',
-                'vivienda_id' => 'required|numeric',
+                'name' => 'required|min:2|max:30|string',
+                'apellido' => 'required|min:2|max:30|string',
+                'email' => 'required|min:2|max:50|string|unique:users',
+                'password' => 'required|min:2|max:30|string|confirmed',
+                'username' => 'required|min:2|max:30|string',
+                'telefono' => 'required|integer',
+                'fecha_nacimiento' => 'required|date',
+                'vivienda_id' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
-                'rut' =>['required',
-                          'string',
-                          'max:20',
-                          'unique:users',
-                          function ($attribute, $value, $fail){
-                            $validarRut = $this->valida_rut($value);
-                            if(!$validarRut){
-                                $fail('Ingrese un rut valido.');
-                            }
-                          },
-                        ],
+                'rut' =>[   'required',
+                            'string',
+                            'max:20',
+                            'unique:users',
+                            function ($attribute, $value, $fail){
+                                $validarRut = $this->valida_rut($value);
+                                if(!$validarRut){
+                                    $fail('Ingrese un rut valido.');
+                                }
+                            },
+                        ]
+            ],
+            [
+                'name.required' => 'Debe ingresar un nombre',
+                'apellido.required' => 'Debe ingresar un apellido',
+                'rut.required' => 'Debe ingresar un RUT',
+                'email.required' => 'Debe ingresar un email',
+                'email.unique' => 'El email ingresado ya esta registrado',
+                'password.required' => 'Debe ingresar una contraseña',
+                'password.confirmed' => 'Las contraseñas no coinciden',
+                'telefono.required' => 'Debe ingresar un telefono de contacto',
+                'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
+                'username.required' => 'Debe ingresar un nombre de usuario',
+                'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
+                'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

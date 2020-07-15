@@ -215,6 +215,16 @@
                                                                 <option {{ $usuarios->vivienda_id == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
                                                             @endforeach
                                                             </select>
+                                                            @error('vivienda_id') 
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                    <li class="parsley-required">
+                                                                        <strong>
+                                                                            {{ $message }}
+                                                                        </strong>
+                                                                    </li>
+                                                                </ul>                                                                
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">

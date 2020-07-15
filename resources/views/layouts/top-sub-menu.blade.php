@@ -25,31 +25,6 @@
                 <li class="has-submenu ">
                     <a href="#"><i class="mdi mdi-cash"></i>Cuotas</a>
                 </li>
-                <!--
-                <li class="has-submenu ">
-                    <a href="{{ route('eventos.index') }}"><i class="mdi mdi-pencil-box"></i>Eventos</a>
-                </li>
-                -->
-
-                <!--
-                <li class="has-submenu">
-                    <a href="#"><i class="mdi mdi-cards"></i>Administración</a>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="{{ route('tipoEventos.index') }}">Tipo Eventos</a>
-                        </li>
-                        <li class="">
-                            <a href="{{ route('tipoConsultas.index') }}">Tipo Consultas</a>
-                        </li>
-                        <li class="">
-                            <a href="{{ route('noticias.index') }}">Crear noticias</a>
-                        </li>
-                        <li class="">
-                            <a href="{{ route('formularioscontactos.index') }}">Lista de formularios</a>
-                        </li>
-                    </ul>
-                </li>
-                -->
                 <li class="has-submenu">
                     <a href="{{ route('administrador') }}"><i class="mdi mdi-cards"></i>Administración</a>
                 </li>

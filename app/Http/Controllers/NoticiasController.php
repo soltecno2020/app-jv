@@ -30,6 +30,11 @@ class NoticiasController extends Controller
                 'descripcion_corta' => 'required|min:2|max:100|string',
                 'descripcion_larga' => 'required|min:2|max:10000|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'titulo.required' => 'Debe ingresar un titulo',
+                'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
+                'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -91,6 +96,11 @@ class NoticiasController extends Controller
                 'descripcion_corta' => 'required|min:2|max:100|string',
                 'descripcion_larga' => 'required|min:2|max:10000|string',
                 'estado' => 'required|numeric',
+            ],
+            [
+                'titulo.required' => 'Debe ingresar un titulo',
+                'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
+                'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

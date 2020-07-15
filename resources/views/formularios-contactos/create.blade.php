@@ -43,16 +43,26 @@
                                         <div class="general-label">
                                             <form method="POST" action="{{ route('formularioscontactos.store') }}" class="mb-0">
                                             @csrf
-                                                <div class="col-sm-12">
-                                                    <div class="form-group">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
                                                         <select class="form-control" id="tipo_consultas_id" name="tipo_consultas_id">
                                                             <option value="0">Seleccione un tipo de consulta</option>
-                                                        @foreach($tipoConsultas as $tipoConsulta)
-                                                            @if($tipoConsulta->estado == 1)
-                                                                <option {{ old('tipo_consultas_id') == $tipoConsulta->id ? 'selected' : '' }} value="{{ ($tipoConsulta->id)}}">{{     ($tipoConsulta->nombre) }}</option>
-                                                            @endif 
-                                                        @endforeach
+                                                            @foreach($tipoConsultas as $tipoConsulta)
+                                                                @if($tipoConsulta->estado == 1)
+                                                                    <option {{ old('tipo_consultas_id') == $tipoConsulta->id ? 'selected' : '' }} value="{{ ($tipoConsulta->id)}}">{{ ($tipoConsulta->nombre) }}</option>
+                                                                @endif 
+                                                            @endforeach
                                                         </select>
+                                                        @error('tipo_consultas_id')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
                                                     </div>    
                                                 </div>
                                                 <div class="col-sm-12">

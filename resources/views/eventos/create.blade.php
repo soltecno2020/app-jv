@@ -56,7 +56,7 @@
                                             @csrf
                                                 <div class="row grid-col p-3">
                                                     <div class="col-sm-6"> 
-                                                        <div class="form-group">
+                                                        <div class="form-group is-focused">
                                                             <label for="nombre" class="bmd-label-floating ">Nombre</label>
                                                             <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="45" value="{{ old('nombre') }}">
                                                             @error('nombre')

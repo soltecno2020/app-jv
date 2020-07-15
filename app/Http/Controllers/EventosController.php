@@ -42,6 +42,20 @@ class EventosController extends Controller
                 'lugar' => 'required|min:2|max:50|string',
                 'estado' => 'required|numeric',
                 'tipo_evento' => 'required|numeric|not_in:0',
+            ],
+            [
+                'nombre.required' => 'Debe ingresar un nombre',
+                'titulo.required' => 'Debe ingresar un titulo',
+                'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
+                'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
+                'fecha_inicio.required' => 'Debe ingresar una fecha de inicio',
+                'fecha_termino.required' => 'Debe ingresar una fechad e termino',
+                'hora_inicio.required' => 'Debe ingresar una hora de inicio',
+                'hora_inicio.date_format' => 'Debe ingresar un formato de hora valido',
+                'hora_termino.required' => 'Debe ingresar una hora de termino',
+                'hora_termino.date_format' => 'Debe ingresar un formato de hora valido',
+                'lugar.required' => 'Debe ingresar un lugar de encuentro',
+                'tipo_evento.not_in' => 'Debe seleccionar un tipo de evento',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -102,6 +116,20 @@ class EventosController extends Controller
                 'lugar' => 'required|min:2|max:50|string',
                 'estado' => 'required|numeric',
                 'tipo_evento' => 'required|numeric|not_in:0',
+            ],
+            [
+                'nombre.required' => 'Debe ingresar un nombre',
+                'titulo.required' => 'Debe ingresar un titulo',
+                'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
+                'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
+                'fecha_inicio.required' => 'Debe ingresar una fecha de inicio',
+                'fecha_termino.required' => 'Debe ingresar una fechad e termino',
+                'hora_inicio.required' => 'Debe ingresar una hora de inicio',
+                'hora_inicio.date_format' => 'Debe ingresar un formato de hora valido',
+                'hora_termino.required' => 'Debe ingresar una hora de termino',
+                'hora_termino.date_format' => 'Debe ingresar un formato de hora valido',
+                'lugar.required' => 'Debe ingresar un lugar de encuentro',
+                'tipo_evento.not_in' => 'Debe seleccionar un tipo de evento',
             ]);
             if($validator->fails()){
                 Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');

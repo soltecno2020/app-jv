@@ -69,6 +69,16 @@
                                                             @endif 
                                                         @endforeach
                                                     </select>
+                                                    @error('tipo_consultas_id')
+                                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                            <li class="parsley-required">
+                                                                <strong>
+                                                                    {{ $message }}
+                                                                </strong>
+                                                            </li>
+                                                        </ul>                                                                
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="col-sm-12">  
                                                     <div class="form-group">
