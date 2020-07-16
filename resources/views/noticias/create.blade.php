@@ -84,28 +84,8 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <button type="button" style="left:1.5%" id="nuevaImagen" class="btn btn-raised btn-primary">Agregar imagen</button> <!-- data-toggle="modal" data-target=".bd-example-modal-form"  -->
-                                                <div id="modal-agregar-imagen" class="modal fade bd-example-modal-form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalform">Subir Imagen</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="form-group">
-                                                                    <input type="file" class="dropify" id="imagen" name="imagen">
-                                                                </div>
-                                                            </div>                                          
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar</button>
-                                                                <button type="button" id="btn-modal-agregar-imagen" class="btn btn-raised btn-primary ml-2">Subir imagen</button>
-                                                            </div>
-                                                        </div>        
-                                                    </div>
-                                                </div>
+                                                <button type="button" style="left:1.5%" id="nuevaImagen" class="btn btn-raised btn-primary">Agregar imagen</button>
+
                                                 <div class="col-sm-12">
                                                     <table id="tablaElementos" class="table mb-0">
                                                         <thead class="thead-default">
@@ -165,6 +145,7 @@
                                                 <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Crear noticia</button>
                                                 <a href="{{ route('noticias.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -175,6 +156,28 @@
             </div>
         </div><!-- end row -->
     </div> <!-- end container -->
+</div>
+
+<div id="modal-agregar-imagen" class="modal fade bd-example-modal-form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalform">Subir Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="file" class="dropify" id="imagen" name="imagen">
+                </div>
+            </div>                                          
+            <div class="modal-footer">
+                <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btn-modal-agregar-imagen" class="btn btn-raised btn-primary ml-2">Subir imagen</button>
+            </div>
+        </div>        
+    </div>
 </div>
 
 <!-- Dropzone js -->
@@ -194,42 +197,104 @@
 <!-- App js -->
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
-    $(document).ready(function(){
-        
-    });
-</script>
-<script>
     var idElemento = 0;
+    $(document).ready(function(){
+        $('#nuevaImagen').click(function(e){
+            e.preventDefault();
+            $('#modal-agregar-imagen').modal('show');
+        });
 
-    $('#nuevaImagen').click(function(e){
-        e.preventDefault();
-        $('#modal-agregar-imagen').modal('show');
+        $('.borrar').click(function(e){
+            e.preventDefault();
+            var elemento = this.id.split('_');
+            var idElemento = elemento[1];
+            $('#tr_'+idElemento).remove();
+        });
+
+        $('#btn-modal-agregar-imagen').click(function(e){
+            e.preventDefault();
+            if($('#imagen').val() != ''){
+                subirImagen();
+            }else{
+                alert('Debe seleccionar una imagen.');
+            }
+        });
     });
 
-    $('#btn-modal-agregar-imagen').click(function(e){
-        e.preventDefault();
-        subirImagen();
-    });
+    ////////////// AGREGAR //////////////
+    //LIBRERIA TOAST
+    //LIBRERIA SWAL
 
-    $('.borrar').click(function(e){
+
+    $(document).on("click", '.capture-url', function(e){
         e.preventDefault();
-        var elemento = this.id.split('_');
-        var idElemento = elemento[1];
-        $('#tr_'+idElemento).remove();
-    });
+        var link = $(this).data('url');
+        //Copiar en el portapapeles el link
+
+    });       
+
+    $(document).on("click", '.delete-img', function(e){
+        e.preventDefault();
+        /*swal({
+            title: "¿Seguro que deseas eliminar la imagen?",
+            icon: "warning",
+            buttons: {
+                cancel: {
+                    text: "No, cancelar",
+                    value: null,
+                    visible: true,
+                    className: "btn-warning",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Si, eliminar",
+                    value: true,
+                    visible: true,
+                    className: "btn-primary",
+                    closeModal: true
+                }
+            }
+        })
+        .then((isConfirm) => {
+            if(isConfirm){
+                //obtener data id
+                //var id = 
+                //$("#tr_"+id).remove();
+            }
+        });*/
+    });       
 
     function subirImagen(){
-        idElemento++;
-        $('#tablaElementos tbody').append(
-        '<tr id="tr_"'+idElemento+'">'+
-            '<td><input id="input_imagen_" class="form-control" type="text" disabled="on"></td>'+
-            '<td><img src=""></img></td>'+
-            '<td><button class="link btn btn-raised btn-primary ml-2" data-url=""></button></td>'+
-            '<td><div class="float-right"><div class="icon-demo-content row"><a id="bImagen_'+idElemento+'" href="" data-url=""><div class="col-sm-6 m-0"><i class="mdi mdi-close"></i></div></a></div></div></td>'+
-        '</tr>');
-        $('#modal-agregar-imagen').modal('hide');
+        var imagen  = $('#imagen').prop('files')[0];
+        var formData = new FormData();        
+        formData.append('imagen', imagen);
+        $.ajax({
+            url: '{{ route('imagenes.subirImagen') }}',
+            method: 'post',
+            data: formData,
+            contentType : false,
+            processData : false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response){
+                idElemento++;
+                var url = window.location.href.replace('public/noticias/create', 'storage/imagenes/noticias/temp/');
+                $('#tablaElementos tbody').append(
+                '<tr id="tr_"'+idElemento+'">'+
+                    '<td>'+response.nombreOrigen+'</td>'+
+                    '<td><img style="height: 40px;" src="'+url+response.nombre+'" class=""></img></td>'+
+                    '<td><div class="float-right"><div class="icon-demo-content row"><a data-url="'+url+response.nombre+'" href="" class="capture-url" title="Copiar en portapapeles"><div class="col-sm-6 m-0"><i class="mdi mdi-link"></i></div></a></div></div>'+
+                        '<div class="float-right"><div class="icon-demo-content row"><a data-id="'+idElemento+'" href="" class="delete-img"><div class="col-sm-6 m-0"><i class="mdi mdi-close"></i></div></a></div></div>'+
+                    '</td>'+
+                '</tr>');
+                $('#imagen').val('');
+                $('#modal-agregar-imagen').modal('hide');
+            },
+            error: function(error){
+                
+            }
+        });
     }
-    
-
 </script>
 @endsection

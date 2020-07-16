@@ -43,37 +43,30 @@ class ImagenesController extends Controller
         //
     }
 
-    /*public function subirImagen(Request $request)
+    public function subirImagen(Request $request)
     {
         try{
             $validator = Validator::make($request->all(), [
                 'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             ]);
-            if($validator->fails()){
+
+            if (!$validator->passes()) {
                 return response()->json([
-                    'code' => 405,
+                    'code' => 401,
                     'message' => 'error',
                     'data' => $validator->messages()
-                ]);
+                ]);            
             }
-            $input = $request->all();
-            $input['image'] = time().'.'.$request->image->extension();
-            $request->image->move(storage_path().'/imagenes/noticias/temp/', $input['image']);
+            $imagen = $request->file('imagen');
+            $nombreImagen = time().'.'.$imagen->extension();
+            $imagen->move(storage_path().'/imagenes/noticias/temp/', $nombreImagen);
             return response()->json([
-                'code' => 405,
-                'message' => 'error',
-                'data' => $request->all()
+                'code' => 200,
+                'message' => 'success',
+                'nombre' => $nombreImagen,
+                'ruta' => 'storage/imagenes/noticias/temp/',
+                'nombreOrigen' => $imagen->getClientOriginalName()
             ]);
-            if ($request->hasFile('imagen')) {
-                $file = $request->file('imagen');
-                $name = time().$file->getClientOriginalName();
-                $ext = $file->getClientOriginalExtension(); 
-                $file->move(storage_path().'/imagenes/noticias/temp/',$name);
-                return response()->json([
-                    'code' => 200,
-                    'message' => 'success'
-                ]);
-            }            
         }catch(Exception $e){
             return response()->json([
                 'code' => 400,
@@ -81,22 +74,5 @@ class ImagenesController extends Controller
                 'data' => $e->getMessage()
             ]);
         }
-    }*/
-
-    public function subirImagen(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-
-      if ($validator->passes()) {
-        $input = $request->all();
-        $input['image'] = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images'), $input['image']);
-        return response()->json(['success'=>'done']);
-      }
-
-      return response()->json(['error'=>$validator->errors()->all()]);
     }
 }
