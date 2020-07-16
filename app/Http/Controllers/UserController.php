@@ -72,7 +72,7 @@ class UserController extends Controller
                 'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('usuarios/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -89,11 +89,10 @@ class UserController extends Controller
                 'vivienda_id' => $request->vivienda_id,
                 'estado' => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de crear una usuario "'.strtoupper($request->username).'" exitosamente!');
+            toastr()->success('Acabas de crear un usuario "'.strtoupper($request->name).'" exitosamente!');
             return redirect()->route('usuarios.index');
         }catch(Exception $e){
-            dd($e->getMessage());
-            Session::flash('error', 'Ha ocurrido un error');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('eventos/create')
             ->withErrors($validator)
             ->withInput();
@@ -119,7 +118,7 @@ class UserController extends Controller
                 'name' => 'required|min:2|max:30|string',
                 'apellido' => 'required|min:2|max:30|string',
                 'email' => 'required|min:2|max:50|string|unique:users',
-                'password' => 'required|min:2|max:30|string|confirmed',
+                'password' => 'required|min:2|max:30|string',
                 'username' => 'required|min:2|max:30|string',
                 'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
@@ -141,10 +140,10 @@ class UserController extends Controller
                 'name.required' => 'Debe ingresar un nombre',
                 'apellido.required' => 'Debe ingresar un apellido',
                 'rut.required' => 'Debe ingresar un RUT',
+                'rut.unique' => 'El rut ingresado ya a sido registrado',
                 'email.required' => 'Debe ingresar un email',
                 'email.unique' => 'El email ingresado ya esta registrado',
                 'password.required' => 'Debe ingresar una contraseña',
-                'password.confirmed' => 'Las contraseñas no coinciden',
                 'telefono.required' => 'Debe ingresar un telefono de contacto',
                 'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
                 'username.required' => 'Debe ingresar un nombre de usuario',
@@ -152,7 +151,7 @@ class UserController extends Controller
                 'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('usuarios.edit', $id)
                             ->withErrors($validator)
                             ->withInput();
@@ -170,11 +169,10 @@ class UserController extends Controller
             $usuarios->vivienda_id = $request->vivienda_id;
             $usuarios->estado = $request->estado;
             $usuarios->save();            
-            Session::flash('success', 'Acabas de actualizar el usuario "'.strtoupper($request->name).'" exitosamente!');
+            toastr()->success('Acabas de actualizar un usuario "'.strtoupper($request->name).'" exitosamente!');
             return redirect()->route('usuarios.index');
         }catch(Exception $e){
-            dd($e->getMessage());
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('usuarios/edit')
                             ->withErrors($validator)
                             ->withInput();

@@ -6,7 +6,7 @@
 <link href="{{ asset('template/assets/plugins/timepicker/tempusdominus-bootstrap-4.css') }}" rel="stylesheet" />
 <link href="{{ asset('template/assets/plugins/timepicker/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/plugins/clockpicker/jquery-clockpicker.min.css') }}" rel="stylesheet" />
-
+@toastr_css
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -31,14 +31,14 @@
         <!-- end page title end breadcrumb -->
         <div class="row">
             <div class="col-md-12 col-xl-12 ">
-                @if(Session::has('error'))
+                <!-- @if(Session::has('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong>Error!</strong> {{ Session::get('error') }}.
                 </div>
-                @endif
+                @endif -->
                 <div class="m-b-30">
                     <div class="">
                         <div class="row">
@@ -268,7 +268,8 @@
         </div><!-- end row -->
     </div> <!-- end container -->
 </div>
-
+@toastr_js
+@toastr_render
 <!--Wysiwig js-->   
 <script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/pages/form-editor-init.js') }}"></script>

@@ -7,7 +7,7 @@
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-
+@toastr_css
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -52,10 +52,9 @@
         {{ $noticias->links() }}
     </ul>    
 </nav>
-
-                     
-                    
-
+            
+@toastr_js
+@toastr_render
 <!-- Required datatable js -->
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>

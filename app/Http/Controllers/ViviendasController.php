@@ -46,7 +46,7 @@ class ViviendasController extends Controller
                 'cantidad_habitantes.integer' => 'Solo debe ingresar numeros',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('viviendas/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -57,10 +57,10 @@ class ViviendasController extends Controller
                 'cantidad_habitantes'    => $request->cantidad_habitantes,
                 'estado'    => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de crear una vivienda "'.strtoupper($request->direccion).'" exitosamente!');
+            toastr()->success('Acabas de crear una vivienda "'.strtoupper($request->direccion).'" exitosamente!');
             return redirect()->route('viviendas.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('viviendas/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -98,7 +98,7 @@ class ViviendasController extends Controller
 
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('viviendas.edit', $id)
                             ->withErrors($validator)
                             ->withInput();
@@ -109,10 +109,10 @@ class ViviendasController extends Controller
             $viviendas->cantidad_habitantes = $request->cantidad_habitantes;
             $viviendas->estado = $request->estado;
             $viviendas->save();            
-            Session::flash('success', 'Acabas de actualizar la vivienda "'.strtoupper($request->direccion).'" exitosamente!');
+            toastr()->success('Acabas de actualizar una vivienda "'.strtoupper($request->direccion).'" exitosamente!');
             return redirect()->route('viviendas.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('viviendas/edit')
                             ->withErrors($validator)
                             ->withInput();

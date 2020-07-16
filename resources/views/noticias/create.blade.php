@@ -4,6 +4,7 @@
 
 <!-- Dropzone css -->
 <link href="{{ asset('template/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
+@toastr_css
 
 <div class="wrapper">
     <div class="container-fluid">
@@ -29,14 +30,14 @@
         <!-- end page title end breadcrumb -->
         <div class="row">
             <div class="col-md-12 col-xl-12 ">
-                @if(Session::has('error'))
+                <!-- @if(Session::has('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong>Error!</strong> {{ Session::get('error') }}.
                 </div>
-                @endif
+                @endif -->
                 <div class="m-b-30">
                     <div class="">
                         <div class="row">
@@ -179,7 +180,8 @@
         </div>        
     </div>
 </div>
-
+@toastr_js
+@toastr_render
 <!-- Dropzone js -->
 <script src="{{ asset('template/assets/plugins/dropify/js/dropify.min.js') }}"></script>
 <script src="{{ asset('template/assets/pages/upload-init.js') }}"></script>
@@ -216,7 +218,7 @@
             if($('#imagen').val() != ''){
                 subirImagen();
             }else{
-                alert('Debe seleccionar una imagen.');
+                toastr.error('Debe seleccionar una imagen.');
             }
         });
     });

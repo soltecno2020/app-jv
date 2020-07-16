@@ -24,7 +24,8 @@
     <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
-    </head>
+    @toastr_css
+</head>
 <body>
     <div class="accountbg">
         <img src="{{ asset('template/assets/images/villa.png') }}">
@@ -103,6 +104,8 @@
                 </div>    
             </div>
         </div>
-    </div> 
-</body>  
+    </div>
+</body>
+@toastr_js
+@toastr_render   
 </html>

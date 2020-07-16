@@ -47,8 +47,7 @@ class FormulariosContactosController extends Controller
                 'descripcion.required' => 'Debe ingresar una descripción'
             ]);
             if($validator->fails()){
-                //dd($validator);
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('formularioscontactos/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -58,11 +57,10 @@ class FormulariosContactosController extends Controller
                 'descripcion'    => $request->descripcion,
                 'estado'    => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de enviar su formulario "'.strtoupper($request->descripcion).'" exitosamente!');
+            toastr()->success('Acabas de enviar tu formulario exitosamente!');
             return redirect()->route('formularioscontactos.index');
         }catch(Exception $e){
-            dd($e->getMessage());
-            Session::flash('error', 'Ha ocurrido un error');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('formularioscontactos/create')
             ->withErrors($validator)
             ->withInput();
@@ -94,7 +92,7 @@ class FormulariosContactosController extends Controller
                 'descripcion.required' => 'Debe ingresar una descripción'
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('formularioscontactos.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
@@ -104,10 +102,10 @@ class FormulariosContactosController extends Controller
             $formularioContactos->descripcion = $request->descripcion;           
             $formularioContactos->estado = $request->estado;
             $formularioContactos->save();            
-            Session::flash('success', 'Acabas de actualizar el el formulario "'.strtoupper($request->descripcion).'" exitosamente!');
+            toastr()->success('Acabas de actualizar el formulario exitosamente!');
             return redirect()->route('formularioscontactos.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('formularioscontactos/edit')
             ->withErrors($validator)
             ->withInput();

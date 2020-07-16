@@ -41,7 +41,7 @@ class TipoConsultasController extends Controller
                 'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('tipoConsultas/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -50,10 +50,10 @@ class TipoConsultasController extends Controller
                 'nombre'    => $request->nombre,
                 'estado'    => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de crear el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            toastr()->success('Acabas de crear el tipo de consulta "'.strtoupper($request->nombre).'" exitosamente!');
             return redirect()->route('tipoConsultas.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('tipoConsultas/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -85,7 +85,7 @@ class TipoConsultasController extends Controller
                 'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('tipoConsultas.edit', $id)
                             ->withErrors($validator)
                             ->withInput();
@@ -94,10 +94,10 @@ class TipoConsultasController extends Controller
             $tipoConsulta->nombre = $request->nombre;
             $tipoConsulta->estado = $request->estado;
             $tipoConsulta->save();            
-            Session::flash('success', 'Acabas de actualizar el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            toastr()->success('Acabas de actualizar el tipo de consulta "'.strtoupper($request->nombre).'" exitosamente!');
             return redirect()->route('tipoConsultas.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('tipoConsultas/edit')
                             ->withErrors($validator)
                             ->withInput();

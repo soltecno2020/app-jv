@@ -6,7 +6,7 @@
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-
+@toastr_css
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -31,7 +31,7 @@
         <!-- end page title end breadcrumb -->
         <div class="row">
             <div class="col-12">
-                @if(Session::has('success'))
+                <!-- @if(Session::has('success'))
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -45,7 +45,7 @@
                     </button>
                     <strong>Error!</strong> {{ Session::get('error') }}.
                 </div>
-                @endif
+                @endif -->
                 <div class="card m-b-30">
                     <div class="card-body">
                         <div class="float-left">
@@ -58,9 +58,7 @@
                             <p class="text-muted font-14">Esta pantalla permitirá crear editar e visualizar usuarios </code>
                             </p> 
                         </div>        
-
-
-</div>                
+               
                         <div class="pt-0">
                             <table id="datatable" class="table table-bordered">
                                 <thead>
@@ -117,7 +115,7 @@
                                             <td>              
                                                 <div class="float-right">
                                                     <div class="icon-demo-content row">
-                                                        <a href="{{ route('usuarios.edit', $usuario->id) }}">
+                                                        <a href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario">
                                                             <div class="col-sm-6 m-0">
                                                                 <i class="mdi mdi-table-edit m-0"></i>
                                                             </div>
@@ -137,7 +135,8 @@
         </div> <!-- end row -->
     </div> <!-- end container -->
 </div>
-
+@toastr_js
+@toastr_render
 <!-- Required datatable js -->
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>

@@ -44,11 +44,12 @@ class NoticiasController extends Controller
                 'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('noticias/create')
                 ->withErrors($validator)
                 ->withInput();
             }
+            /*
             if ($request->hasFile('imagen')) {
                 $file = $request->file('imagen');
                 $name = time().$file->getClientOriginalName();
@@ -63,7 +64,8 @@ class NoticiasController extends Controller
                     'estado'    => 1,
                     'relacion_id'    => 1,
                 ]);
-            }            
+            }
+            */            
             $noticias = noticias::create([
                 'titulo'    => $request->titulo,
                 'descripcion_corta'    => $request->descripcion_corta,
@@ -72,10 +74,10 @@ class NoticiasController extends Controller
                 'user_created_id'    => 1,
                 'user_updated_id'    => 1,
             ]);
-            Session::flash('success', 'Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
+            toastr()->success('Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('noticias.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('noticias/create')
             ->withErrors($validator)
             ->withInput();
@@ -110,7 +112,7 @@ class NoticiasController extends Controller
                 'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('noticias.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
@@ -121,11 +123,11 @@ class NoticiasController extends Controller
             $noticias->descripcion_larga = $request->descripcion_larga;
             $noticias->estado = $request->estado;
             $noticias->user_updated_id = 1;
-            $noticias->save();            
-            Session::flash('success', 'Acabas de actualizar la noticia "'.strtoupper($request->titulo).'" exitosamente!');
+            $noticias->save();
+            toastr()->success('Acabas de actualizar una noticia "'.strtoupper($request->titulo).'" exitosamente!');            
             return redirect()->route('noticias.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('noticias/edit')
             ->withErrors($validator)
             ->withInput();

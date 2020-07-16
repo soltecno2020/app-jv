@@ -41,7 +41,7 @@ class TipoEventosController extends Controller
                 'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('tipoEventos/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -50,10 +50,10 @@ class TipoEventosController extends Controller
                 'nombre'    => $request->nombre,
                 'estado'    => $request->estado,
             ]);
-            Session::flash('success', 'Acabas de crear el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            toastr()->success('Acabas de crear el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!'); 
             return redirect()->route('tipoEventos.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('tipoEventos/create')
                             ->withErrors($validator)
                             ->withInput();
@@ -82,7 +82,7 @@ class TipoEventosController extends Controller
                 'nombre.required' => 'Debe ingresar un nombre',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('tipoEventos.edit', $id)
                             ->withErrors($validator)
                             ->withInput();
@@ -90,11 +90,11 @@ class TipoEventosController extends Controller
             $tipoEvento = TipoEventos::find($id);
             $tipoEvento->nombre = $request->nombre;
             $tipoEvento->estado = $request->estado;
-            $tipoEvento->save();            
-            Session::flash('success', 'Acabas de actualizar el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');
+            $tipoEvento->save();
+            toastr()->success('Acabas de actualizar el tipo de evento "'.strtoupper($request->nombre).'" exitosamente!');            
             return redirect()->route('tipoEventos.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('tipoEventos/edit')
                             ->withErrors($validator)
                             ->withInput();

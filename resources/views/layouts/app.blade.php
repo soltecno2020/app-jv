@@ -21,6 +21,7 @@
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+    @toastr_css
 
     <!-- jQuery  -->
     <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
@@ -34,6 +35,8 @@
     <script src="{{ asset('template/assets/js/waves.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+    @toastr_js
+    @toastr_render
 
 </head>
 <body>

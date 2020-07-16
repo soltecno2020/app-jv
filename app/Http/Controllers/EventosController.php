@@ -65,7 +65,7 @@ class EventosController extends Controller
                 'tipo_evento.not_in' => 'Debe seleccionar un tipo de evento',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect('eventos/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -85,11 +85,11 @@ class EventosController extends Controller
                 'user_created_id'    => 1,
                 'user_updated_id'    => 1,
             ]);
-            Session::flash('success', 'Acabas de crear un evento "'.strtoupper($request->titulo).'" exitosamente!');
+            toastr()->success('Acabas de crear un evento "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('eventos.index');
         }catch(Exception $e){
             dd($e->getMessage());
-            Session::flash('error', 'Ha ocurrido un error');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('eventos/create')
             ->withErrors($validator)
             ->withInput();
@@ -139,7 +139,7 @@ class EventosController extends Controller
                 'tipo_evento.not_in' => 'Debe seleccionar un tipo de evento',
             ]);
             if($validator->fails()){
-                Session::flash('error', 'Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
+                toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
                 return redirect()->route('eventos.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
@@ -158,10 +158,10 @@ class EventosController extends Controller
             $eventos->tipo_eventos_id = $request->tipo_evento;
             $eventos->user_updated_id = 1;
             $eventos->save();            
-            Session::flash('success', 'Acabas de actualizar el evento "'.strtoupper($request->titulo).'" exitosamente!');
+            toastr()->success('Acabas de actualizar un evento "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('eventos.index');
         }catch(Exception $e){
-            Session::flash('error', 'Ha ocurrido un error.');
+            toastr()->error('Ha ocurrido un error.');
             return redirect('eventos/edit')
             ->withErrors($validator)
             ->withInput();
