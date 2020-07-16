@@ -13,6 +13,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="no-cache"> 
+    <meta http-equiv="Expires" content="-1"> 
+    <meta http-equiv="Cache-Control" content="no-cache"> 
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -86,7 +90,7 @@
                                                         @endif    
                                                     </div>
                                                     <div class="col-sm-5 m-t-20">
-                                                        <a href="#" class="text-muted"><i class="mdi mdi-account-circle"></i> Crear una cuenta</a>
+                                                        <a href="{{ route('register')}}" class="text-muted"><i class="mdi mdi-account-circle"></i> Crear una cuenta</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -99,6 +103,6 @@
                 </div>    
             </div>
         </div>
-    </div>
-</body>
+    </div> 
+</body>  
 </html>

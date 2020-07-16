@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Exception;
+use Auth;
 
 
 class TipoEventosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:Super Administrador');
+    }
+
     //Listar (get)
     public function index()
     {

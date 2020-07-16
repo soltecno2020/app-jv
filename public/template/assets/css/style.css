@@ -1584,12 +1584,12 @@ code {
   Pagination
 ===================*/
 .page-link {
-  color: #807038;
+  color: #797468;
 }
 
 .page-item.active .page-link {
-  background-color: #DAAC0E;
-  border-color: #DAAC0E;
+  background-color: #CCAF60;
+  border-color: #CCAF60;
 }
 
 .page-link:focus, .page-link:hover {
@@ -3478,7 +3478,7 @@ body {
 
 .notification-list .noti-title {
   border-radius: 0.25rem 0.25rem 0 0;
-  background-color: #3f51b5;
+  background-color: #797468;
   margin: -4px 0px 0px 0px;
   width: auto;
   color: #ffffff;

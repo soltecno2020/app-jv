@@ -10,9 +10,16 @@ use Session;
 use Exception;
 use Hash;
 use carbon\Carbon;
+use Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:Super Administrador');
+    }
+
     public function index()
     {
         $viviendas = Viviendas::all();

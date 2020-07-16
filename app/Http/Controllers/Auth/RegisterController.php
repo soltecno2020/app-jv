@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,6 +54,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],
+        [
+            'name.required' => 'Debe ingresar su nombre de usuario',
+            'email.required' => 'Debe ingresar su e-mail',
+            'password.required' => 'Debe ingresar su contraseña',
+            'password.min' => 'La contraseña debe tener minimo 8 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
     }
 
@@ -68,6 +76,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'username' => '',
+            'apellido'  => '',
+            'telefono'=> '',
+            'rut'   => '',
+            'vivienda_id' => 1,
+            'estado' => 3,
         ]);
     }
 }

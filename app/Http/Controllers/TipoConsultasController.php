@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Exception;
+use Auth;
 
 class TipoConsultasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:Super Administrador');
+    }
     
     public function index()
     {

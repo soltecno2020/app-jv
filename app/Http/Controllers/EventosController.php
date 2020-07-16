@@ -9,9 +9,16 @@ use Validator;
 use Session;
 use Exception;
 use carbon\Carbon;
+use Auth;
 
 class EventosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:Super Administrador');
+    }
+
     public function index()
     {
         $tipoEventos = TipoEventos::all();        
