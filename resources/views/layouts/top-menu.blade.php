@@ -20,7 +20,7 @@
             
             <ul class="list-inline float-right mb-0 ">
                 <!-- language-->
-
+                @if(Auth::user()->estado == 1)
                 <li class="list-inline-item dropdown notification-list">
                     <div class="list-inline-item hide-phone app-search">
                         <form role="search" class="">
@@ -106,6 +106,7 @@
 
                     </div>
                 </li>
+                @endif
                 <li class="list-inline-item dropdown notification-list">
                     <div class="dropdown notification-list nav-pro-img">
                         <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
@@ -117,10 +118,12 @@
                             <div class="dropdown-item noti-title">
                                 <h5>Bienvenido</h5>
                             </div>
+                            @if(Auth::user()->estado == 1)
                             <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Perfil</a>
                             <a class="dropdown-item" href="#"><i class="mdi mdi-settings m-r-5 text-muted"></i>Configuración</a>
                             <!--<a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i>Bloquear</a>-->
                             <div class="dropdown-divider"></div>                            
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      <i class="mdi mdi-logout m-r-5 text-muted"></i>Cerrar sesión</a>

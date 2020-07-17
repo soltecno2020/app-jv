@@ -102,13 +102,17 @@
                                                 @endforeach
                                             </td>
                                             <td class="text-center">
-                                                @if($usuario->estado == 1)                                                     
+                                                @if($usuario->estado == 1)
                                                     <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
                                                         <i class="fa fa-check fa-2x text-success"></i>
                                                     </a>
-                                                @else 
+                                                @elseif($usuario->estado == 2)
                                                     <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
                                                         <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
+                                                    </a>
+                                                @elseif($usuario->estado == 3)
+                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
+                                                        <i class=" fa-2x text-danger mb-0"></i>
                                                     </a>
                                                 @endif
                                             </td>
@@ -162,7 +166,7 @@
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 
 <script>
-$(document).ready(function(){
+$(document).ready(function(){    
     $('.estado').click(function(e){
         e.preventDefault();
         var id = this.id;
@@ -174,7 +178,6 @@ $(document).ready(function(){
             },
             data: {id: id},
             success: function(data){
-                console.log(data);
                 if(data.code == 400){
                     alert('error 400');
                 }else if(data.code == 401){
@@ -187,6 +190,7 @@ $(document).ready(function(){
                         $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
                         $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
                     }
+                    toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                 }
             },
             error: function(data, textStatus, errorThrown){

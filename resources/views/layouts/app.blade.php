@@ -35,24 +35,27 @@
     <script src="{{ asset('template/assets/js/waves.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
-    @toastr_js
-    @toastr_render
-
 </head>
 <body>
     <!-- Navigation Bar-->
     <header id="topnav">
         @include('layouts.top-menu')
-        @include('layouts.top-sub-menu')
+        @if(Auth::user()->estado == 1)
+            @include('layouts.top-sub-menu')
+        @endif
     </header>
     <!-- end topbar-main -->
-
-    @yield('content')
-
+    @if(Auth::user()->estado == 1)
+        @yield('content')
+    @elseif(Auth::user()->estado == 3)    
+        <br><br><br>
+        <p>Su cuenta esta en proceso de revisión.</p>
+    @endif
     <div class="sidenav-overlay"></div>
 
     <div class="drag-target"></div>
     @include('layouts.footer')
-    
+    @toastr_js
+    @toastr_render
 </body>
 </html>
