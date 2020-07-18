@@ -29,11 +29,6 @@ class CalendarioController extends Controller
         return view('calendario.index');
     }
 
-    public function get_eventos(){
-        $eventos = Eventos::select("id","titulo as title", "fecha_inicio as start", "fecha_termino as end")->get()->toArray();
-        return response()->json($eventos);
-    }
-
     /**
      * Show the form for creating a new resource.
      *

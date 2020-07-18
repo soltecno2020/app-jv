@@ -24,6 +24,9 @@
     <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    @toastr_css
+    @toastr_js
+    @toastr_render
     </head>
 <body>
     <div class="container">
