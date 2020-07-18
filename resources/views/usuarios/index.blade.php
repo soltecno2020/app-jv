@@ -111,8 +111,8 @@
                                                         <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
                                                     </a>
                                                 @elseif($usuario->estado == 3)
-                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
-                                                        <i class=" fa-2x text-danger mb-0"></i>
+                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para aprobar al usuario">
+                                                        <i class=" fa-2x text-danger mb-0">3</i>
                                                     </a>
                                                 @endif
                                             </td>
