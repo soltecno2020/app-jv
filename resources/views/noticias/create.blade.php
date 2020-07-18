@@ -4,6 +4,7 @@
 
 <!-- Dropzone css -->
 <link href="{{ asset('template/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
+<link href="{{ asset('template/assets/css/sweetalert2.css') }}" rel="stylesheet">
 @toastr_css
 
 <div class="wrapper">
@@ -93,7 +94,6 @@
                                                             <tr>
                                                                 <th>Nombre imagen</th>
                                                                 <th>Imagen</th>
-                                                                <th>Link</th>
                                                                 <th class="text-right">Acciones</th>
                                                             </tr>
                                                         </thead>
@@ -198,6 +198,7 @@
 
 <!-- App js -->
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
+<script src="{{ asset('template/assets/js/sweetalert2.js') }}"></script>
 <script>
     var idElemento = 0;
     $(document).ready(function(){
@@ -223,47 +224,43 @@
         });
     });
 
-    ////////////// AGREGAR //////////////
-    //LIBRERIA TOAST
-    //LIBRERIA SWAL
-
-
     $(document).on("click", '.capture-url', function(e){
         e.preventDefault();
-        var link = $(this).data('url');
-        //Copiar en el portapapeles el link
 
+        var link = $(this).data('url');
+        var inputFalso = document.createElement('input');
+        inputFalso.setAttribute("value", link);
+        document.body.appendChild(inputFalso);
+        inputFalso.select();
+        document.execCommand('copy');
+        document.body.removeChild(inputFalso);
+        
+        toastr.info('Imagen copiada en portapapeles');
     });       
 
     $(document).on("click", '.delete-img', function(e){
         e.preventDefault();
-        /*swal({
-            title: "¿Seguro que deseas eliminar la imagen?",
-            icon: "warning",
-            buttons: {
-                cancel: {
-                    text: "No, cancelar",
-                    value: null,
-                    visible: true,
-                    className: "btn-warning",
-                    closeModal: true,
-                },
-                confirm: {
-                    text: "Si, eliminar",
-                    value: true,
-                    visible: true,
-                    className: "btn-primary",
-                    closeModal: true
-                }
+        Swal.fire({
+            title: '¿Seguro que deseas eliminar la imagen?',
+            text: "No se podran revertir los cambios",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, cancelar',
+            confirmButtonText: 'Si, eliminar'
+            }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                'Eliminada',
+                'La imagen fue eliminada con exito',
+                'success'
+                )
+
+                var idElemento = $(this).data('id')
+                $('#tr_'+idElemento).remove();
             }
         })
-        .then((isConfirm) => {
-            if(isConfirm){
-                //obtener data id
-                //var id = 
-                //$("#tr_"+id).remove();
-            }
-        });*/
     });       
 
     function subirImagen(){
@@ -283,18 +280,19 @@
                 idElemento++;
                 var url = window.location.href.replace('public/noticias/create', 'storage/imagenes/noticias/temp/');
                 $('#tablaElementos tbody').append(
-                '<tr id="tr_"'+idElemento+'">'+
+                '<tr id="tr_'+idElemento+'" data-id="'+idElemento+'">'+
                     '<td>'+response.nombreOrigen+'</td>'+
                     '<td><img style="height: 40px;" src="'+url+response.nombre+'" class=""></img></td>'+
-                    '<td><div class="float-right"><div class="icon-demo-content row"><a data-url="'+url+response.nombre+'" href="" class="capture-url" title="Copiar en portapapeles"><div class="col-sm-6 m-0"><i class="mdi mdi-link"></i></div></a></div></div>'+
-                        '<div class="float-right"><div class="icon-demo-content row"><a data-id="'+idElemento+'" href="" class="delete-img"><div class="col-sm-6 m-0"><i class="mdi mdi-close"></i></div></a></div></div>'+
+                    '<td>'+
+                        '<div class="float-right"><div class="icon-demo-content row"><a data-id="'+idElemento+'" href="" class="delete-img" title="Eliminar imagen"><div class="col-sm-6 m-0"><i class="mdi mdi-close"></i></div></a></div></div>'+
+                        '<div class="float-right"><div class="icon-demo-content row"><a data-url="'+url+response.nombre+'" href="" class="capture-url" title="Copiar en portapapeles"><div class="col-sm-6 m-0"><i class="mdi mdi-link"></i></div></a></div></div>'+
                     '</td>'+
                 '</tr>');
                 $('#imagen').val('');
                 $('#modal-agregar-imagen').modal('hide');
             },
             error: function(error){
-                
+                toastr.error('Error al cargar la imagen');
             }
         });
     }

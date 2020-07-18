@@ -32,27 +32,7 @@
                     <div class="card-body">
                         <h3 class="mt-0 header-title">{{ $noticias->titulo }}</h3>
                         <h6 class="mt-0 header">{{ $noticias->descripcion_corta }}</h6>
-                        <p class="text-muted font-14"><?php echo "$noticias->descripcion_larga"; ?></p>
-                        <br>
-                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                @if(count($imagenes) > 0)
-                                    @foreach($imagenes as $imagen)
-                                        @if($imagen->estado == 1)
-                                            @if($loop->first) <!-- verifica si el elemento actual es el primero -->
-                                                <div class="carousel-item active">
-                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('storage/imagenes/noticias/definitiva/'.$imagen->nombre.'') }}" alt=" Imagen {{ $imagen->nombre }}">
-                                                </div>
-                                            @else
-                                                 <div class="carousel-item">
-                                                    <img class="d-block img-fluid" width="1000" height="600" src="{{ asset('storage/imagenes/noticias/definitiva/'.$imagen->nombre.'') }}" alt=" Imagen {{ $imagen->nombre }}">
-                                                </div>
-                                            @endif
-                                        @endif
-                                    @endforeach   
-                                @endif
-                            </div>
-                        </div> 
+                        <p class="text-muted font-14"><?php echo "$noticias->descripcion_larga"; ?></p> 
                         <br>
                         <div class="">
                             <blockquote class="blockquote mb-0">

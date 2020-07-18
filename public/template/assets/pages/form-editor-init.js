@@ -16,6 +16,7 @@
             language : 'es_MX',
             theme: "modern",
             height:300,
+            image_dimensions: {width: '400', height: '200'},
             plugins: [
                 "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
