@@ -4584,21 +4584,21 @@ Docs & License: https://fullcalendar.io/
         },
         dir: 'ltr',
         buttonText: {
-            prev: 'prev',
-            next: 'next',
-            prevYear: 'prev year',
-            nextYear: 'next year',
-            year: 'year',
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day',
-            list: 'list'
+            prev: 'previo',
+            next: 'siguiente',
+            prevYear: 'año anterior',
+            nextYear: 'año siguiente',
+            year: 'año',
+            today: 'hoy',
+            month: 'mes',
+            week: 'semana',
+            day: 'dia',
+            list: 'agenda'
         },
         weekLabel: 'W',
         allDayText: 'all-day',
         eventLimitText: 'more',
-        noEventsMessage: 'No events to display'
+        noEventsMessage: 'No hay eventos para mostrar'
     };
     function parseRawLocales(explicitRawLocales) {
         var defaultCode = explicitRawLocales.length > 0 ? explicitRawLocales[0].code : 'en';

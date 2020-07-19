@@ -173,7 +173,7 @@ class NoticiasController extends Controller
     public function mostrar()
     {
         $imagenes = Imagenes::all();
-        $noticias = Noticias::paginate(5);
+        $noticias = Noticias::orderBy('id', 'desc')->paginate(5);
         return view('noticias.mostrar', compact('noticias','imagenes'));
     }
 

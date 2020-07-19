@@ -6,6 +6,7 @@
 <link href="{{ asset('template/assets/plugins/timepicker/tempusdominus-bootstrap-4.css') }}" rel="stylesheet" />
 <link href="{{ asset('template/assets/plugins/timepicker/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/plugins/clockpicker/jquery-clockpicker.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('template/assets/plugins/colorpicker/asColorPicker.min.css') }}" rel="stylesheet" />
 @toastr_css
 <div class="wrapper">
     <div class="container-fluid">
@@ -235,6 +236,12 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <h6 class="text-muted mb-2">Color de evento</h6>                                            
+                                                        <input type="text" name="color" class="colorpicker form-control" value="{{ old('color', $eventos->color) }}" />
+                                                    </div> 
+                                                </div>
                                                 <div class="col-sm-6"> 
                                                     <div class="form-group">
                                                         <label for="estado" class="bmd-label-static">Estado</label>
@@ -297,6 +304,10 @@
 <script src="{{ asset('template/assets/plugins/timepicker/bootstrap-material-datetimepicker.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/clockpicker/jquery-clockpicker.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
+
+<script src="{{ asset('template/assets/plugins/colorpicker/jquery-asColor.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/colorpicker/jquery-asGradient.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/colorpicker/jquery-asColorPicker.min.js') }}"></script>
 
 <!-- Plugins Init js -->
 <script src="{{ asset('template/assets/pages/form-advanced.js') }}"></script>

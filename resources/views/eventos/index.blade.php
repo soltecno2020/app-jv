@@ -14,15 +14,6 @@
         <div class="row">
            <div class="col-sm-12">
                 <div class="page-title-box">
-                    <!--
-                    <div class="btn-group m-0 pull-right">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="#">Urora</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                            <li class="breadcrumb-item active">Datatable</li>
-                        </ol>
-                    </div>
-                -->
                     <h4 class="page-title"></h4>
                 </div>
             </div>

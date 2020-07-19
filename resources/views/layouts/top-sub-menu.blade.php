@@ -4,7 +4,7 @@
             <!-- Navigation Menu-->
             <ul class="navigation-menu text-center">
                 <li class="has-submenu ">
-                    <a href="{{ url('/') }}"><i class="mdi mdi-home"></i>Home</a>
+                    <a href="{{ route('home') }}"><i class="mdi mdi-home"></i>Home</a>
                 </li>
                 <li class="has-submenu">
                     <a href="{{ route('viviendas.index') }}"><i class="mdi mdi-home-variant"></i>Vivienda</a>

@@ -82,6 +82,7 @@ class EventosController extends Controller
                 'lugar'    => $request->lugar,
                 'estado'    => $request->estado,
                 'tipo_eventos_id'    => $request->tipo_evento,
+                'color'    =>$request->color,
                 'user_created_id'    => 1,
                 'user_updated_id'    => 1,
             ]);
@@ -155,6 +156,7 @@ class EventosController extends Controller
             $eventos->hora_termino = Carbon::parse($request->hora_termino)->format('H:i:s');
             $eventos->lugar = $request->lugar;
             $eventos->estado = $request->estado;
+            $eventos->color = $request->color;
             $eventos->tipo_eventos_id = $request->tipo_evento;
             $eventos->user_updated_id = 1;
             $eventos->save();            

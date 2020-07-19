@@ -254,7 +254,7 @@
                 Swal.fire(
                 'Eliminada',
                 'La imagen fue eliminada con exito',
-                'success'
+                'success',
                 )
 
                 var idElemento = $(this).data('id')
@@ -290,6 +290,7 @@
                 '</tr>');
                 $('#imagen').val('');
                 $('#modal-agregar-imagen').modal('hide');
+                toastr.success('Imagen subida con exito.');
             },
             error: function(error){
                 toastr.error('Error al cargar la imagen');

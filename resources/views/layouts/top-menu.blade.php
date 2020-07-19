@@ -8,7 +8,7 @@
             <!--Urora-->
             <!--</a>-->
             <!-- Image Logo -->
-            <a href="{{ url('/') }}" class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <img src="{{ asset('template/assets/images/Captura.png') }}" alt="" width="45%" class="img-fluid">
             </a>
 
@@ -116,7 +116,7 @@
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
                             <div class="dropdown-item noti-title">
-                                <h5>Bienvenido {{ Auth::user()->name }}</h5>
+                                <h5>{{ Auth::user()->name }}</h5>
                             </div>
                             @if(Auth::user()->estado == 1)
                             <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Perfil</a>
