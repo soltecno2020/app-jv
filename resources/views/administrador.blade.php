@@ -53,23 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-home-variant"></i>Viviendas
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('viviendas.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Viviendas</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>                                
+                                <br>                              
                             </div>
                             <div class="col-md-4">
                                 <div class="card">
@@ -105,7 +89,24 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center pt-3">
+                                            <i class="mdi mdi-home-variant"></i>Viviendas
+                                        </div>
+                                        <div class="px-3 pb-3">
+                                            <form class="form-horizontal m-t-20 mb-0">
+                                                <div class="form-group text-right row m-t-20">
+                                                    <div class="col-12">
+                                                        <a href="{{ route('viviendas.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Viviendas</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>                                  
+                            </div>                            
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
