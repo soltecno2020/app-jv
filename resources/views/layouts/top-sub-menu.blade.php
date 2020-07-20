@@ -6,9 +6,10 @@
                 <li class="has-submenu ">
                     <a href="{{ route('home') }}"><i class="mdi mdi-home"></i>Home</a>
                 </li>
-                <li class="has-submenu">
+                <!--<li class="has-submenu">
                     <a href="{{ route('viviendas.index') }}"><i class="mdi mdi-home-variant"></i>Vivienda</a>
                 </li>
+                -->
 
                 <li class="has-submenu">
                     <a href="{{ route('noticias.mostrar') }}"><i class="mdi mdi-newspaper"></i>Noticia</a>

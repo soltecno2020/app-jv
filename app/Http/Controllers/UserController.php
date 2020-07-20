@@ -198,7 +198,7 @@ class UserController extends Controller
                 ]);
             }
             $usuarios = User::find($request->id);
-            $estado = $usuarios->estado == 1 ? 2 : 1;
+            $estado = $usuarios->estado == 1 ? 2 : 3;
             $usuarios->estado = $estado;
             $usuarios->save();        
             return response()->json([

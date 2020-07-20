@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Viviendas;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -52,37 +53,87 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'apellido' => ['required','min:2', 'max:30', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'min:2', 'max:30', 'string'],
+            'telefono' => ['required', 'integer'],
+            'fecha_nacimiento' => ['required','date'],
+            'rut' =>[  'required',
+                            'string',
+                            'max:20',
+                            'unique:users',
+                            function ($attribute, $value, $fail) {
+                                $validarRut = $this->valida_rut($value);
+                                if(!$validarRut){
+                                    $fail('Ingrese un rut válido.');
+                                }
+                            },
+                    ]
         ],
         [
-            'name.required' => 'Debe ingresar su nombre de usuario',
+            'name.required' => 'Debe ingresar su nombre ',
+            'apellido.required' => 'Debe ingresar un apellido',
             'email.required' => 'Debe ingresar su e-mail',
+            'rut.required' => 'Debe ingresar un RUT',
             'password.required' => 'Debe ingresar su contraseña',
             'password.min' => 'La contraseña debe tener minimo 8 caracteres',
-            'password.confirmed' => 'Las contraseñas no coinciden'
-        ]);
+            'password.confirmed' => 'Las contraseñas no coinciden',
+            'telefono.required' => 'Debe ingresar un telefono de contacto',
+            'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
+            'username.required' => 'Debe ingresar un nombre de usuario',
+            'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento'
+        ]);      
+                 
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    
     protected function create(array $data)
     {
-        return User::create([
+        $user User::create([
             'name' => $data['name'],
+            'apellido'  => $data['apellido'],            
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'username' => 'lkfgjk',
-            'apellido'  => 'fghfghfgh',
-            'telefono'=> '4521354',
-            'rut'   => '12.214.545-1',
-            'fecha_nacimiento' => '2020-10-10',
+            'username' => $data['username'],
+            'telefono'=> $data['telefono'],
+            'rut'   => $data['rut'],
+            'fecha_nacimiento' => Carbon::parse($data['fecha_nacimiento'])->format('Y-m-d'),
             'vivienda_id' => 1,
             'estado' => 3,
         ]);
+        $user->assignRole([5]);
+        return $user;
     }
+
+    public function valida_rut($rut)
+    {
+        try{
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut)-1);
+            $i = 2;
+            $suma = 0;
+            foreach(array_reverse(str_split($numero)) as $v)
+            {
+                if($i==8)
+                    $i = 2;
+
+                $suma += $v * $i;
+                ++$i;
+            }
+            $dvr = 11 - ($suma % 11);
+            
+            if($dvr == 11)
+                $dvr = 0;
+            if($dvr == 10)
+                $dvr = 'K';
+            if($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
+        }catch(Exception $e){
+            return false;
+        }
+    } 
 }

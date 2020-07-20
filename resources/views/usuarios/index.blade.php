@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- DataTables -->
+<link href="{{ asset('template/assets/css/sweetalert2.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
@@ -68,7 +69,6 @@
                                         <th>Apellido</th>
                                         <th>Rut</th>
                                         <th>Email</th>
-                                        <th>Contraseña</th>
                                         <th>Nombre de usuario</th>
                                         <th>Telefono</th>
                                         <th>Fecha nacimiento</th>
@@ -86,7 +86,6 @@
                                             <td>{{ $usuario->apellido }}</td>
                                             <td>{{ $usuario->rut }}</td>
                                              <td>{{ $usuario->email }}</td>
-                                            <td><code>****</code></td>
                                             <td>{{ $usuario->username }}</td>
                                             <td>
                                                 @if($usuario->telefono != 0)
@@ -112,7 +111,7 @@
                                                     </a>
                                                 @elseif($usuario->estado == 3)
                                                     <a id="{{ $usuario->id }}" href="" class="estado" title="Click para aprobar al usuario">
-                                                        <i class=" fa-2x text-danger mb-0">3</i>
+                                                        <i class="fa fa-tv fa-2x text-infofo mb-0"></i>
                                                     </a>
                                                 @endif
                                             </td>
@@ -142,6 +141,7 @@
 @toastr_js
 @toastr_render
 <!-- Required datatable js -->
+
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <!-- Buttons examples -->
@@ -165,6 +165,10 @@
 <script src="{{ asset('template/assets/pages/datatables.init.js') }}"></script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 
+
+<script src="{{ asset('template/assets/js/sweetalert2.js') }}"></script>
+
+
 <script>
 $(document).ready(function(){    
     $('.estado').click(function(e){
@@ -186,11 +190,34 @@ $(document).ready(function(){
                     if(data.usuarios.estado == 2){
                         $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
                         $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                     }else if(data.usuarios.estado == 1){
-                        $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
-                        $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
+                        $('#'+id).find('.fa-tv').removeClass('fa-tv').addClass('fa-check');
+                        $('#'+id).find('.text-info').removeClass('text-info').addClass('text-success');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                    }else if(data.usuarios.estado == 3){
+                        Swal.fire({
+                        title: '¿Seguro que deseas eliminar la imagen?',
+                        text: "No se podran revertir los cambios",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'No, cancelar',
+                        confirmButtonText: 'Si, eliminar'
+                        }).then((result) => {
+                        if (result.value) {
+                            Swal.fire(
+                            'Eliminada',
+                            'La imagen fue eliminada con exito',
+                            'success',
+                            )
+                            $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-tv');
+                            $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-info');
+                        }
+        })
                     }
-                    toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                    
                 }
             },
             error: function(data, textStatus, errorThrown){

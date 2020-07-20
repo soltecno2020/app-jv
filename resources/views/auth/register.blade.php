@@ -20,27 +20,35 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link href="{{ asset('template/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+
+
     <link href="{{ asset('template/assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/assets/plugins/timepicker/tempusdominus-bootstrap-4.css') }}" rel="stylesheet" />
+<link href="{{ asset('template/assets/plugins/timepicker/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+<link href="{{ asset('template/assets/plugins/clockpicker/jquery-clockpicker.min.css') }}" rel="stylesheet" />
     @toastr_css
     @toastr_js
     @toastr_render
     </head>
 <body>
+    <br>
     <div class="container">
         <div class="row justify-content-center">
+
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header"> <center><i class="mdi mdi-account"></i>{{ __('Registrarse') }}</center></div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -52,12 +60,37 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ old('apellido') }}" required autocomplete="apellido" autofocus>
+
+                                    @error('apellido')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>                            
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Rut') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="off" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);"autofocus>
+
+                                    @error('rut')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -68,7 +101,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -82,18 +115,60 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
-                            </div>
+                            </div>  
+                            <div class="form-group row">
+                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de usuario') }}</label>
 
+                                <div class="col-md-6">
+                                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="email">
+
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="off" onkeypress="return justNumbers(event);" autofocus>
+
+                                    @error('telefono')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fecha_nacimiento" class="col-md-4 col-form-label text-md-right">{{ __('Fecha nacimiento') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="fecha_nacimiento" autocomplete="off" type="text" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+                                    @error('fecha_nacimiento') 
+                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                    <li class="parsley-required">
+                                            <strong>
+                                                {{ $message }}
+                                            </strong>
+                                    </li>
+                                    </ul>                                                                
+                                     </span>
+                                    @enderror
+                                </div>
+                            </div>                                                               
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+                                    <center><button type="submit" class="btn btn-primary">
+                                        {{ __('Registrar') }}
+                                    </button> <center>
                                 </div>
                             </div>
                         </form>
@@ -101,6 +176,71 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>        
 </body>  
 </html>
+<script type="text/javascript">
+    function formatoRut(rut)
+    {rut.value=rut.value.replace(/[.-]/g, '')
+    .replace( /^(\d{1,2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4')}
+</script>
+<script>
+    function caracteresRut(e) {
+        var key = e.keyCode || e.which,
+        tecla = String.fromCharCode(key).toLowerCase(),
+        letras = "0123456789k",
+        especiales = [8, 37, 39, 46],
+        tecla_especial = false;
+
+        for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+        }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        return false;
+        }
+    }
+</script>
+
+    <!-- jQuery  -->
+    <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
+
+    <script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/detect.js') }}"></script>
+    <script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('template/assets/js/waves.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+
+
+<!--Wysiwig js-->   
+<script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('template/assets/pages/form-editor-init.js') }}"></script>
+
+<!-- Plugins js -->
+<script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/timepicker/moment-with-locales.js') }}">
+    moment.locale('es');
+</script>
+<script src="{{ asset('template/assets/plugins/timepicker/tempusdominus-bootstrap-4.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/timepicker/bootstrap-material-datetimepicker.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/clockpicker/jquery-clockpicker.min.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
+
+<!-- Plugins Init js -->
+<script src="{{ asset('template/assets/pages/form-advanced.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ asset('template/assets/js/app.js') }}"></script>
+<script>
+$(document).ready(function(){
+    $('#fecha_nacimiento').bootstrapMaterialDatePicker({
+        weekStart : 0, 
+        time: false     
+    });
+});
+</script>

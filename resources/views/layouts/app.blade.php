@@ -47,9 +47,43 @@
     <!-- end topbar-main -->
     @if(Auth::user()->estado == 1)
         @yield('content')
+    @elseif(Auth::user()->estado == 2)
+        <br><br><br>
+        <br><br><br>
+        <div class="wrapper-page">
+        <div class="display-table-cell">
+        <diV class="container">
+            <div class="card">
+            <div class="card-body">
+                <div class="text-center pt-6">
+                    <h2><center><p>Su cuenta se encuentra desabilitada, contactese con el administrador.</p></center></h2>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <br><br><br>
+        <br><br><br>
+        <br><br>
     @elseif(Auth::user()->estado == 3)    
         <br><br><br>
-        <p>Su cuenta esta en proceso de revisión.</p>
+        <br><br><br>
+        <div class="wrapper-page">
+        <div class="display-table-cell">        
+        <diV class="container">
+            <div class="card">
+            <div class="card-body">
+                <div class="text-center pt-3">
+                    <h2><center><p>Su cuenta esta encuentra en revisión.</p></center></h2>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <br><br><br>
+        <br><br><br>
+        <br><br>
     @endif
     <div class="sidenav-overlay"></div>
 
