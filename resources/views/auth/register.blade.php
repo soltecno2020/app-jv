@@ -51,7 +51,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autocomplete="off">
+                                    <input id="alloptions" type="text"  maxlength="30" class="form-control" name="name" value="{{ old('name') }}" autocomplete="off">
                                     @error('name')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                             <li class="parsley-required">
@@ -68,7 +68,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="apellido" type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" autocomplete="off">
+                                    <input id="alloptions" type="text" maxlength="30"  class="form-control" name="apellido" value="{{ old('apellido') }}" autocomplete="off">
                                     @error('apellido')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                             <li class="parsley-required">
@@ -102,7 +102,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" autocomplete="off">
+                                    <input id="alloptions" maxlength="50" type="text" class="form-control" name="email" value="{{ old('email') }}" autocomplete="off">
                                     @error('email')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                             <li class="parsley-required">
@@ -120,7 +120,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" autocomplete="off">
+                                    <input id="alloptions" maxlength="20" minlength="8" type="password" class="form-control" name="password" autocomplete="off">
                                     @error('password')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                             <li class="parsley-required">
@@ -138,7 +138,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
+                                    <input  id="alloptions" maxlength="20" type="password" class="form-control" name="password_confirmation" autocomplete="off">
                                     @error('password')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
                                             <li class="parsley-required">
@@ -168,7 +168,7 @@
                                 <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" maxlength="11" onkeypress="return justNumbers(event);" autocomplete="off">
+                                    <input id="alloptions" maxlength="11" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" maxlength="11" onkeypress="return justNumbers(event);" autocomplete="off">
 
                                     @error('telefono')
                                         <ul class="parsley-errors-list filled" id="parsley-id-9">
@@ -197,7 +197,28 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>                                                               
+                            </div>
+                            <div class="form-group row">
+                                <label for="vivienda_id" class="col-md-4 col-form-label text-md-right">{{ __('Vivienda') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" id="vivienda_id" name="vivienda_id">
+                                        <option value="0">Seleccione una vivienda</option>
+                                        @foreach($viviendas as $vivienda)
+                                            <option {{ old('vivienda_id') == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('vivienda_id') 
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
+                                        </span>
+                                    @enderror
+                                </div>  
+                            </div>                                                                                              
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <center><button type="submit" class="btn btn-primary">

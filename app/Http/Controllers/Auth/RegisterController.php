@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Viviendas;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -58,6 +57,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'telefono' => ['required', 'integer'],
             'fecha_nacimiento' => ['required','date'],
+            'vivienda_id' => 'required|numeric|not_in:0',
             'rut' =>[  'required',
                             'string',
                             'max:20',
@@ -73,9 +73,9 @@ class RegisterController extends Controller
         [
             'name.required' => 'Debe ingresar su nombre ',
             'apellido.required' => 'Debe ingresar un apellido',
-            'email.required' => 'Debe ingresar su e-mail',
+            'email.required' => 'Debe ingresar su email',
             'email.unique' => 'El e-mail ingresado ya esta registrado',
-            'email.email' => 'Debe ingresar un e-mail valido',
+            'email.email' => 'Debe ingresar un email valido',
             'rut.required' => 'Debe ingresar un RUT',
             'rut.unique' => 'El RUT ingresado ya esta registrado',
             'password.required' => 'Debe ingresar su contraseña',
@@ -83,8 +83,8 @@ class RegisterController extends Controller
             'password.confirmed' => 'Las contraseñas no coinciden',
             'telefono.required' => 'Debe ingresar un telefono de contacto',
             'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
-            'username.required' => 'Debe ingresar un nombre de usuario',
-            'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento'
+            'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
+            'vivienda_id.not_in' => 'Debe seleccionar una vivienda'
         ]);      
                  
     }
@@ -100,7 +100,7 @@ class RegisterController extends Controller
             'telefono'=> $data['telefono'],
             'rut'   => $data['rut'],
             'fecha_nacimiento' => Carbon::parse($data['fecha_nacimiento'])->format('Y-m-d'),
-            'vivienda_id' => 1,
+            'vivienda_id' => $data['vivienda_id'],
             'estado' => 3,
         ]);
         $user->assignRole([4]);
