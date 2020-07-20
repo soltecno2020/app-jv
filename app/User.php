@@ -13,6 +13,7 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
+    protected $table = 'users';
     protected $fillable = [
         'name', 
         'email', 

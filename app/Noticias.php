@@ -10,5 +10,9 @@ class Noticias extends Model
     protected $fillable = [
         'titulo', 'descripcion_corta', 'descripcion_larga', 'estado', 'user_created_id', 'user_updated_id', 'created_at', 'updated_at'
     ];
-    protected $timestamp = true;   
+    protected $timestamp = true;  
+    
+    public function users(){
+        return $this->hasOne('App\User', 'id', 'user_created_id');
+    }   
 }

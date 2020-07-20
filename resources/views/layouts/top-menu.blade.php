@@ -9,7 +9,7 @@
             <!--</a>-->
             <!-- Image Logo -->
             <a href="{{ route('home') }}" class="logo">
-                <img src="{{ asset('template/assets/images/Captura.png') }}" alt="" width="45%" class="img-fluid">
+                <img src="{{ asset('template/assets/images/Captura2.png') }}" alt="" width="45%" class="img-fluid">
             </a>
 
         </div>
@@ -111,7 +111,7 @@
                     <div class="dropdown notification-list nav-pro-img">
                         <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="{{ asset('template/assets/images/users/avatar-3.jpg') }}" alt="user" class="rounded-circle">
+                            <img src="{{ asset('template/assets/images/users/avatar-m-5.png') }}" alt="user" class="rounded-circle">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->

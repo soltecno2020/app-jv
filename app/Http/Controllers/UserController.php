@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         $viviendas = Viviendas::all();
-        $usuarios = User::with('viviendas')->get();;
+        $usuarios = User::with('viviendas')->get();
         return view('usuarios.index', compact('usuarios','viviendas'));
     }
 

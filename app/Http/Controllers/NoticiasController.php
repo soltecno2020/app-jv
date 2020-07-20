@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Noticias;
+use App\User;
 use App\Imagenes;
 use Illuminate\Http\Request;
 use Validator;
@@ -71,8 +72,7 @@ class NoticiasController extends Controller
                 'descripcion_corta'    => $request->descripcion_corta,
                 'descripcion_larga'    => $request->descripcion_larga,
                 'estado'    => $request->estado,
-                'user_created_id'    => 1,
-                'user_updated_id'    => 1,
+                'user_created_id'    => Auth::user()->id,
             ]);
             toastr()->success('Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('noticias.index');
@@ -86,9 +86,9 @@ class NoticiasController extends Controller
 
     public function show($id)
     {
+        $users = User::all();
         $noticias = Noticias::find($id);
-        $imagenes = Imagenes::all();
-        return view('noticias.show', compact('noticias','imagenes'));
+        return view('noticias.show', compact('noticias','users'));
     }
 
     public function edit($id)
@@ -122,7 +122,7 @@ class NoticiasController extends Controller
             $noticias->descripcion_corta = $request->descripcion_corta;
             $noticias->descripcion_larga = $request->descripcion_larga;
             $noticias->estado = $request->estado;
-            $noticias->user_updated_id = 1;
+            $noticias->user_updated_id = auth()->user()->name;
             $noticias->save();
             toastr()->success('Acabas de actualizar una noticia "'.strtoupper($request->titulo).'" exitosamente!');            
             return redirect()->route('noticias.index');
@@ -172,6 +172,7 @@ class NoticiasController extends Controller
     
     public function mostrar()
     {
+        $users = User::all();
         $imagenes = Imagenes::all();
         $noticias = Noticias::orderBy('id', 'desc')->paginate(5);
         return view('noticias.mostrar', compact('noticias','imagenes'));

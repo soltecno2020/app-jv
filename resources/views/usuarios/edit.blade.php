@@ -174,7 +174,7 @@
                                                         <div class="col-sm-6"> 
                                                             <div class="form-group">
                                                                 <label for="telefono" class="bmd-label-floating ">Telefono</label>
-                                                                <input type="text" class="form-control" id="telefono" name="telefono" autocomplete="off" value="{{ old('telefono', $usuarios->telefono) }}">
+                                                                <input type="text" class="form-control" id="telefono" name="telefono" autocomplete="off" onkeypress="return justNumbers(event);" value="{{ old('telefono', $usuarios->telefono) }}">
                                                                 @error('telefono')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -299,6 +299,16 @@
         }
     }
 </script>
+<script type="text/javascript">
+    function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        }
+  </script>
 
 <!--Wysiwig js-->   
 <script src="{{ asset('template/assets/plugins/tinymce/tinymce.min.js') }}"></script>

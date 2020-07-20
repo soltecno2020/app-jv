@@ -5,6 +5,12 @@
 <!-- Dropzone css -->
 <link href="{{ asset('template/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/css/sweetalert2.css') }}" rel="stylesheet">
+
+<style>
+    .mdi-close {
+        color: red;
+    }
+</style>
 @toastr_css
 
 <div class="wrapper">

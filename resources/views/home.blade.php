@@ -64,7 +64,7 @@
                         <div class="d-flex row">
                             <div class="col-3 align-self-center">
                                 <div class="round ">
-                                    <i class="mdi mdi-basket"></i>
+                                    <i class="mdi mdi-home"></i>
                                 </div>
                             </div>
                             <div class="col-8 ml-auto align-self-center text-center">
@@ -102,6 +102,8 @@
         </div>
     </div>
 </div>    
+
+<script src="{{ asset('template/assets/js/app.js') }}"></script>
 
 @toastr_js
 @toastr_render
