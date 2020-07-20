@@ -62,12 +62,12 @@ class UserController extends Controller
                 'name.required' => 'Debe ingresar un nombre',
                 'apellido.required' => 'Debe ingresar un apellido',
                 'rut.required' => 'Debe ingresar un RUT',
+                'rut.unique' => 'El rut ingresado ya esta registrado',
                 'email.required' => 'Debe ingresar un email',
                 'email.unique' => 'El email ingresado ya esta registrado',
                 'password.required' => 'Debe ingresar una contraseña',
                 'telefono.required' => 'Debe ingresar un telefono de contacto',
                 'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
-                'username.required' => 'Debe ingresar un nombre de usuario',
                 'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
                 'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
             ]);
@@ -81,7 +81,6 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'username' => $request->username,
                 'apellido'  => $request->apellido,
                 'telefono'=> $request->telefono,
                 'rut'   => $request->rut,
@@ -92,8 +91,9 @@ class UserController extends Controller
             toastr()->success('Acabas de crear un usuario "'.strtoupper($request->name).'" exitosamente!');
             return redirect()->route('usuarios.index');
         }catch(Exception $e){
+            dd($e);
             toastr()->error('Ha ocurrido un error.');
-            return redirect('eventos/create')
+            return redirect('usuarios/create')
             ->withErrors($validator)
             ->withInput();
         }
@@ -147,7 +147,6 @@ class UserController extends Controller
                 'rut.unique' => 'El rut ingresado ya a sido registrado',
                 'email.required' => 'Debe ingresar un email',
                 'email.unique' => 'El email ingresado ya esta registrado',
-                'password.required' => 'Debe ingresar una contraseña',
                 'telefono.required' => 'Debe ingresar un telefono de contacto',
                 'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
                 'username.required' => 'Debe ingresar un nombre de usuario',
@@ -164,7 +163,6 @@ class UserController extends Controller
             $usuarios->name = $request->name;
             $usuarios->email = $request->email;
             $usuarios->password = $request->password;
-            $usuarios->username = $request->username;
             $usuarios->apellido = $request->apellido;
             $usuarios->username = $request->username;
             $usuarios->telefono = $request->telefono;

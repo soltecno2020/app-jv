@@ -50,13 +50,13 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <div class="float-left">
-                            <h4 class="mt-0 header-title">Usuario</h4>
+                            <h4 class="mt-0 header-title">Usuarios</h4>
                         </div>
                         <div class="float-right">
                             <a href="{{ route('usuarios.create') }}" class="btn btn-primary float-left">Crear Usuario</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá crear editar e visualizar usuarios </code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de usuarios</code>
                             </p> 
                         </div>        
                
@@ -109,7 +109,7 @@
                                                     </a>
                                                 @elseif($usuario->estado == 3)
                                                     <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para aprobar al usuario">
-                                                        <i class="fa fa-tv fa-2x text-secondary mb-0"></i>
+                                                        <i class="fa fa-user-plus fa-2x text-info mb-0"></i>
                                                     </a>
                                                 @endif
                                             </td>
@@ -180,7 +180,7 @@ $(document).ready(function(){
         }else if(estado == 3){
             estado = 1;
             Swal.fire({
-                title: '¿Seguro que apruebas al usuario?',
+                title: '¿Seguro que deseas aprobar este usuario?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -190,11 +190,11 @@ $(document).ready(function(){
             }).then((result) => {
                 if(result.isConfirmed){
                     cambiarEstado(id, estado);
-                    /*Swal.fire(
+                    Swal.fire(
                         'Aprobado',
                         'El usuario fue aprobado exitosamente!',
                         'success',
-                    )*/
+                    )
                 }
             })
             return false;
@@ -224,9 +224,9 @@ function cambiarEstado(id, estado){
                     toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                 }else if(data.usuarios.estado == 1){
                     $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
-                    $('#'+id).find('.fa-tv').removeClass('fa-tv').addClass('fa-check');
+                    $('#'+id).find('.fa-user-plus').removeClass('fa-user-plus').addClass('fa-check');
                     $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
-                    $('#'+id).find('.text-secondary').removeClass('text-secondary').addClass('text-success');
+                    $('#'+id).find('.text-info').removeClass('text-info').addClass('text-success');
                     $('#'+id).data('estado', 1);
                     toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                 }

@@ -68,7 +68,7 @@
                                                         <div class="col-sm-6">    
                                                             <div class="form-group">
                                                                 <label for="name" class="bmd-label-floating ">Nombre</label>
-                                                                <input type="text" class="form-control" id="name" name="name" autocomplete="off" value="{{ old('name', $usuarios->name) }}">
+                                                                <input type="text" class="form-control" id="alloptions" name="name" autocomplete="off" maxlength="30" value="{{ old('name', $usuarios->name) }}">
                                                                 @error('name')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -84,7 +84,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="apellido" class="bmd-label-floating ">Apellido</label>
-                                                                <input type="text" class="form-control" id="apellido" name="apellido" autocomplete="off" value="{{ old('apellido', $usuarios->apellido) }}">
+                                                                <input type="text" class="form-control" id="alloptions" name="apellido" autocomplete="off" maxlength="30" value="{{ old('apellido', $usuarios->apellido) }}">
                                                                 @error('apellido')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -102,7 +102,7 @@
                                                         <div class="col-sm-6">  
                                                             <div class="form-group">
                                                                 <label for="rut" class="bmd-label-floating ">Rut</label>
-                                                                <input type="text" class="form-control" id="rut" name="rut" minlength="9" maxlength="12" autocomplete="off" value="{{ old('rut', $usuarios->rut) }}" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);">
+                                                                <input type="text" class="form-control" name="rut" minlength="9" maxlength="12" autocomplete="off" value="{{ old('rut', $usuarios->rut) }}" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);">
                                                                 @error('rut')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -118,7 +118,7 @@
                                                         <div class="col-sm-6">                                                  
                                                             <div class="form-group">
                                                                 <label for="email" class="bmd-label-floating ">Email</label>
-                                                                <input type="text" class="form-control" id="email" name="email" autocomplete="off" value="{{ old('email', $usuarios->email) }}">
+                                                                <input type="text" class="form-control" id="alloptions" name="email" autocomplete="off" maxlength="50" value="{{ old('email', $usuarios->email) }}">
                                                                 @error('email')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -136,7 +136,7 @@
                                                         <div class="col-sm-6"> 
                                                             <div class="form-group">
                                                                 <label for="password" class="bmd-label-floating ">Contraseña</label>
-                                                                <input type="text" class="form-control" id="password" name="password" autocomplete="off" value="{{ old('password', $usuarios->password) }}">
+                                                                <input type="text" class="form-control" id="alloptions" name="password" autocomplete="off" value="{{ old('password', $usuarios->password) }}">
                                                                 @error('password')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -152,7 +152,7 @@
                                                         <div class="col-sm-6"> 
                                                             <div class="form-group">
                                                                 <label for="username" class="bmd-label-floating ">Nombre de usuario </label>
-                                                                <input type="text" class="form-control" id="username" name="username" autocomplete="off" value="{{ old('username', $usuarios->username) }}">
+                                                                <input type="text" class="form-control" id="alloptions" name="username" autocomplete="off" value="{{ old('username', $usuarios->username) }}">
                                                                 @error('username')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
@@ -169,8 +169,8 @@
                                                     <div class="row grid-col p-3">
                                                         <div class="col-sm-6"> 
                                                             <div class="form-group">
-                                                                <label for="telefono" class="bmd-label-floating ">Telefono</label>
-                                                                <input type="text" class="form-control" id="telefono" name="telefono" autocomplete="off" onkeypress="return justNumbers(event);" value="{{ old('telefono', $usuarios->telefono) }}">
+                                                                <label for="telefono" class="bmd-label-floating ">Teléfono</label>
+                                                                <input type="text" class="form-control" id="alloptions" name="telefono" autocomplete="off" maxlength="11" onkeypress="return justNumbers(event);" value="{{ old('telefono', $usuarios->telefono) }}">
                                                                 @error('telefono')
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">

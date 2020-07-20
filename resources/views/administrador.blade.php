@@ -23,7 +23,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-account"></i>Usuario
+                                            <i class="mdi mdi-account-multiple"></i> Usuarios
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -40,7 +40,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-account"></i>Tipo Consultas
+                                            <i class="mdi mdi-book"></i> Tipo de Consultas
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -59,7 +59,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-pencil-box"></i>Tipo Eventos
+                                            <i class="mdi mdi-calendar-text"></i> Tipo de Eventos
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -76,7 +76,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-newspaper"></i>Noticias
+                                            <i class="mdi mdi-newspaper"></i> Noticias
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -93,7 +93,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-home-variant"></i>Viviendas
+                                            <i class="mdi mdi-home-variant"></i> Viviendas
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -111,7 +111,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-pencil-box"></i>Formulario
+                                            <i class="mdi mdi-message-text"></i> Formularios de contacto
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">
@@ -128,7 +128,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center pt-3">
-                                            <i class="mdi mdi-pencil-box"></i>Eventos
+                                            <i class="mdi mdi-calendar-clock"></i> Eventos
                                         </div>
                                         <div class="px-3 pb-3">
                                             <form class="form-horizontal m-t-20 mb-0">

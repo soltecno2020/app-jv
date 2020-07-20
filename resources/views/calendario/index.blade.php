@@ -124,12 +124,18 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
                 },
+                firstDay: 1,
                 customButtons:{
                     nuevoEvento:{
                         text:"crear nuevo evento",
                         click:function(){
                             window.location.href = "{{ route('eventos.create') }}"
                         }
+                    }
+                },
+                views: {
+                    month: {
+                        columnFormat: 'ddd'
                     }
                 },
                 /*
@@ -166,6 +172,7 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
                 },
+                firstDay: 1,
                 /*
                 dateClick:function(info){
                     toastr.info("Datos del dia");

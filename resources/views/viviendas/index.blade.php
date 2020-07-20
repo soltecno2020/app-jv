@@ -55,7 +55,7 @@
                             <a href="{{ route('viviendas.create') }}" class="btn btn-primary float-left">Añadir vivienda</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá registrar la vivienda de los usuarios.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de viviendas</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">

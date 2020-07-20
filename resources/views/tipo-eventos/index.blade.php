@@ -49,13 +49,13 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <div class="float-left">
-                            <h4 class="mt-0 header-title">Tipo de evento</h4>
+                            <h4 class="mt-0 header-title">Tipo de eventos</h4>
                         </div>
                         <div class="float-right">
                             <a href="{{ route('tipoEventos.create') }}" class="btn btn-primary float-left">Añadir tipo de evento</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá crear distintos tipos de eventos.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de tipos de eventos</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">

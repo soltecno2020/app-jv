@@ -1,13 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>Villa Monte Darwin</title>
-    <meta content="Admin Dashboard" name="description" />
-    <meta content="Mannatthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="{{ asset('template/assets/images/logo.ico') }}">
 
@@ -24,6 +18,22 @@
     <link href="{{ asset('template/assets/css/bootstrap-material-design.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- jQuery  -->
+    <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/bootstrap-material-design.js') }}"></script>
+    <script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/detect.js') }}"></script>
+    <script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('template/assets/js/waves.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+
+    <script src="{{ asset('template/assets/js/app.js') }}"></script>
+
     @toastr_css
 </head>
 <body>
@@ -73,7 +83,7 @@
                                                     <div class="col-12">
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input" id="customCheck1" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                            <label class="custom-control-label" for="customCheck1">Recuerdame</label>
+                                                            <label class="custom-control-label" for="customCheck1">Recuérdame</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,7 +97,7 @@
                                                 <div class="form-group m-t-10 mb-0 row">
                                                     <div class="col-sm-7 m-t-20">
                                                         @if (Route::has('password.request'))
-                                                            <a href="{{ route('password.request') }}" class="text-muted"><i class="mdi mdi-lock"></i> ¿Olvidaste tu contraseña?</a>
+                                                            <a href="#" class="text-muted"><i class="mdi mdi-lock"></i> ¿Olvidaste tu contraseña?</a>
                                                         @endif    
                                                     </div>
                                                     <div class="col-sm-5 m-t-20">
@@ -106,6 +116,7 @@
         </div>
     </div>
 </body>
+
 @toastr_js
 @toastr_render   
 </html>

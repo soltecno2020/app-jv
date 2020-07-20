@@ -35,6 +35,7 @@
     <script src="{{ asset('template/assets/js/waves.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/app.js') }}"></script>
 </head>
 <body>
     <!-- Navigation Bar-->
@@ -56,7 +57,7 @@
             <div class="card">
             <div class="card-body">
                 <div class="text-center pt-6">
-                    <h2><center><p>Su cuenta se encuentra desabilitada, contactese con el administrador.</p></center></h2>
+                    <h2><center><p>Su cuenta se encuentra desabilitada, contáctese con la administración vecinal para activar su cuenta.</p></center></h2>
                 </div>
                 </div>
             </div>
@@ -74,7 +75,7 @@
             <div class="card">
             <div class="card-body">
                 <div class="text-center pt-3">
-                    <h2><center><p>Su cuenta esta encuentra en revisión.</p></center></h2>
+                    <h2><center><p>Su cuenta se encuentra en estado de revisión.</p></center></h2>
                 </div>
                 </div>
             </div>
@@ -88,8 +89,9 @@
     <div class="sidenav-overlay"></div>
 
     <div class="drag-target"></div>
-    @include('layouts.footer')
     @toastr_js
     @toastr_render
+
+    @include('layouts.footer')
 </body>
 </html>

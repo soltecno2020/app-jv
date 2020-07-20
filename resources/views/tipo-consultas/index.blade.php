@@ -55,7 +55,7 @@
                             <a href="{{ route('tipoConsultas.create') }}" class="btn btn-primary float-left">Añadir tipo de consulta</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá crear distintos tipos de consulta.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de tipos de consulta</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">

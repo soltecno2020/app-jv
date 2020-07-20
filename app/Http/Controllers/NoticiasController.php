@@ -21,8 +21,9 @@ class NoticiasController extends Controller
 
     public function index()
     {
+        $users = User::all();
         $noticias = Noticias::all();
-        return view('noticias.index', compact('noticias'));
+        return view('noticias.index', compact('noticias','users'));
     }
 
     public function create()
@@ -56,6 +57,7 @@ class NoticiasController extends Controller
                 'descripcion_larga'    => $request->descripcion_larga,
                 'estado'    => $request->estado,
                 'user_created_id'    => Auth::user()->id,
+                'user_created_id'    => 0,
             ]);
 
             //RECORRER EL LISTADO DE IMÁGENES QUE VIENEN DEL FRONT
@@ -128,7 +130,7 @@ class NoticiasController extends Controller
             $noticias->descripcion_corta = $request->descripcion_corta;
             $noticias->descripcion_larga = $request->descripcion_larga;
             $noticias->estado = $request->estado;
-            $noticias->user_updated_id = auth()->user()->name;
+            $noticias->user_updated_id = Auth::user()->id;
             $noticias->save();
             toastr()->success('Acabas de actualizar una noticia "'.strtoupper($request->titulo).'" exitosamente!');            
             return redirect()->route('noticias.index');

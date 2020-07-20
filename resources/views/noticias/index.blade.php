@@ -55,7 +55,7 @@
                             <a href="{{ route('noticias.create') }}" class="btn btn-primary float-left">Crear noticia</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá crear noticias que podran visualizar los usuarios.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de noticias</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">
@@ -66,8 +66,8 @@
                                         <th>Titulo</th>
                                         <th>Creada por</th>
                                         <th>Actualizada por</th>
-                                        <th>Fecha de creacion</th>
-                                        <th>Fecha de actualizacion</th>
+                                        <th>Fecha de creación</th>
+                                        <th>Fecha de actualización</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
@@ -78,8 +78,23 @@
                                         <tr>
                                             <td>{{ $noticia->id }}</td>
                                             <td>{{ $noticia->titulo }}</td>
-                                            <td>{{ $noticia->user_created_id }}</td>
-                                            <td>{{ $noticia->user_updated_id }}</td>
+                                            <td>
+                                                @foreach($users as $user)
+                                                    @if($noticia->user_created_id == $user->id )
+                                                        {{ $user->name }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($users as $user)
+                                                    @if($noticia->user_updated_id == $user->id )
+                                                        {{ $user->name }}
+                                                    @endif
+                                                @endforeach
+                                                @if($noticia->user_updated_id == 0)
+                                                    {{ __('Noticia no actualizada') }}
+                                                @endif
+                                            </td>
                                             <td>{{ \Carbon\Carbon::parse($noticia->created_at)->format('d-m-yy h:i:s') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($noticia->updated_at)->format('d-m-yy h:i:s') }}</td>
                                             <td class="text-center">

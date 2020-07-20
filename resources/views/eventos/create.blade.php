@@ -55,44 +55,42 @@
                                         <div class="general-label">
                                             <form method="POST" action="{{ route('eventos.store') }}" class="mb-0">
                                             @csrf
-                                                <div class="row grid-col p-3">
-                                                    <div class="col-sm-6"> 
-                                                        <div class="form-group is-focused">
-                                                            <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                            <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="45" value="{{ old('nombre') }}">
-                                                            @error('nombre')
-                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                    <li class="parsley-required">
-                                                                        <strong>
-                                                                            {{ $message }}
-                                                                        </strong>
-                                                                    </li>
-                                                                </ul>                                                                
-                                                                </span>
-                                                            @enderror
-                                                        </div>
+                                                <!-- <div class="col-sm-6"> 
+                                                    <div class="form-group is-focused">
+                                                        <label for="nombre" class="bmd-label-floating ">Nombre</label>
+                                                        <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="45" value="{{ old('nombre') }}">
+                                                        @error('nombre')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
                                                     </div>
-                                                    <div class="col-sm-6"> 
-                                                        <div class="form-group">
-                                                            <label for="titulo" class="bmd-label-floating">Titulo</label>
-                                                            <input type="text" class="form-control" id="alloptions" name="titulo" autocomplete="off" maxlength="20" value="{{ old('titulo') }}">
-                                                            @error('titulo')
-                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                    <li class="parsley-required">
-                                                                        <strong>
-                                                                            {{ $message }}
-                                                                        </strong>
-                                                                    </li>
-                                                                </ul>                                                                
-                                                                </span>
-                                                            @enderror
-                                                        </div>
+                                                </div> -->
+                                                <div class="col-sm-12"> 
+                                                    <div class="form-group">
+                                                        <label for="titulo" class="bmd-label-floating">Titulo</label>
+                                                        <input type="text" class="form-control" id="alloptions" name="titulo" autocomplete="off" maxlength="40" value="{{ old('titulo') }}">
+                                                        @error('titulo')
+                                                            <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                <li class="parsley-required">
+                                                                    <strong>
+                                                                        {{ $message }}
+                                                                    </strong>
+                                                                </li>
+                                                            </ul>                                                                
+                                                            </span>
+                                                        @enderror
                                                     </div>
                                                 </div>    
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label for="descripcion_corta" class="bmd-label-floating">Descripcion corta</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="descripcion_corta" autocomplete="off" maxlength="60" value="{{ old('descripcion_corta') }}">
+                                                        <input type="text" class="form-control" id="alloptions" name="descripcion_corta" autocomplete="off" maxlength="100" value="{{ old('descripcion_corta') }}">
                                                         @error('descripcion_corta')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -308,11 +306,11 @@
 <script>
     $(document).ready(function(){
         $('#fecha_inicio').bootstrapMaterialDatePicker({
-            weekStart : 0, 
+            weekStart : 1, 
             time: false 
         });
         $('#fecha_termino').bootstrapMaterialDatePicker({
-            weekStart : 0, 
+            weekStart : 1, 
             time: false 
         });
     });

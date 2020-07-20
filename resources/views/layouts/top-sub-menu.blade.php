@@ -16,7 +16,7 @@
                 </li>        
 
                 <li class="has-submenu ">
-                    <a href="{{ route('calendario.index')}}"><i class="mdi mdi-calendar-clock"></i>Calendario</a>
+                    <a href="{{ route('calendario.index')}}"><i class="mdi mdi-calendar"></i>Calendario</a>
                 </li>
 
                 <li class="has-submenu ">

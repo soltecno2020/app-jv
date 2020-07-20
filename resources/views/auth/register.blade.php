@@ -51,11 +51,15 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autocomplete="off">
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
@@ -64,11 +68,15 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ old('apellido') }}" required autocomplete="apellido" autofocus>
-
+                                    <input id="apellido" type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" autocomplete="off">
                                     @error('apellido')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
@@ -77,11 +85,15 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Rut') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="off" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);"autofocus>
-
+                                    <input id="rut" type="text" class="form-control" name="rut" value="{{ old('rut') }}"minlength="9" maxlength="12" onkeyup="formatoRut(this)" onkeypress="return caracteresRut(event);"  autocomplete="off">
                                     @error('rut')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
@@ -90,11 +102,15 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" autocomplete="off">
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
@@ -104,11 +120,15 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                    <input id="password" type="password" class="form-control" name="password" autocomplete="off">
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
@@ -118,10 +138,20 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
+                                    @error('password')
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>  
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de usuario') }}</label>
 
                                 <div class="col-md-6">
@@ -133,34 +163,38 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group row">
-                                <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
+                                <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="off" onkeypress="return justNumbers(event);" autofocus>
+                                    <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" maxlength="11" onkeypress="return justNumbers(event);" autocomplete="off">
 
                                     @error('telefono')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
                                         </span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="fecha_nacimiento" class="col-md-4 col-form-label text-md-right">{{ __('Fecha nacimiento') }}</label>
-
                                 <div class="col-md-6">
-                                    <input id="fecha_nacimiento" autocomplete="off" type="text" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+                                    <input id="fecha_nacimiento" autocomplete="off" type="text" class="form-control" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
                                     @error('fecha_nacimiento') 
-                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                    <li class="parsley-required">
-                                            <strong>
-                                                {{ $message }}
-                                            </strong>
-                                    </li>
-                                    </ul>                                                                
-                                     </span>
+                                        <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                            <li class="parsley-required">
+                                                <strong>
+                                                    {{ $message }}
+                                                </strong>
+                                            </li>
+                                        </ul>                                                                
+                                        </span>
                                     @enderror
                                 </div>
                             </div>                                                               
@@ -168,7 +202,7 @@
                                 <div class="col-md-6 offset-md-4">
                                     <center><button type="submit" class="btn btn-primary">
                                         {{ __('Registrar') }}
-                                    </button> <center>
+                                    </button> </center>
                                 </div>
                             </div>
                         </form>
@@ -203,18 +237,28 @@
         }
     }
 </script>
+<script type="text/javascript">
+    function justNumbers(e)
+        {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46))
+            return true;
+            
+            return /\d/.test(String.fromCharCode(keynum));
+        }
+</script>
 
-    <!-- jQuery  -->
-    <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
+<!-- jQuery  -->
+<script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
 
-    <script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('template/assets/js/detect.js') }}"></script>
-    <script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
-    <script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
-    <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
-    <script src="{{ asset('template/assets/js/waves.js') }}"></script>
-    <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
+<script src="{{ asset('template/assets/js/detect.js') }}"></script>
+<script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
+<script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
+<script src="{{ asset('template/assets/js/waves.js') }}"></script>
+<script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
 
 
 <!--Wysiwig js-->   
@@ -239,7 +283,7 @@
 <script>
 $(document).ready(function(){
     $('#fecha_nacimiento').bootstrapMaterialDatePicker({
-        weekStart : 0, 
+        weekStart : 1, 
         time: false     
     });
 });

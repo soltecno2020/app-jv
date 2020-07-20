@@ -46,7 +46,7 @@
                             <a href="{{ route('eventos.create') }}" class="btn btn-primary float-left">Crear evento</a>
                         </div>
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla permitirá crear eventos que se podran visualizar en el calendario de eventos.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de eventos</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">
@@ -54,7 +54,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre</th>
                                         <th>Titulo</th>
                                         <th>Fecha de inicio</th>
                                         <th>Fecha de termino</th>
@@ -70,7 +69,6 @@
                                         @foreach($eventos as $evento)
                                         <tr>
                                             <td>{{ $evento->id }}</td>
-                                            <td>{{ $evento->nombre }}</td>
                                             <td>{{ $evento->titulo }}</td>
                                             <td>{{ \Carbon\Carbon::parse($evento->fecha_inicio)->format('d-m-yy') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($evento->fecha_termino)->format('d-m-yy') }}</td>

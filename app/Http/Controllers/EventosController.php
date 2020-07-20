@@ -38,7 +38,6 @@ class EventosController extends Controller
     {
         try{
             $validator = Validator::make($request->all(), [
-                'nombre' => 'required|min:2|max:45|string',
                 'titulo' => 'required|min:2|max:20|string',
                 'descripcion_corta' => 'required|min:2|max:200|string',
                 'descripcion_larga' => 'required|min:2|max:5000|string',
@@ -51,7 +50,6 @@ class EventosController extends Controller
                 'tipo_evento' => 'required|numeric|not_in:0',
             ],
             [
-                'nombre.required' => 'Debe ingresar un nombre',
                 'titulo.required' => 'Debe ingresar un titulo',
                 'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
                 'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
@@ -71,7 +69,6 @@ class EventosController extends Controller
                 ->withInput();
             }
             $eventos = eventos::create([
-                'nombre'    => $request->nombre,
                 'titulo'    => $request->titulo,
                 'descripcion_corta'    => $request->descripcion_corta,
                 'descripcion_larga'    => $request->descripcion_larga,
@@ -113,7 +110,6 @@ class EventosController extends Controller
     {
         try{
             $validator = Validator::make($request->all(), [
-                'nombre' => 'required|min:2|max:45|string',
                 'titulo' => 'required|min:2|max:20|string',
                 'descripcion_corta' => 'required|min:2|max:200|string',
                 'descripcion_larga' => 'required|min:2|max:5000|string',
@@ -126,7 +122,7 @@ class EventosController extends Controller
                 'tipo_evento' => 'required|numeric|not_in:0',
             ],
             [
-                'nombre.required' => 'Debe ingresar un nombre',
+
                 'titulo.required' => 'Debe ingresar un titulo',
                 'descripcion_corta.required' => 'Debe ingresar una descripcion corta',
                 'descripcion_larga.required' => 'Debe ingresar una descripcion larga',
@@ -146,7 +142,6 @@ class EventosController extends Controller
                 ->withInput();
             }
             $eventos = Eventos::find($id);
-            $eventos->nombre = $request->nombre;
             $eventos->titulo = $request->titulo;
             $eventos->descripcion_corta = $request->descripcion_corta;
             $eventos->descripcion_larga = $request->descripcion_larga;

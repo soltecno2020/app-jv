@@ -4596,8 +4596,8 @@ Docs & License: https://fullcalendar.io/
             list: 'agenda'
         },
         weekLabel: 'W',
-        allDayText: 'all-day',
-        eventLimitText: 'more',
+        allDayText: 'Todo el dia',
+        eventLimitText: 'mas',
         noEventsMessage: 'No hay eventos para mostrar'
     };
     function parseRawLocales(explicitRawLocales) {

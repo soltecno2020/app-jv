@@ -57,7 +57,7 @@
                         </div> 
                         -->
                         <div class="pt-5">
-                            <p class="text-muted font-14">Esta pantalla podras visualizar la lista de formularios.</code>
+                            <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de formularios</code>
                             </p> 
                         </div>                        
                         <div class="pt-0">
@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tipo de Consulta</th>
-                                        <th>Descripciòn</th>
+                                        <th>Descripción</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>

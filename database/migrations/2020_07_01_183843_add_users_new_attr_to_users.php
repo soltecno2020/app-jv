@@ -16,7 +16,7 @@ class AddUsersNewAttrToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('username', 45)->nullable(true);
             $table->string('apellido', 45);
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->string('rut', 20);
             $table->date('fecha_nacimiento');
             $table->bigInteger('vivienda_id')->unsigned();
