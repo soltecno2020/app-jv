@@ -98,7 +98,7 @@
                                             <td>              
                                                 <div class="float-right">
                                                     <div class="icon-demo-content row">
-                                                        <a href="{{ route('formularioscontactos.edit', $formulario->id) }}" title="Responder Consulta">
+                                                        <a href="{{ route('dialogo') }}" title="Responder Consulta">
                                                             <div class="col-sm-6 m-0">
                                                                 <i class="mdi mdi-comment-text m-0"></i>
                                                             </div>

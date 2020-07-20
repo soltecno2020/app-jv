@@ -17,4 +17,15 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function cuotas()
+    {
+        return view('cuotas');
+    }
+
+    public function dialogos()
+    {
+        return view('dialogo');
+    }
+
 }

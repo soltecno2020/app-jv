@@ -24,7 +24,7 @@
                 </li>
                     
                 <li class="has-submenu ">
-                    <a href="#"><i class="mdi mdi-cash"></i>Cuotas</a>
+                    <a href="{{ route('cuotas') }}"><i class="mdi mdi-cash"></i>Cuotas</a>
                 </li>
                 <li class="has-submenu">
                     <a href="{{ route('administrador') }}"><i class="mdi mdi-cards"></i>Administración</a>

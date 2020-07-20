@@ -17,7 +17,6 @@
                     <h4 class="page-title"></h4>
                 </div>
             </div>
-
         </div>
         <!-- end page title end breadcrumb -->
         <div class="row">

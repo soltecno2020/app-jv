@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
@@ -82,3 +83,6 @@ Route::prefix('usuarios')->group(function() {
 
 Route::resource('calendario', 'CalendarioController');
 
+Route::get('/cuotas', 'HomeController@cuotas')->name('cuotas');
+
+Route::get('/dialogo', 'HomeController@dialogos')->name('dialogo');
