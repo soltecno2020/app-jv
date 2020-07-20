@@ -45,15 +45,11 @@
                             <div class="col-md-6 col-xl-6 offset-md-3">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <div class="col-sm-12">
-                                            <h4 class="mt-0 header-title">Datos del usuario</h4>
+                                        <div class="col-sm-6">
+                                            <h4 class="mt-0 header-title">Datos del usuario</h4>                                            
                                         </div>
-                                        <div class="col-sm-12">
-                                            <ul class="nav nav-tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('usuarios.index') }}">Seguridad</a>
-                                                </li>
-                                            </ul>
+                                        <div class="col-sm-6" hidden>
+                                            <a href="" class="btn btn-secondary float-right">Seguridad</a>
                                         </div>    
                                         <div class="col-sm-12">
                                             <p class="alert alert-danger alert-dismissible fade show">Todos los campos son requeridos</p>
@@ -136,7 +132,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row grid-col p-3">
+                                                    <div class="row grid-col p-3" hidden>
                                                         <div class="col-sm-6"> 
                                                             <div class="form-group">
                                                                 <label for="password" class="bmd-label-floating ">Contraseña</label>

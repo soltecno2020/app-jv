@@ -157,11 +157,27 @@
                                                         </div>
                                                     </div>
                                                     <div class="row grid-col p-3">
-                                                        <div class="col-sm-6">        
+                                                        <div class="col-sm-6" hidden>        
                                                             <div class="form-group">
                                                                 <label for="username" class="bmd-label-floating ">Nombre de usuario</label>
                                                                 <input type="text" class="form-control" id="alloptions" name="username" autocomplete="off" maxlength="25" value="{{ old('username') }}" autofocus>
                                                                 @error('username')
+                                                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                        <li class="parsley-required">
+                                                                            <strong>
+                                                                                {{ $message }}
+                                                                            </strong>
+                                                                        </li>
+                                                                    </ul>                                                                
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="fecha_nacimiento" class="bmd-label-floating ">Fecha nacimiento</label>
+                                                                <input type="text" class="form-control" id="fecha_nacimiento" autocomplete="off" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+                                                                @error('fecha_nacimiento') 
                                                                     <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                         <li class="parsley-required">
                                                                             <strong>
@@ -191,22 +207,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="fecha_nacimiento" class="bmd-label-floating ">Fecha nacimiento</label>
-                                                            <input type="text" class="form-control" id="fecha_nacimiento" autocomplete="off" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
-                                                            @error('fecha_nacimiento') 
-                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                    <li class="parsley-required">
-                                                                        <strong>
-                                                                            {{ $message }}
-                                                                        </strong>
-                                                                    </li>
-                                                                </ul>                                                                
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <select class="form-control" id="vivienda_id" name="vivienda_id">
                                                                 <option value="0">Seleccione una vivienda</option>

@@ -69,8 +69,7 @@
                                         <th>Apellido</th>
                                         <th>Rut</th>
                                         <th>Email</th>
-                                        <th>Nombre de usuario</th>
-                                        <th>Telefono</th>
+                                        <th>Teléfono</th>
                                         <th>Fecha nacimiento</th>
                                         <th>Vivienda</th>
                                         <th class="text-center">Estado</th>
@@ -85,8 +84,7 @@
                                             <td>{{ $usuario->name }}</td>
                                             <td>{{ $usuario->apellido }}</td>
                                             <td>{{ $usuario->rut }}</td>
-                                             <td>{{ $usuario->email }}</td>
-                                            <td>{{ $usuario->username }}</td>
+                                            <td>{{ $usuario->email }}</td>
                                             <td>
                                                 @if($usuario->telefono != 0)
                                                     {{ $usuario->telefono }}
@@ -102,16 +100,16 @@
                                             </td>
                                             <td class="text-center">
                                                 @if($usuario->estado == 1)
-                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
+                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
                                                         <i class="fa fa-check fa-2x text-success"></i>
                                                     </a>
                                                 @elseif($usuario->estado == 2)
-                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para cambiar estado">
+                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
                                                         <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
                                                     </a>
                                                 @elseif($usuario->estado == 3)
-                                                    <a id="{{ $usuario->id }}" href="" class="estado" title="Click para aprobar al usuario">
-                                                        <i class="fa fa-tv fa-2x text-infofo mb-0"></i>
+                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para aprobar al usuario">
+                                                        <i class="fa fa-tv fa-2x text-secondary mb-0"></i>
                                                     </a>
                                                 @endif
                                             </td>
@@ -170,66 +168,79 @@
 
 
 <script>
-$(document).ready(function(){    
+$(document).ready(function(){
     $('.estado').click(function(e){
         e.preventDefault();
         var id = this.id;
-        $.ajax({
-            url: 'usuarios/cambiarEstado',
-            type:'POST',
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {id: id},
-            success: function(data){
-                if(data.code == 400){
-                    alert('error 400');
-                }else if(data.code == 401){
-                    alert('error 401');
-                }else if(data.code == 200){ 
-                    if(data.usuarios.estado == 2){
-                        $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
-                        $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
-                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                    }else if(data.usuarios.estado == 1){
-                        $('#'+id).find('.fa-tv').removeClass('fa-tv').addClass('fa-check');
-                        $('#'+id).find('.text-info').removeClass('text-info').addClass('text-success');
-                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                    }else if(data.usuarios.estado == 3){
-                        Swal.fire({
-                        title: '¿Seguro que deseas eliminar la imagen?',
-                        text: "No se podran revertir los cambios",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'No, cancelar',
-                        confirmButtonText: 'Si, eliminar'
-                        }).then((result) => {
-                        if (result.value) {
-                            Swal.fire(
-                            'Eliminada',
-                            'La imagen fue eliminada con exito',
-                            'success',
-                            )
-                            $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-tv');
-                            $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-info');
-                        }
-        })
-                    }
-                    
+        var estado = $(this).data('estado');        
+        if(estado == 1){
+            estado = 2;
+        }else if(estado == 2){
+            estado = 1;
+        }else if(estado == 3){
+            estado = 1;
+            Swal.fire({
+                title: '¿Seguro que apruebas al usuario?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'No, cancelar',
+                confirmButtonText: 'Si, aprobar'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    cambiarEstado(id, estado);
+                    /*Swal.fire(
+                        'Aprobado',
+                        'El usuario fue aprobado exitosamente!',
+                        'success',
+                    )*/
                 }
-            },
-            error: function(data, textStatus, errorThrown){
-                if(data.status >= 500 || data.status < 600){
-                    toastr.error('Se ha producido un error.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                }else if(data.status == 419){
-                    window.location.href = 'login';
-                }
-            },
-        });
+            })
+            return false;
+        }
+        cambiarEstado(id, estado);
     });
 });
+
+function cambiarEstado(id, estado){
+    $.ajax({
+        url: 'usuarios/cambiarEstado',
+        type:'POST',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {id: id, estado: estado},
+        success: function(data){
+            if(data.code == 400){
+                alert('error 400');
+            }else if(data.code == 401){
+                alert('error 401');
+            }else if(data.code == 200){
+                if(data.usuarios.estado == 2){                    
+                    $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
+                    $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
+                    $('#'+id).data('estado', 2);
+                    toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                }else if(data.usuarios.estado == 1){
+                    $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
+                    $('#'+id).find('.fa-tv').removeClass('fa-tv').addClass('fa-check');
+                    $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
+                    $('#'+id).find('.text-secondary').removeClass('text-secondary').addClass('text-success');
+                    $('#'+id).data('estado', 1);
+                    toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                }
+            }
+        },
+        error: function(data, textStatus, errorThrown){
+            if(data.status >= 500 || data.status < 600){
+                toastr.error('Se ha producido un error.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+            }else if(data.status == 419){
+                window.location.href = 'login';
+            }
+        },
+    });
+}
 </script>
 
 @endsection

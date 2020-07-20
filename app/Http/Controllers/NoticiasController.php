@@ -50,6 +50,18 @@ class NoticiasController extends Controller
                 ->withErrors($validator)
                 ->withInput();
             }
+            $noticias = noticias::create([
+                'titulo'    => $request->titulo,
+                'descripcion_corta'    => $request->descripcion_corta,
+                'descripcion_larga'    => $request->descripcion_larga,
+                'estado'    => $request->estado,
+                'user_created_id'    => Auth::user()->id,
+            ]);
+
+            //RECORRER EL LISTADO DE IMÁGENES QUE VIENEN DEL FRONT
+
+
+
             /*
             if ($request->hasFile('imagen')) {
                 $file = $request->file('imagen');
@@ -66,17 +78,11 @@ class NoticiasController extends Controller
                     'relacion_id'    => 1,
                 ]);
             }
-            */            
-            $noticias = noticias::create([
-                'titulo'    => $request->titulo,
-                'descripcion_corta'    => $request->descripcion_corta,
-                'descripcion_larga'    => $request->descripcion_larga,
-                'estado'    => $request->estado,
-                'user_created_id'    => Auth::user()->id,
-            ]);
+            */
             toastr()->success('Acabas de crear una noticia "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('noticias.index');
         }catch(Exception $e){
+            dd($e->getMessage());
             toastr()->error('Ha ocurrido un error.');
             return redirect('noticias/create')
             ->withErrors($validator)

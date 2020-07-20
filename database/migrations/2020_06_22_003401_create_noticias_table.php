@@ -20,7 +20,7 @@ class CreateNoticiasTable extends Migration
             $table->string('descripcion_larga', 10000);
             $table->bigInteger('estado')->unsigned();
             $table->bigInteger('user_created_id')->unsigned();
-            $table->bigInteger('user_updated_id')->unsigned();
+            $table->bigInteger('user_updated_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

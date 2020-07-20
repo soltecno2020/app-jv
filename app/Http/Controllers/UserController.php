@@ -11,6 +11,7 @@ use Exception;
 use Hash;
 use carbon\Carbon;
 use Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -41,7 +42,6 @@ class UserController extends Controller
                 'apellido' => 'required|min:2|max:30|string',
                 'email' => 'required|min:2|max:50|string|unique:users',
                 'password' => 'required|min:2|max:30|string|',
-                'username' => 'required|min:2|max:30|string',
                 'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
@@ -117,9 +117,13 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:2|max:30|string',
                 'apellido' => 'required|min:2|max:30|string',
-                'email' => 'required|min:2|max:50|string|unique:users',
-                'password' => 'required|min:2|max:30|string',
-                'username' => 'required|min:2|max:30|string',
+                'email' => [
+                                'required',
+                                'min:2',
+                                'max:50',
+                                'string',
+                                Rule::unique('users')->ignore($id),
+                            ],
                 'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
@@ -127,7 +131,7 @@ class UserController extends Controller
                 'rut' =>[   'required',
                             'string',
                             'max:20',
-                            'unique:users',
+                            Rule::unique('users')->ignore($id),
                             function ($attribute, $value, $fail){
                                 $validarRut = $this->valida_rut($value);
                                 if(!$validarRut){
@@ -189,6 +193,7 @@ class UserController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'id' => 'required|numeric',
+                'estado' => 'required|string',
             ]);
             if($validator->fails()){
                 return response()->json([
@@ -198,9 +203,8 @@ class UserController extends Controller
                 ]);
             }
             $usuarios = User::find($request->id);
-            $estado = $usuarios->estado == 1 ? 2 : 3;
-            $usuarios->estado = $estado;
-            $usuarios->save();        
+            $usuarios->estado = $request->estado;
+            $usuarios->save();
             return response()->json([
                 'code' => 200,
                 'message' => 'success',

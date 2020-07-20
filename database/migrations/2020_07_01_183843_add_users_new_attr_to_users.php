@@ -14,7 +14,7 @@ class AddUsersNewAttrToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('username', 45);
+            $table->string('username', 45)->nullable(true);
             $table->string('apellido', 45);
             $table->integer('telefono');
             $table->string('rut', 20);

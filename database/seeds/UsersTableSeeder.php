@@ -11,12 +11,17 @@ class UsersTableSeeder extends Seeder
     {
         $user = User::create([
         	'name' => 'Super Administrador',
+            'apellido' => 'Dawrin',
+            'telefono' => '978024289',
+            'rut' => '1-9',
+            'fecha_nacimiento' => '2020-07-22',
         	'email' => 'admin@soltecno.cl',
-        	'password' => bcrypt('123')
+            'vivienda_id' => 1,
+        	'password' => bcrypt('123'),
+            'estado' => 1,
+
         ]);
-        $role = Role::create(['name' => 'Super Administrador']);
         $permissions = Permission::pluck('id','id')->all();
-        $role->syncPermissions($permissions);
-        $user->assignRole([$role->id]);
+        $user->assignRole(1);
     }
 }

@@ -90,7 +90,7 @@ class RegisterController extends Controller
     
     protected function create(array $data)
     {
-        $user User::create([
+        $user = User::create([
             'name' => $data['name'],
             'apellido'  => $data['apellido'],            
             'email' => $data['email'],
@@ -102,7 +102,7 @@ class RegisterController extends Controller
             'vivienda_id' => 1,
             'estado' => 3,
         ]);
-        $user->assignRole([5]);
+        $user->assignRole([4]);
         return $user;
     }
 

@@ -110,48 +110,88 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['dayGrid', 'interaction', 'timeGrid', 'list'],
-        defaultView:'dayGridMonth',
-        header:{
-            left:'prev,next today nuevoEvento',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
-        },
-        customButtons:{
-            nuevoEvento:{
-                text:"crear nuevo evento",
-                click:function(){
-                    window.location.href = "{{ route('eventos.create') }}"
-                }
-            }
-        },
-        /*
-        dateClick:function(info){
-            toastr.info("Datos del dia");
-            console.log(info);
-            calendar.addEvent({
-                title:"Evento x",
-                date:info.dateStr
+        var permiteCrear = false;
+        @hasanyrole('Super Administrador|Administrador|Ejecutivo')
+            permiteCrear = true;
+        @endhasanyrole
+        var calendarEl = document.getElementById('calendar');
+        if(permiteCrear){
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'interaction', 'timeGrid', 'list'],
+                defaultView:'dayGridMonth',
+                header:{
+                    left:'prev,next today nuevoEvento',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
+                },
+                customButtons:{
+                    nuevoEvento:{
+                        text:"crear nuevo evento",
+                        click:function(){
+                            window.location.href = "{{ route('eventos.create') }}"
+                        }
+                    }
+                },
+                /*
+                dateClick:function(info){
+                    toastr.info("Datos del dia");
+                    console.log(info);
+                    calendar.addEvent({
+                        title:"Evento x",
+                        date:info.dateStr
+                    });
+                },
+                */
+                eventClick:function(info){
+
+                    $('#eTitulo').html(info.event.title);
+                    $('#eDesc_corta').html(info.event.extendedProps.descripcion_corta);
+                    $('#eDesc_larga').html(info.event.extendedProps.descripcion_larga);
+                    $('#eFecha_ini').html(moment(info.event.start).format("DD-MM-YYYY"));
+                    $('#eHora_ini').html(moment(info.event.start).format("HH:mm:ss"));
+                    $('#eFecha_term').html(moment(info.event.end).format("DD-MM-YYYY"));
+                    $('#eHora_term').html(moment(info.event.end).format("HH:mm:ss"));
+                    $('#elugar').html(info.event.extendedProps.lugar);
+
+                    $('#modal-evento').modal();
+                },
+                events:"{{ url('/calendario/show')}}"
             });
-        },
-        */
-        eventClick:function(info){
+        }else{
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'interaction', 'timeGrid', 'list'],
+                defaultView:'dayGridMonth',
+                header:{
+                    left:'prev,next today nuevoEvento',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
+                },
+                /*
+                dateClick:function(info){
+                    toastr.info("Datos del dia");
+                    console.log(info);
+                    calendar.addEvent({
+                        title:"Evento x",
+                        date:info.dateStr
+                    });
+                },
+                */
+                eventClick:function(info){
 
-            $('#eTitulo').html(info.event.title);
-            $('#eDesc_corta').html(info.event.extendedProps.descripcion_corta);
-            $('#eDesc_larga').html(info.event.extendedProps.descripcion_larga);
-            $('#eFecha_ini').html(moment(info.event.start).format("DD-MM-YYYY"));
-            $('#eHora_ini').html(moment(info.event.start).format("HH:mm:ss"));
-            $('#eFecha_term').html(moment(info.event.end).format("DD-MM-YYYY"));
-            $('#eHora_term').html(moment(info.event.end).format("HH:mm:ss"));
-            $('#elugar').html(info.event.extendedProps.lugar);
+                    $('#eTitulo').html(info.event.title);
+                    $('#eDesc_corta').html(info.event.extendedProps.descripcion_corta);
+                    $('#eDesc_larga').html(info.event.extendedProps.descripcion_larga);
+                    $('#eFecha_ini').html(moment(info.event.start).format("DD-MM-YYYY"));
+                    $('#eHora_ini').html(moment(info.event.start).format("HH:mm:ss"));
+                    $('#eFecha_term').html(moment(info.event.end).format("DD-MM-YYYY"));
+                    $('#eHora_term').html(moment(info.event.end).format("HH:mm:ss"));
+                    $('#elugar').html(info.event.extendedProps.lugar);
 
-            $('#modal-evento').modal();
-        },
-        events:"{{ url('/calendario/show')}}"
-    });
+                    $('#modal-evento').modal();
+                },
+                events:"{{ url('/calendario/show')}}"
+            });
+        }
         calendar.setOption('locale','Es')
         calendar.render();
     });
