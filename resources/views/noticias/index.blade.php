@@ -96,7 +96,14 @@
                                                 @endif
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($noticia->created_at)->format('d-m-yy h:i:s') }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($noticia->updated_at)->format('d-m-yy h:i:s') }}</td>
+                                            <td>
+                                                @if($noticia->updated_at == $noticia->created_at)
+                                                    {{ __('Noticia no actualizada') }}
+                                                @else
+                                                    {{ \Carbon\Carbon::parse($noticia->updated_at)->format('d-m-yy h:i:s') }}
+                                                @endif
+                                                
+                                            </td>
                                             <td class="text-center">
                                                 @if($noticia->estado == 1)                                                     
                                                     <a id="{{ $noticia->id }}" href="" class="estado" title="Click para cambiar estado">

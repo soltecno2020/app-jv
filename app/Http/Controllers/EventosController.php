@@ -16,7 +16,7 @@ class EventosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:Super Administrador');
+        $this->middleware('role:Super Administrador|Administrador|Ejecutivo');
     }
 
     public function index()
@@ -30,7 +30,7 @@ class EventosController extends Controller
 
     public function create()
     {
-        $tipoEventos = TipoEventos::all();
+        $tipoEventos = TipoEventos::where('estado','1')->get();
         return view('eventos.create',compact('tipoEventos'));
     }
 
@@ -101,7 +101,7 @@ class EventosController extends Controller
 
     public function edit($id)
     {
-        $tipoEventos = TipoEventos::all();
+        $tipoEventos = TipoEventos::where('estado','1')->get();
         $eventos = Eventos::find($id);
         return view('eventos.edit', compact('eventos','tipoEventos'));
     }

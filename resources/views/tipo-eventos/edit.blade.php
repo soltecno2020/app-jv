@@ -58,7 +58,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $tipoEvento->nombre) }}">
+                                                        <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="30" value="{{ old('nombre', $tipoEvento->nombre) }}">
                                                         @error('nombre')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
@@ -124,6 +124,11 @@
 <script src="{{ asset('template/assets/js/bootstrap-switch.js') }}"></script>
 <script src="{{ asset('template/assets/js/bootstrap-switch.min.js') }}"></script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
+<!-- Plugins js -->
+<script src="{{ asset('template/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+
+<!-- Plugins Init js -->
+<script src="{{ asset('template/assets/pages/form-advanced.js') }}"></script>
 <script>
 $(document).ready(function(){
 	

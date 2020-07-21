@@ -18,7 +18,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:Super Administrador');
+        $this->middleware('role:Super Administrador|Administrador|Ejecutivo');
     }
 
     public function index()
@@ -30,7 +30,7 @@ class UserController extends Controller
 
     public function create()
     {   
-        $viviendas = Viviendas::all();
+        $viviendas = Viviendas::where('estado','1')->get();
         return view('usuarios.create',compact('viviendas'));
     }
 
@@ -45,6 +45,7 @@ class UserController extends Controller
                 'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
+                'rol' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
                 'rut' => [  'required',
                             'string',
@@ -70,6 +71,7 @@ class UserController extends Controller
                 'telefono.integer' => 'Debe ingresar un numero valido ej: 56953320487',
                 'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
                 'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
+                'rol.not_in' => 'Debe asignar un rol',
             ]);
             if($validator->fails()){
                 toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -88,10 +90,10 @@ class UserController extends Controller
                 'vivienda_id' => $request->vivienda_id,
                 'estado' => $request->estado,
             ]);
+            $usuarios->assignRole([$request->rol]);
             toastr()->success('Acabas de crear un usuario "'.strtoupper($request->name).'" exitosamente!');
             return redirect()->route('usuarios.index');
         }catch(Exception $e){
-            dd($e);
             toastr()->error('Ha ocurrido un error.');
             return redirect('usuarios/create')
             ->withErrors($validator)
@@ -106,7 +108,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $viviendas = Viviendas::all();
+        $viviendas = Viviendas::where('estado','1')->get();
         $usuarios = User::find($id);
         return view('usuarios.edit', compact('usuarios','viviendas'));
     }
@@ -127,6 +129,7 @@ class UserController extends Controller
                 'telefono' => 'required|integer',
                 'fecha_nacimiento' => 'required|date',
                 'vivienda_id' => 'required|numeric|not_in:0',
+                'rol' => 'required|numeric|not_in:0',
                 'estado' => 'required|numeric',
                 'rut' =>[   'required',
                             'string',
@@ -152,6 +155,7 @@ class UserController extends Controller
                 'username.required' => 'Debe ingresar un nombre de usuario',
                 'fecha_nacimiento.required' => 'Debe ingresar una fecha de nacimiento',
                 'vivienda_id.not_in' => 'Debe seleccionar una vivienda',
+                'rol.not_in' => 'Debe asignar un rol',
             ]);
             if($validator->fails()){
                 toastr()->error('Existen campos con problemas. Favor verifica que todos los campos obligatorios estén con información.');
@@ -169,6 +173,7 @@ class UserController extends Controller
             $usuarios->rut = $request->rut;
             $usuarios->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento)->format('Y-m-d');      
             $usuarios->vivienda_id = $request->vivienda_id;
+            $usuarios->roles()->sync([$request->rol]);
             $usuarios->estado = $request->estado;
             $usuarios->save();            
             toastr()->success('Acabas de actualizar un usuario "'.strtoupper($request->name).'" exitosamente!');

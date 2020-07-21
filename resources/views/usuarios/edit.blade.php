@@ -48,9 +48,6 @@
                                         <div class="col-sm-6">
                                             <h4 class="mt-0 header-title">Datos del usuario</h4>                                            
                                         </div>
-                                        <div class="col-sm-6" hidden>
-                                            <a href="" class="btn btn-secondary float-right">Seguridad</a>
-                                        </div>    
                                         <div class="col-sm-12">
                                             <p class="alert alert-danger alert-dismissible fade show">Todos los campos son requeridos</p>
                                         </div>
@@ -200,27 +197,48 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group">
-                                                            <h6 class="text-muted">Tipo de vivienda</h6>
-                                                            <select class="form-control" id="vivienda_id" name="vivienda_id">
-                                                                <option value="0">Seleccione una vivienda</option>
-                                                            @foreach($viviendas as $vivienda)
-                                                                <option {{ $usuarios->vivienda_id == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                            @error('vivienda_id') 
-                                                                <ul class="parsley-errors-list filled" id="parsley-id-9">
-                                                                    <li class="parsley-required">
-                                                                        <strong>
-                                                                            {{ $message }}
-                                                                        </strong>
-                                                                    </li>
-                                                                </ul>                                                                
-                                                                </span>
-                                                            @enderror
+                                                    <div class="row grid-col p-3">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <select class="form-control" id="vivienda_id" name="vivienda_id">
+                                                                    <option value="0">Seleccione una vivienda</option>
+                                                                @foreach($viviendas as $vivienda)
+                                                                    <option {{ $usuarios->vivienda_id == $vivienda->id ? 'selected' : '' }} value="{{ ($vivienda->id) }}">{{ ($vivienda->direccion) }}</option>
+                                                                @endforeach
+                                                                </select>
+                                                                @error('vivienda_id') 
+                                                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                        <li class="parsley-required">
+                                                                            <strong>
+                                                                                {{ $message }}
+                                                                            </strong>
+                                                                        </li>
+                                                                    </ul>                                                                
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <select class="form-control" id="rol" name="rol">
+                                                                    <option value="0">Seleccione un rol</option>
+                                                                    <option value="2">Administrador</option>
+                                                                    <option value="3">Ejecutivo</option>
+                                                                    <option value="4">Estandar</option>
+                                                                </select>
+                                                                @error('rol') 
+                                                                    <ul class="parsley-errors-list filled" id="parsley-id-9">
+                                                                        <li class="parsley-required">
+                                                                            <strong>
+                                                                                {{ $message }}
+                                                                            </strong>
+                                                                        </li>
+                                                                    </ul>                                                                
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>    
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="estado" class="bmd-label-static">Estado</label>

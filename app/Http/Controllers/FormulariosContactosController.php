@@ -29,7 +29,7 @@ class FormulariosContactosController extends Controller
 
     public function create()
     {
-        $tipoConsultas = TipoConsultas::all();
+        $tipoConsultas = TipoConsultas::where('estado','1')->get();
         return view('formularios-contactos.create',compact('tipoConsultas'));
     }
 
@@ -58,7 +58,7 @@ class FormulariosContactosController extends Controller
                 'estado'    => $request->estado,
             ]);
             toastr()->success('Acabas de enviar tu formulario exitosamente!');
-            return redirect()->route('formularioscontactos.index');
+            return redirect()->route('dialogo');
         }catch(Exception $e){
             toastr()->error('Ha ocurrido un error.');
             return redirect('formularioscontactos/create')
@@ -74,7 +74,7 @@ class FormulariosContactosController extends Controller
 
     public function edit($id)
     {
-        $tipoConsultas = TipoConsultas::all();
+        $tipoConsultas = TipoConsultas::where('estado','1')->get();
         $formularioContactos = FormulariosContactos::find($id);
         return view('formularios-contactos.edit', compact('formularioContactos','tipoConsultas'));
     }

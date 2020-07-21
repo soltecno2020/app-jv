@@ -50,9 +50,9 @@
                                                 <form method="POST" action="{{ route('tipoEventos.store') }}" class="mb-0">
                                                 @csrf
                                                     <div class="col-sm-12">
-                                                        <div class="form-group is-focused">
+                                                        <div class="form-group">
                                                             <label for="nombre" class="bmd-label-floating ">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" maxlength="30" value="{{ old('nombre') }}" autofocus>
+                                                            <input type="text" class="form-control" id="alloptions" name="nombre" autocomplete="off" maxlength="30" value="{{ old('nombre') }}">
                                                             @error('nombre')
                                                                 <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                     <li class="parsley-required">

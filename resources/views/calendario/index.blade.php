@@ -127,7 +127,7 @@
                 firstDay: 1,
                 customButtons:{
                     nuevoEvento:{
-                        text:"crear nuevo evento",
+                        text:"Crear nuevo evento",
                         click:function(){
                             window.location.href = "{{ route('eventos.create') }}"
                         }

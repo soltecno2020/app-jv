@@ -4584,20 +4584,20 @@ Docs & License: https://fullcalendar.io/
         },
         dir: 'ltr',
         buttonText: {
-            prev: 'previo',
-            next: 'siguiente',
-            prevYear: 'año anterior',
-            nextYear: 'año siguiente',
-            year: 'año',
-            today: 'hoy',
-            month: 'mes',
-            week: 'semana',
-            day: 'dia',
-            list: 'agenda'
+            prev: 'Previo',
+            next: 'Siguiente',
+            prevYear: 'Año anterior',
+            nextYear: 'Año siguiente',
+            year: 'Año',
+            today: 'Hoy',
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Dia',
+            list: 'Agenda'
         },
         weekLabel: 'W',
         allDayText: 'Todo el dia',
-        eventLimitText: 'mas',
+        eventLimitText: 'Mas',
         noEventsMessage: 'No hay eventos para mostrar'
     };
     function parseRawLocales(explicitRawLocales) {

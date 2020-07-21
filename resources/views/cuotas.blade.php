@@ -39,16 +39,14 @@
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Cuota</th>
                                                 <th>Monto</th>
-                                                <th>Fecha de expiración</th>
+                                                <th>Fecha de vencimiento</th>
                                                 <th class="text-right">Pagar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>6</td>
                                                 <td>Mensualidad Junio</td>
                                                 <td>$100.000</td>
                                                 <td>25-06-2020</td>
@@ -65,7 +63,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>7</td>
                                                 <td>Mensualidad Julio</td>
                                                 <td>$100.000</td>
                                                 <td>25-07-2020</td>
@@ -82,7 +79,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>8</td>
                                                 <td>Mensualidad Agosto</td>
                                                 <td>$5.000</td>
                                                 <td>25-08-2020</td>
@@ -99,7 +95,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>9</td>
                                                 <td>Mensualidad Septiembre</td>
                                                 <td>$100.000</td>
                                                 <td>25-09-2020</td>
@@ -116,7 +111,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>10</td>
                                                 <td>Mensualidad Octubre</td>
                                                 <td>$100.000</td>
                                                 <td>25-10-2020</td>
@@ -133,7 +127,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>11</td>
                                                 <td>Mensualidad Noviembre</td>
                                                 <td>$100.000</td>
                                                 <td>25-11-2020</td>
@@ -150,7 +143,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>12</td>
                                                 <td>Mensualidad Diciembre</td>
                                                 <td>$100.000</td>
                                                 <td>25-12-2020</td>
@@ -316,7 +308,6 @@
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Cuota</th>
                                                 <th>Monto</th>
                                                 <th>Fecha del Pago</th>
@@ -325,7 +316,6 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
                                                 <td>Mensualidad enero</td>
                                                 <td>$100.000</td>
                                                 <td>15-01-2020</td>
@@ -342,7 +332,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
                                                 <td>Mensualidad Febrero</td>
                                                 <td>$100.000</td>
                                                 <td>12-02-2020</td>
@@ -359,7 +348,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
                                                 <td>Mensualidad Marzo</td>
                                                 <td>$100.000</td>
                                                 <td>20-03-2020</td>
@@ -376,7 +364,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>4</td>
                                                 <td>Mensualidad Abril</td>
                                                 <td>$100.000</td>
                                                 <td>05-04-2020</td>
@@ -393,7 +380,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>5</td>
                                                 <td>Mensualidad Mayo</td>
                                                 <td>$100.000</td>
                                                 <td>24-05-2020</td>

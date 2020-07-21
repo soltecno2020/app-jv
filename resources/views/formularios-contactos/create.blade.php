@@ -108,7 +108,7 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" style="left:1.5%" class="btn btn-primary btn-raised mb-0">Enviar formulario</button>
-                                                <a href="{{ route('formularioscontactos.index') }}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
+                                                <a href="{{ route('formularioscontactos.create')}}" style="left:2.5%" class="btn btn-raised btn-danger mb-0">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>

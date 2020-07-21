@@ -12,9 +12,9 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
         	'name' => 'Super Administrador',
             'apellido' => 'Dawrin',
-            'telefono' => '978024289',
-            'rut' => '1-9',
-            'fecha_nacimiento' => '2020-07-22',
+            'telefono' => '56932284571',
+            'rut' => '15.334.885-7',
+            'fecha_nacimiento' => '2020-07-21',
         	'email' => 'admin@soltecno.cl',
             'vivienda_id' => 1,
         	'password' => bcrypt('123'),

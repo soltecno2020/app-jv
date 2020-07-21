@@ -18,17 +18,19 @@
                 <li class="has-submenu ">
                     <a href="{{ route('calendario.index')}}"><i class="mdi mdi-calendar"></i>Calendario</a>
                 </li>
-
+                @hasanyrole('Estandar')
                 <li class="has-submenu ">
                     <a href="{{ route('formularioscontactos.create')}}"><i class="mdi mdi-pencil-box"></i>Contacto</a>
                 </li>
-                    
+                @endhasanyrole
                 <li class="has-submenu ">
                     <a href="{{ route('cuotas') }}"><i class="mdi mdi-cash"></i>Cuotas</a>
                 </li>
-                <li class="has-submenu">
-                    <a href="{{ route('administrador') }}"><i class="mdi mdi-cards"></i>Administración</a>
-                </li>
+                @hasanyrole('Super Administrador|Administrador|Ejecutivo')
+                    <li class="has-submenu">
+                        <a href="{{ route('administrador') }}"><i class="mdi mdi-cards"></i>Administración</a>
+                    </li>
+                @endhasanyrole
             </ul><!-- End navigation menu -->
         </div> <!-- end #navigation -->
     </div> <!-- end container -->

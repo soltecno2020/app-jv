@@ -57,7 +57,7 @@ class NoticiasController extends Controller
                 'descripcion_larga'    => $request->descripcion_larga,
                 'estado'    => $request->estado,
                 'user_created_id'    => Auth::user()->id,
-                'user_created_id'    => 0,
+                'user_updated_id'    => 0,
             ]);
 
             //RECORRER EL LISTADO DE IMÁGENES QUE VIENEN DEL FRONT

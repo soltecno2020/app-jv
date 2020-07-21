@@ -221,7 +221,7 @@
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label for="lugar" class="bmd-label-floating ">Lugar de encuentro</label>
-                                                        <input type="text" class="form-control" id="alloptions" name="lugar" maxlength="200" autocomplete="off" value="{{ old('lugar', $eventos->lugar) }}" autofocus>
+                                                        <input type="text" class="form-control" id="alloptions" name="lugar" maxlength="200" autocomplete="off" value="{{ old('lugar', $eventos->lugar) }}">
                                                         @error('lugar')
                                                             <ul class="parsley-errors-list filled" id="parsley-id-9">
                                                                 <li class="parsley-required">
