@@ -24,7 +24,7 @@
                 </li>
                 @endhasanyrole
                 <li class="has-submenu ">
-                    <a href="{{ route('cuotas') }}"><i class="mdi mdi-cash"></i>Cuotas</a>
+                    <a href="{{ route('cuotas') }}"><i class="mdi mdi-cash"></i>Mis Cuotas</a>
                 </li>
                 @hasanyrole('Super Administrador|Administrador|Ejecutivo')
                     <li class="has-submenu">

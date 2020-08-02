@@ -80,8 +80,8 @@ class EventosController extends Controller
                 'estado'    => $request->estado,
                 'tipo_eventos_id'    => $request->tipo_evento,
                 'color'    =>$request->color,
-                'user_created_id'    => 1,
-                'user_updated_id'    => 1,
+                'user_created_id'    => Auth::user()->id,
+                'user_updated_id'    => 0,
             ]);
             toastr()->success('Acabas de crear un evento "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('eventos.index');
@@ -153,7 +153,7 @@ class EventosController extends Controller
             $eventos->estado = $request->estado;
             $eventos->color = $request->color;
             $eventos->tipo_eventos_id = $request->tipo_evento;
-            $eventos->user_updated_id = 1;
+            $eventos->user_updated_id = Auth::user()->id;
             $eventos->save();            
             toastr()->success('Acabas de actualizar un evento "'.strtoupper($request->titulo).'" exitosamente!');
             return redirect()->route('eventos.index');

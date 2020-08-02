@@ -287,14 +287,20 @@
             },
             success: function(response){
                 idElemento++;
-                var url = window.location.href.replace('public/noticias/create', 'storage/imagenes/noticias/temp/');
+
+                // if(config('app.ambiente') == 'desarrollo'){
+                    var url = window.location.href.replace('public/noticias/create', 'public/imagenes/noticias/temp/')+response.nombre;
+                // }else if(config('app.ambiente') == 'production'){
+                //     var url = window.location.origin+'/'+response.ruta+response.nombre;
+                // }
+
                 $('#tablaElementos tbody').append(
                 '<tr id="tr_'+idElemento+'" data-id="'+idElemento+'">'+
                     '<td>'+response.nombreOrigen+'</td>'+
-                    '<td><img style="height: 40px;" src="'+url+response.nombre+'" class=""></img></td>'+
+                    '<td><img style="height: 40px;" src="'+url+'" class=""></img></td>'+
                     '<td>'+
                         '<div class="float-right"><div class="icon-demo-content row"><a data-id="'+idElemento+'" href="" class="delete-img" title="Eliminar imagen"><div class="col-sm-6 m-0"><i class="mdi mdi-close"></i></div></a></div></div>'+
-                        '<div class="float-right"><div class="icon-demo-content row"><a data-url="'+url+response.nombre+'" href="" class="capture-url" title="Copiar en portapapeles"><div class="col-sm-6 m-0"><i class="mdi mdi-link"></i></div></a></div></div>'+
+                        '<div class="float-right"><div class="icon-demo-content row"><a data-url="'+url+'" href="" class="capture-url" title="Copiar en portapapeles"><div class="col-sm-6 m-0"><i class="mdi mdi-link"></i></div></a></div></div>'+
                     '</td>'+
                 '</tr>');
                 $('#imagen').val('');

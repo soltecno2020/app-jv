@@ -59,14 +59,25 @@ class ImagenesController extends Controller
             }
             $imagen = $request->file('imagen');
             $nombreImagen = time().'.'.$imagen->extension();
-            $imagen->move(storage_path().'/imagenes/noticias/temp/', $nombreImagen);
-            return response()->json([
-                'code' => 200,
-                'message' => 'success',
-                'nombre' => $nombreImagen,
-                'ruta' => 'storage/imagenes/noticias/temp/',
-                'nombreOrigen' => $imagen->getClientOriginalName()
-            ]);
+            if(config('app.ambiente') == 'desarrollo'){
+                $imagen->move('imagenes/noticias/temp/', $nombreImagen);
+                return response()->json([
+                    'code' => 200,
+                    'message' => 'success',
+                    'nombre' => $nombreImagen,
+                    'ruta' => 'imagenes/noticias/temp/',
+                    'nombreOrigen' => $imagen->getClientOriginalName()
+                ]);
+            }else{
+                $imagen->move('../../public_html/darwin/imagenes/noticias/temp/', $nombreImagen);
+                return response()->json([
+                    'code' => 200,
+                    'message' => 'success',
+                    'nombre' => $nombreImagen,
+                    'ruta' => 'imagenes/noticias/temp/',
+                    'nombreOrigen' => $imagen->getClientOriginalName()
+                ]);
+            }
         }catch(Exception $e){
             return response()->json([
                 'code' => 400,
