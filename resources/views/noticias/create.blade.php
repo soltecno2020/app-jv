@@ -284,13 +284,8 @@
             },
             success: function(response){
                 idElemento++;
-
-                // if(config('app.ambiente') == 'desarrollo'){
-                    var url = window.location.href.replace('public/noticias/create', 'public/imagenes/noticias/temp/')+response.nombre;
-                // }else if(config('app.ambiente') == 'production'){
-                //     var url = window.location.origin+'/'+response.ruta+response.nombre;
-                // }
-
+                var url = window.location.href.replace('/noticias/create', '')+'/'+response.ruta+response.nombre;
+                console.log(url);
                 $('#tablaElementos tbody').append(
                 '<tr id="tr_'+idElemento+'" data-id="'+idElemento+'">'+
                     '<td>'+response.nombreOrigen+'</td>'+
@@ -305,6 +300,7 @@
                 toastr.success('Imagen subida con exito.');
             },
             error: function(error){
+                console.log(error);
                 toastr.error('Error al cargar la imagen');
             }
         });

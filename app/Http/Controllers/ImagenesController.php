@@ -58,26 +58,23 @@ class ImagenesController extends Controller
                 ]);            
             }
             $imagen = $request->file('imagen');
-            $nombreImagen = time().'.'.$imagen->extension();
-            if(config('app.ambiente') == 'desarrollo'){
-                $imagen->move('imagenes/noticias/temp/', $nombreImagen);
-                return response()->json([
-                    'code' => 200,
-                    'message' => 'success',
-                    'nombre' => $nombreImagen,
-                    'ruta' => 'imagenes/noticias/temp/',
-                    'nombreOrigen' => $imagen->getClientOriginalName()
-                ]);
-            }else{
-                $imagen->move('../../public_html/darwin/imagenes/noticias/temp/', $nombreImagen);
-                return response()->json([
-                    'code' => 200,
-                    'message' => 'success',
-                    'nombre' => $nombreImagen,
-                    'ruta' => 'imagenes/noticias/temp/',
-                    'nombreOrigen' => $imagen->getClientOriginalName()
-                ]);
+            $ruta = '';
+            if(request()->imagen){
+                $nombreImagen = time().'.'.$imagen->extension();
+                if(config('app.ambiente') == 'desarrollo'){
+                    $ruta = config('app.rutaImgDesa');
+                }else if(config('app.ambiente') == 'production'){
+                    $ruta = config('app.rutaImgProd');
+                }
             }
+            $imagen->move(public_path($ruta), $nombreImagen);
+            return response()->json([
+                'code' => 200,
+                'message' => 'success',
+                'nombre' => $nombreImagen,
+                'ruta' => $ruta,
+                'nombreOrigen' => $imagen->getClientOriginalName()
+            ]);
         }catch(Exception $e){
             return response()->json([
                 'code' => 400,
