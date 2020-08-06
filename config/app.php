@@ -58,6 +58,10 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    /* IMAGENES */
+    'rutaImgDesa' => env('APP_urlImgDesa', 'imagenes/noticias/temp/'),
+    'rutaImgProd' => env('APP_urlImgProd', '../../public_html/darwin/imagenes/noticias/temp/'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
