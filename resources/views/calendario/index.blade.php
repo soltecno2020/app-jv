@@ -16,10 +16,6 @@
         .fc-toolbar {        
             display: contents;
         }
-
-        .wrapper{
-            padding-top: 9rem;
-        }
     }
 </style>
 @toastr_css

@@ -6,6 +6,64 @@
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .hover:hover{
+        background-color: #4558BE;
+        color: #FFFFFF;
+    }
+</style>
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 offset-2">                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">ADMINISTRACIÓN</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3 offset-2">                
+                <div class="card text-center">
+                    <a href="{{ route('usuarios.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-users fa-4x"></i>
+                            <h5 class="card-title">Usuarios</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <a href="{{ route('viviendas.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-home fa-4x"></i>
+                            <h5 class="card-title">Viviendas</h5>
+                        </div>
+                    </a>
+                </div>                                                                     
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <a href="{{ route('noticias.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-newspaper-o fa-4x"></i>
+                            <h5 class="card-title">Noticias</h5>
+                        </div>
+                    </a>
+                </div>                                                                     
+            </div>
+        </div>
+    </div> <!-- end container -->
+</div>
         <div class="wrapper-page">
             <div class="display-table">
                 <div class="display-table-cell">
@@ -147,7 +205,6 @@
                 </div>
             </div>
         </div>
-
 <!-- Required datatable js -->
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>

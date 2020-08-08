@@ -35,9 +35,9 @@
             alwaysShow: true,
             warningClass: "badge badge-success",
             limitReachedClass: "badge badge-danger",
-            separator: ' de ',
-            preText: 'Has escrito ',
-            postText: ' caracteres disponibles.',
+            separator: ' out of ',
+            preText: 'You typed ',
+            postText: ' chars available.',
             validate: true
         });
 
