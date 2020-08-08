@@ -7,23 +7,29 @@
 <link href="{{ asset('template/assets/fullcalendar/packages/daygrid/main.css') }}" rel="stylesheet" />
 <link href="{{ asset('template/assets/fullcalendar/packages/timegrid/main.css') }}" rel="stylesheet" />
 <link href="{{ asset('template/assets/fullcalendar/packages/list/main.css') }}" rel="stylesheet" />
+<style type="text/css">
+    .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 0.5em !important;
+    }
 
+    @media only screen and (max-width: 600px) {
+        .fc-toolbar {        
+            display: contents;
+        }
+
+        .wrapper{
+            padding-top: 9rem;
+        }
+    }
+</style>
 @toastr_css
 <div class="wrapper">
     <div class="container-fluid">
-        <!-- Page-Title -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <h4 class="page-title">Calendario</h4>
-                </div>
-            </div>
-        </div>
-        <!-- end page title end breadcrumb -->
         <div class="row">
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <h4 class="page-title">Calendario</h4>
                         <div class="row">
                             <div id='calendar' class="col-xl-12 col-lg-9 col-md-8"></div>
                         </div>
@@ -107,7 +113,22 @@
         </div>        
     </div>
 </div>
+@toastr_js
+@toastr_render
+<!-- Codigo fullcalendar -->
+<script src="{{ asset('template/assets/fullcalendar/packages/core/main.js') }}"></script>
+<script src="{{ asset('template/assets/fullcalendar/packages/daygrid/main.js') }}"></script>
+<script src="{{ asset('template/assets/fullcalendar/packages/timegrid/main.js') }}"></script>
 
+<!-- Plugins fullcalendar -->
+<script src="{{ asset('template/assets/fullcalendar/packages/list/main.js') }}"></script>
+<script src="{{ asset('template/assets/fullcalendar/packages/interaction/main.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ asset('template/assets/plugins/timepicker/moment-with-locales.js') }}">
+    moment.locale('es');
+</script>
+<script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var permiteCrear = false;
@@ -203,21 +224,5 @@
         calendar.render();
     });
 </script>
-@toastr_js
-@toastr_render
-<!-- Codigo fullcalendar -->
-<script src="{{ asset('template/assets/fullcalendar/packages/core/main.js') }}"></script>
-<script src="{{ asset('template/assets/fullcalendar/packages/daygrid/main.js') }}"></script>
-<script src="{{ asset('template/assets/fullcalendar/packages/timegrid/main.js') }}"></script>
-
-<!-- Plugins fullcalendar -->
-<script src="{{ asset('template/assets/fullcalendar/packages/list/main.js') }}"></script>
-<script src="{{ asset('template/assets/fullcalendar/packages/interaction/main.js') }}"></script>
-
-<!-- App js -->
-<script src="{{ asset('template/assets/plugins/timepicker/moment-with-locales.js') }}">
-    moment.locale('es');
-</script>
-<script src="{{ asset('template/assets/js/app.js') }}"></script>
 
 @endsection
