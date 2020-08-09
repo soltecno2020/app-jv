@@ -27,15 +27,15 @@
     var drEvent = $('#input-file-events').dropify();
 
     drEvent.on('dropify.beforeClear', function(event, element){
-        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        return confirm("Seguro/a que desea borrarlo \"" + element.file.name + "\" ?");
     });
 
     drEvent.on('dropify.afterClear', function(event, element){
-        alert('File deleted');
+        alert('Archivo borrado');
     });
 
     drEvent.on('dropify.errors', function(event, element){
-        console.log('Has Errors');
+        console.log('Error');
     });
 
     var drDestroy = $('#input-file-to-destroy').dropify();

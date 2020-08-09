@@ -36,6 +36,7 @@
     <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ asset('template/assets/js/app.js') }}"></script>
+
 </head>
 <body>
     <!-- Navigation Bar-->

@@ -137,5 +137,22 @@ var UroraApp = (function () {
 
 (function ($) {
     "use strict";
+    /////////////// Custon JS ///////////////
+    /*SWITCH ESTADO*/
+    if($(".switchEstado").length){
+        $(".switchEstado").click(function(){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+                $('#estado').val('2');
+                $('#lSwitchEstado').html('Inactivo').removeClass('text-success').addClass('text-danger');
+            }else{
+                $(this).attr('checked', '');
+                $('#estado').val('1');
+                $('#lSwitchEstado').html('Activo').removeClass('text-danger').addClass('text-success');
+            }
+        });
+    }
     UroraApp.init();
 }(window.jQuery));
+
+

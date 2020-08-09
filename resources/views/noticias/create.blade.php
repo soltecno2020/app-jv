@@ -284,8 +284,10 @@
             },
             success: function(response){
                 idElemento++;
+                
                 var url = window.location.href.replace('/noticias/create', '')+'/'+response.ruta+response.nombre;
                 console.log(url);
+
                 $('#tablaElementos tbody').append(
                 '<tr id="tr_'+idElemento+'" data-id="'+idElemento+'">'+
                     '<td>'+response.nombreOrigen+'</td>'+

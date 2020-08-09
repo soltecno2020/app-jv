@@ -16,6 +16,35 @@
         .fc-toolbar {        
             display: contents;
         }
+
+        .wrapper{
+            padding-top: 9rem;
+        }
+
+        .fc-center{
+            position: relative;
+            bottom: -4.5rem;
+        }
+
+        .fc-right{
+            position: relative;
+            bottom: 1rem;
+        }
+
+        .fc-view-container{
+            position: absolute;
+            bottom: -14rem;
+        }
+
+        .fc-nuevoEvento-button{
+            position: relative;
+            bottom: -0.8rem;
+            left: -0.65rem;
+        }
+
+        .card{
+            height: 30rem;
+        }
     }
 </style>
 @toastr_css
@@ -23,7 +52,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card m-b-30">
+                <div class="card m-b-50">
                     <div class="card-body">
                         <h4 class="page-title">Calendario</h4>
                         <div class="row">
@@ -126,6 +155,8 @@
 </script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 <script>
+    $("#calendar").width(750).css({'margin-left': 'auto','margin-right': 'auto'});
+
     document.addEventListener('DOMContentLoaded', function() {
         var permiteCrear = false;
         @hasanyrole('Super Administrador|Administrador|Ejecutivo')
@@ -220,5 +251,4 @@
         calendar.render();
     });
 </script>
-
 @endsection
