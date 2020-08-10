@@ -40,7 +40,16 @@
                         </div>
                     </a>
                 </div>
-            </div>
+                <br>
+                <div class="card text-center">
+                    <a href="{{ route('tipoConsultas.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-book fa-4x"></i>
+                            <h5 class="card-title">Tipo de consultas</h5>
+                        </div>
+                    </a>
+                </div>                                                                                     
+            </div>            
             <div class="col-md-3">
                 <div class="card text-center">
                     <a href="{{ route('viviendas.index') }}">
@@ -49,7 +58,25 @@
                             <h5 class="card-title">Viviendas</h5>
                         </div>
                     </a>
-                </div>                                                                     
+                </div>
+                <br>
+                <div class="card text-center">
+                    <a href="{{ route('tipoEventos.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-calendar fa-4x"></i>
+                            <h5 class="card-title">Tipo de eventos</h5>
+                        </div>
+                    </a>
+                </div>
+                <br>
+                <div class="card text-center">
+                    <a href="{{ route('viviendas.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-users fa-4x"></i>
+                            <h5 class="card-title">Viviendas</h5>
+                        </div>
+                    </a>
+                </div>                                                                                                       
             </div>
             <div class="col-md-3">
                 <div class="card text-center">
@@ -59,152 +86,21 @@
                             <h5 class="card-title">Noticias</h5>
                         </div>
                     </a>
-                </div>                                                                     
-            </div>
+                </div>
+                <br>
+                <div class="card text-center">
+                    <a href="{{ route('formularioscontactos.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-id-card fa-4x"></i>
+                            <h5 class="card-title">Formulario de contacto</h5>
+                        </div>
+                    </a>
+                </div>                                                                                        
+            </div>                     
         </div>
     </div> <!-- end container -->
 </div>
-        <div class="wrapper-page">
-            <div class="display-table">
-                <div class="display-table-cell">
-                    <diV class="container">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center pt-3">
-                                    <h3>Menu administrador</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-account-multiple"></i> Usuarios
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                         <a href="{{ route('usuarios.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Usuarios</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br> 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-book"></i> Tipo de Consultas
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('tipoConsultas.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Tipo Consultas</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>                              
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-calendar-text"></i> Tipo de Eventos
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                       <a href="{{ route('tipoEventos.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Tipo Eventos</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br> 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-newspaper"></i> Noticias
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('noticias.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Noticias</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-home-variant"></i> Viviendas
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('viviendas.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Viviendas</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>                                  
-                            </div>                            
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-message-text"></i> Formularios de contacto
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('formularioscontactos.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Formularios</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>                         
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center pt-3">
-                                            <i class="mdi mdi-calendar-clock"></i> Eventos
-                                        </div>
-                                        <div class="px-3 pb-3">
-                                            <form class="form-horizontal m-t-20 mb-0">
-                                                <div class="form-group text-right row m-t-20">
-                                                    <div class="col-12">
-                                                        <a href="{{ route('eventos.index') }}" class="btn btn-primary btn-raised btn-block waves-effect waves-light">Eventos</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </diV>
-                </div>
-            </div>
-        </div>
+<br>
 <!-- Required datatable js -->
 <script src="{{ asset('template/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
