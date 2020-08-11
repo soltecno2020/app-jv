@@ -70,10 +70,10 @@
                 </div>
                 <br>
                 <div class="card text-center">
-                    <a href="{{ route('viviendas.index') }}">
+                    <a href="{{ route('eventos.index') }}">
                         <div class="card-body hover">
-                            <i class="fa fa-users fa-4x"></i>
-                            <h5 class="card-title">Viviendas</h5>
+                            <i class="fa fa-bullhorn fa-4x"></i>
+                            <h5 class="card-title">Eventos</h5>
                         </div>
                     </a>
                 </div>                                                                                                       
