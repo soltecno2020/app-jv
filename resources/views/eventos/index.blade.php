@@ -162,9 +162,11 @@ $(document).ready(function(){
                     if(data.eventos.estado == 2){
                         $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
                         $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                     }else if(data.eventos.estado == 1){
                         $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
                         $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
                     }
                 }
             },
