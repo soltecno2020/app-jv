@@ -3,103 +3,116 @@
 @section('content')
 @toastr_css
 <style>
-    ul {
-        list-style-type: none;
-        margin: 3;
-        padding: 0;
-
+    body {
+        background: #E5DDD5 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+    }
+    .page-header {
+        background: #006A4E;
+        margin: 0;
+        padding: 20px 0 10px;
+        color: #FFFFFF;
+        position: fixed;
+        width: 100%;
+        z-index: 1
+    }
+    .main {
+        
     }
 
-    .border2 {
-        border: 2em;
-        border: 1px solid black;
-        background-color: #FFFFFF;
+    .chat-log {        
+        height: auto;
+        overflow: auto;
+    }
+    .chat-log__item {
+        background: #fafafa;
         padding: 10px;
-    }
-
-    .border1 {
-        border-radius-red: 2em;
-        border: 1px solid black;
-        background-color: #D24848;
-        padding: 10px;
-    }
-
-    #idUl li {
-        list-style: none;
-    }
-
-    div.idDiv {
-        float: right;
-    }
-
-    div.idDiv2 {
+        margin: 0 auto 20px;
+        max-width: 80%;
         float: left;
+        border-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        clear: both;
+    }
+
+    .chat-log__item.chat-log__item--own {
+        float: right;
+        background: #DCF8C6;
+        text-align: right;
+    }
+
+    .chat-form {
+        background: #DDDDDD;
+        padding: 40px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .chat-log__author {
+        margin: 0 auto .5em;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .alto-dialog{
+        height: 500px;
     }
 </style>
 
 <div class="wrapper">
     <div class="container-fluid">
-        <div class="col-md-12 offset-md-2">
-            <!-- Page-Title -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="page-title-box">
-                        <h4 class="page-title"></h4>
-                    </div>
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-title-box">
+                    <h4 class="page-title"></h4>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-8">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div class="card m-b-30">
                     <h3 class="card-header">
-                        Consulta
+                        Consulta de "Nicolás"
                     </h3>
                     <div class="card-body">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="idDiv2">
-                                    <ul class="border2">
-                                        <li>Hola, quisiera hacer una consulta</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="idDiv">
-                                    <ul class="border1">
-                                        <li>Hola, ¿dime que puedo ayudarte?</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="idDiv2">
-                                    <ul class="border2">
-                                        <li>¿Me gustaria saber como puedo registar mi vivienda?</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="idDiv">
-                                    <ul class="border1">
-                                        <li>Puedes pedirle algun administrador que registre tu vivienda</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="idDiv2">
-                                    <ul class="border2">
-                                        <li>Okay, Muchas gracias!!</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="idDiv">
-                                    <ul class="border1">
-                                        <li>Cualquier duda, puedes contactarnos saludos!!.</li>
-                                    </ul>
+                        <div class="card table table-responsive">
+                            <div class="card-body alto-dialog">
+                                <div class="main">
+                                    <div class="container ">
+                                        <div class="chat-log">
+
+                                            <div class="chat-log__item">
+                                                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
+                                                <div class="chat-log__message">Yo man</div>
+                                            </div>
+
+                                            <div class="chat-log__item chat-log__item--own">
+                                                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
+                                                <div class="chat-log__message">BRB</div>
+                                            </div>
+
+                                            <div class="chat-log__item">
+                                                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
+                                                <div class="chat-log__message">Yo man</div>
+                                            </div>
+
+                                            <div class="chat-log__item chat-log__item--own">
+                                                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
+                                                <div class="chat-log__message">BRB</div>
+                                            </div>      
+
+                                            <div class="chat-log__item">
+                                                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
+                                                <div class="chat-log__message">Yo man</div>
+                                            </div>
+
+                                            <div class="chat-log__item chat-log__item--own">
+                                                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
+                                                <div class="chat-log__message">BRB</div>
+                                            </div>   
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
