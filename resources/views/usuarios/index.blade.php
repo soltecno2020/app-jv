@@ -61,7 +61,7 @@
                         </div>        
                
                         <div class="pt-0">
-                            <table id="datatable" class="table table-bordered">
+                            <table id="datatable" class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Id</th>

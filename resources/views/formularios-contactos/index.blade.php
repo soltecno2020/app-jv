@@ -65,6 +65,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Direccion</th>
+                                        <th>Telefono</th>
                                         <th>Tipo de Consulta</th>
                                         <th>Descripción</th>
                                         <th class="text-center">Estado</th>
@@ -76,6 +79,9 @@
                                         @foreach($formularioContactos as $formulario)
                                         <tr>
                                             <td>{{ $formulario->id }}</td>
+                                            <td>{{ $formulario->name }}</td>
+                                            <td>{{ $formulario->direccion }}</td>
+                                            <td>{{ $formulario->telefono }}</td>
                                             <td>
                                                 @foreach($tipoConsultas as $tipoConsulta)
                                                     @if($formulario->tipo_consultas_id == $tipoConsulta->id )

@@ -11,14 +11,14 @@
     }
 
     .border2 {
-        border-radius: 2em;
+        border: 2em;
         border: 1px solid black;
-        background-color: #CCAF60;
+        background-color: #FFFFFF;
         padding: 10px;
     }
 
     .border1 {
-        border-radius: 2em;
+        border-radius-red: 2em;
         border: 1px solid black;
         background-color: #D24848;
         padding: 10px;
@@ -51,14 +51,14 @@
             <div class="col-md-12 col-xl-8">
                 <div class="card m-b-30">
                     <h3 class="card-header">
-                        Respuesta a consulta
+                        Consulta
                     </h3>
                     <div class="card-body">
                         <div class="card">
                             <div class="card-body">
                                 <div class="idDiv2">
                                     <ul class="border2">
-                                        <li>Hola, quisiera hacer una consulta.</li>
+                                        <li>Hola, quisiera hacer una consulta</li>
                                     </ul>
                                 </div>
                                 <br>
@@ -66,7 +66,7 @@
                                 <br>
                                 <div class="idDiv">
                                     <ul class="border1">
-                                        <li>Dime, ¿en que puedo ayudarte?</li>
+                                        <li>Hola, ¿dime que puedo ayudarte?</li>
                                     </ul>
                                 </div>
                                 <br>
@@ -74,7 +74,7 @@
                                 <br>
                                 <div class="idDiv2">
                                     <ul class="border2">
-                                        <li>¿Como puedo ingresar mi vivienda en mi registro?</li>
+                                        <li>¿Me gustaria saber como puedo registar mi vivienda?</li>
                                     </ul>
                                 </div>
                                 <br>
@@ -82,7 +82,7 @@
                                 <br>
                                 <div class="idDiv">
                                     <ul class="border1">
-                                        <li>Un Administrador puede ingresar tu vivienda correspondiente para ti.</li>
+                                        <li>Puedes pedirle algun administrador que registre tu vivienda</li>
                                     </ul>
                                 </div>
                                 <br>
@@ -90,7 +90,7 @@
                                 <br>
                                 <div class="idDiv2">
                                     <ul class="border2">
-                                        <li>Ok, Muchas gracias!!</li>
+                                        <li>Okay, Muchas gracias!!</li>
                                     </ul>
                                 </div>
                                 <br>
@@ -98,16 +98,17 @@
                                 <br>
                                 <div class="idDiv">
                                     <ul class="border1">
-                                        <li>De nada :).</li>
+                                        <li>Cualquier duda, puedes contactarnos saludos!!.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        <br>
                         <div class="">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Escriba su mensaje..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control" placeholder="Escribe un mensaje" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button">Enviar</button>
+                                    <button class="btn btn-primary" type="button">Enviar</button>
                                 </div>
                             </div>
                         </div>

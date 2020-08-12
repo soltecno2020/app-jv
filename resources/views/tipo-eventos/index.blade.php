@@ -57,7 +57,8 @@
                         <div class="pt-5">
                             <p class="text-muted font-14">En esta pantalla podrás visualizar la lista de tipos de eventos</code>
                             </p> 
-                        </div>                        
+                        </div>
+
                         <div class="pt-0">
                             <table id="datatable" class="table table-bordered">
                                 <thead>
