@@ -46,6 +46,8 @@
             height: 30rem;
         }
     }
+
+    
 </style>
 @toastr_css
 <div class="wrapper">

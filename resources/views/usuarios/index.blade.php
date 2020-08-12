@@ -61,6 +61,7 @@
                         </div>        
                
                         <div class="pt-0">
+<<<<<<< HEAD
                             <table id="datatable" class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
@@ -79,56 +80,78 @@
                                 <tbody>
                                     @if(count($usuarios) > 0)
                                         @foreach($usuarios as $usuario)
+=======
+                            <div class="table table-responsive">
+                                <table id="datatable" class="table table-bordered">
+                                    <thead>
+>>>>>>> master
                                         <tr>
-                                            <td>{{ $usuario->id }}</td>
-                                            <td>{{ $usuario->name }}</td>
-                                            <td>{{ $usuario->apellido }}</td>
-                                            <td>{{ $usuario->rut }}</td>
-                                            <td>{{ $usuario->email }}</td>
-                                            <td>
-                                                @if($usuario->telefono != 0)
-                                                    {{ $usuario->telefono }}
-                                                @endif
-                                            </td>
-                                            <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->format('d-m-yy') }}</td>
-                                            <td>
-                                                @foreach($viviendas as $vivienda)
-                                                    @if($usuario->vivienda_id == $vivienda->id )
-                                                        {{ $vivienda->direccion }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                            <td class="text-center">
-                                                @if($usuario->estado == 1)
-                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
-                                                        <i class="fa fa-check fa-2x text-success"></i>
-                                                    </a>
-                                                @elseif($usuario->estado == 2)
-                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
-                                                        <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
-                                                    </a>
-                                                @elseif($usuario->estado == 3)
-                                                    <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para aprobar al usuario">
-                                                        <i class="fa fa-user-plus fa-2x text-info mb-0"></i>
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td>              
-                                                <div class="float-right">
-                                                    <div class="icon-demo-content row">
-                                                        <a href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario">
-                                                            <div class="col-sm-6 m-0">
-                                                                <i class="mdi mdi-table-edit m-0"></i>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Rut</th>
+                                            <th>Email</th>
+                                            <th>Teléfono</th>
+                                            <th>Fecha nacimiento</th>
+                                            <th>Vivienda</th>
+                                            <th class="text-center">Estado</th>
+                                            <th class="text-right">Acciones</th>
                                         </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>                        
+                                    </thead>                                    
+                                    <tbody>
+                                        @if(count($usuarios) > 0)
+                                            @foreach($usuarios as $usuario)
+                                            <tr>
+                                                <td>{{ $usuario->id }}</td>
+                                                <td>{{ $usuario->name }}</td>
+                                                <td>{{ $usuario->apellido }}</td>
+                                                <td>{{ $usuario->rut }}</td>
+                                                <td>{{ $usuario->email }}</td>
+                                                <td>
+                                                    @if($usuario->telefono != 0)
+                                                        {{ $usuario->telefono }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->format('d-m-yy') }}</td>
+                                                <td>
+                                                    @foreach($viviendas as $vivienda)
+                                                        @if($usuario->vivienda_id == $vivienda->id )
+                                                            {{ $vivienda->direccion }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td class="text-center">
+                                                    @if($usuario->estado == 1)
+                                                        <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
+                                                            <i class="fa fa-check fa-2x text-success"></i>
+                                                        </a>
+                                                    @elseif($usuario->estado == 2)
+                                                        <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
+                                                            <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
+                                                        </a>
+                                                    @elseif($usuario->estado == 3)
+                                                        <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para aprobar al usuario">
+                                                            <i class="fa fa-user-plus fa-2x text-info mb-0"></i>
+                                                        </a>
+                                                    @endif
+                                                </td>
+                                                <td>              
+                                                    <div class="float-right">
+                                                        <div class="icon-demo-content row">
+                                                            <a href="{{ route('usuarios.edit', $usuario->id) }}" title="Editar usuario">
+                                                                <div class="col-sm-6 m-0">
+                                                                    <i class="mdi mdi-table-edit m-0"></i>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>    
+                            </div>                    
                         </div>
                     </div>
                 </div>

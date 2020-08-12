@@ -13,7 +13,7 @@
     }
 </style>
 <div class="wrapper">
-    <div class="container-fluid">
+    <div class="container-fluid">        
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9 offset-2">                
+            <div class="col-sm-8 mx-auto offset-1">                
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">ADMINISTRACIÓN</h5>
@@ -30,8 +30,9 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-md-3 offset-2">                
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-12 col-md-2 mt-3">                
                 <div class="card text-center">
                     <a href="{{ route('usuarios.index') }}">
                         <div class="card-body hover">
@@ -39,18 +40,9 @@
                             <h5 class="card-title">Usuarios</h5>
                         </div>
                     </a>
-                </div>
-                <br>
-                <div class="card text-center">
-                    <a href="{{ route('tipoConsultas.index') }}">
-                        <div class="card-body hover">
-                            <i class="fa fa-book fa-4x"></i>
-                            <h5 class="card-title">Tipo de consultas</h5>
-                        </div>
-                    </a>
-                </div>                                                                                     
-            </div>            
-            <div class="col-md-3">
+                </div>                                                                                   
+            </div>    
+            <div class="col-sm-12 col-md-2 mt-3">
                 <div class="card text-center">
                     <a href="{{ route('viviendas.index') }}">
                         <div class="card-body hover">
@@ -58,27 +50,9 @@
                             <h5 class="card-title">Viviendas</h5>
                         </div>
                     </a>
-                </div>
-                <br>
-                <div class="card text-center">
-                    <a href="{{ route('tipoEventos.index') }}">
-                        <div class="card-body hover">
-                            <i class="fa fa-calendar fa-4x"></i>
-                            <h5 class="card-title">Tipo de eventos</h5>
-                        </div>
-                    </a>
-                </div>
-                <br>
-                <div class="card text-center">
-                    <a href="{{ route('eventos.index') }}">
-                        <div class="card-body hover">
-                            <i class="fa fa-bullhorn fa-4x"></i>
-                            <h5 class="card-title">Eventos</h5>
-                        </div>
-                    </a>
-                </div>                                                                                                       
-            </div>
-            <div class="col-md-3">
+                </div>                
+            </div>        
+            <div class="col-sm-2 mt-3">
                 <div class="card text-center">
                     <a href="{{ route('noticias.index') }}">
                         <div class="card-body hover">
@@ -86,8 +60,22 @@
                             <h5 class="card-title">Noticias</h5>
                         </div>
                     </a>
-                </div>
-                <br>
+                </div>                                                                                      
+            </div>   
+            <div class="col-sm-2 mt-3">
+                <div class="card text-center">
+                    <a href="{{ route('eventos.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-bullhorn fa-4x"></i>
+                            <h5 class="card-title">Eventos</h5>
+                        </div>
+                    </a>
+                </div>   
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2 mt-3">
                 <div class="card text-center">
                     <a href="{{ route('formularioscontactos.index') }}">
                         <div class="card-body hover">
@@ -95,8 +83,38 @@
                             <h5 class="card-title">Formulario de contacto</h5>
                         </div>
                     </a>
-                </div>                                                                                        
-            </div>                     
+                </div>  
+            </div>
+            <div class="col-sm-2 mt-3">
+                <div class="card text-center">
+                    <a href="{{ route('tipoEventos.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-calendar fa-4x"></i>
+                            <h5 class="card-title">Tipo de <br>eventos</h5>
+                        </div>
+                    </a>
+                </div>                                                                                                    
+            </div>
+            <div class="col-sm-2 mt-3">
+                <div class="card text-center">
+                    <a href="{{ route('tipoConsultas.index') }}">
+                        <div class="card-body hover">
+                            <i class="fa fa-book fa-4x"></i>
+                            <h5 class="card-title">Tipo de <br>consultas</h5>
+                        </div>
+                    </a>
+                </div>  
+            </div>
+            <div class="col-sm-2 mt-3">
+                <div class="card text-center">
+                    <a href="#">
+                        <div class="card-body hover">
+                            <i class="fa fa-book fa-4x"></i>
+                            <h5 class="card-title">Listado de <br> cuotas</h5>
+                        </div>
+                    </a>
+                </div>  
+            </div>
         </div>
     </div> <!-- end container -->
 </div>
