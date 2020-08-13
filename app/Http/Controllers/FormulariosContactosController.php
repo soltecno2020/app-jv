@@ -117,6 +117,7 @@ class FormulariosContactosController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'id' => 'required|numeric',
+                'estado' => 'required|string',
             ]);
             if($validator->fails()){
                 return response()->json([
@@ -126,13 +127,12 @@ class FormulariosContactosController extends Controller
                 ]);
             }
             $formularioscontactos = FormulariosContactos::find($request->id);
-            $estado = $formularioscontactos->estado == 1 ? 2 : 1;
-            $formularioscontactos->estado = $estado;
+            $formularioscontactos->estado = $request->estado;
             $formularioscontactos->save();        
             return response()->json([
                 'code' => 200,
                 'message' => 'success',
-                'eventos' => $formularioscontactos
+                'formularioscontactos' => $formularioscontactos
             ]);
         }catch(Exception $e){
             return response()->json([

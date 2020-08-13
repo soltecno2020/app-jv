@@ -109,7 +109,7 @@
                 <div class="card text-center">
                     <a href="#">
                         <div class="card-body hover">
-                            <i class="fa fa-book fa-4x"></i>
+                            <i class="fa fa-bank fa-4x"></i>
                             <h5 class="card-title">Listado de <br> cuotas</h5>
                         </div>
                     </a>

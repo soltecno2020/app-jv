@@ -92,13 +92,11 @@
                                             <td>{{ $formulario->descripcion }}</td>
                                             <td class="text-center">
                                                 @if($formulario->estado == 1)                                                     
-                                                    <a id="{{ $formulario->id }}" href="" class="estado" title="Click para cambiar estado">
-                                                        <i class="fa fa-check fa-2x text-success"></i>
-                                                    </a>
-                                                @else 
-                                                    <a id="{{ $formulario->id }}" href="" class="estado" title="Click para cambiar estado">
-                                                        <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
-                                                    </a>
+                                                    <h5><span class="badge badge-warning">Pendiente</span></h5>
+                                                @elseif($formulario->estado == 2) 
+                                                    <h5><span class="badge badge-info">En Proceso</span></h5>
+                                                @elseif($formulario->estado == 3)
+                                                    <h5><span class="badge badge-success">Finalizado</span></h5>
                                                 @endif
                                             </td>
                                             <td>              
@@ -150,45 +148,46 @@
 <script src="{{ asset('template/assets/pages/datatables.init.js') }}"></script>
 <script src="{{ asset('template/assets/js/app.js') }}"></script>
 
+
 <script>
 $(document).ready(function(){
-    $('.estado').click(function(e){
-        e.preventDefault();
-        var id = this.id;
-        $.ajax({
-            url: 'eventos/cambiarEstado',
-            type:'POST',
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {id: id},
-            success: function(data){
-                console.log(data);
-                if(data.code == 400){
-                    alert('error 400');
-                }else if(data.code == 401){
-                    alert('error 401');
-                }else if(data.code == 200){ 
-                    if(data.eventos.estado == 2){
-                        $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
-                        $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
-                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                    }else if(data.eventos.estado == 1){
-                        $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
-                        $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
-                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                    }
-                }
-            },
-            error: function(data, textStatus, errorThrown){
-                if(data.status >= 500 || data.status < 600){
-                    toastr.error('Se ha producido un error.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
-                }else if(data.status == 419){
-                    window.location.href = 'login';
-                }
-            },
-        });
-    });
+    // $('.estado').click(function(e){
+    //     e.preventDefault();
+    //     var id = this.id;
+    //     $.ajax({
+    //         url: 'formularioscontactos/cambiarEstado',
+    //         type:'POST',
+    //         headers: {
+    //           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         data: {id: id},
+    //         success: function(data){
+    //             console.log(data);
+    //             if(data.code == 400){
+    //             toastr.error('Se ha producido un error 400.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+    //         }else if(data.code == 401){
+    //             toastr.error('Se ha producido un error 401.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+    //             }else if(data.code == 200){ 
+    //                 if(data.eventos.estado == 2){
+    //                     $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
+    //                     $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
+    //                     toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+    //                 }else if(data.eventos.estado == 1){
+    //                     $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
+    //                     $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
+    //                     toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+    //                 }
+    //             }
+    //         },
+    //         error: function(data, textStatus, errorThrown){
+    //             if(data.status >= 500 || data.status < 600){
+    //                 toastr.error('Se ha producido un error.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+    //             }else if(data.status == 419){
+    //                 window.location.href = 'login';
+    //             }
+    //         },
+    //     });
+    // });
 });
 </script>
 
