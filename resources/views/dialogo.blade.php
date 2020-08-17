@@ -72,7 +72,7 @@
             <div class="col-md-8">
                 <div class="card m-b-30">
                     <h3 class="card-header">
-                        Consulta de "Nicolás"
+                        Consulta sobre "Vivienda"
                     </h3>
                     <div class="card-body">
                         <div class="card table table-responsive">
@@ -83,32 +83,32 @@
 
                                             <div class="chat-log__item">
                                                 <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                                                <div class="chat-log__message">Yo man</div>
+                                                <div class="chat-log__message">Hola, quisiera hacer una consulta</div>
                                             </div>
 
                                             <div class="chat-log__item chat-log__item--own">
                                                 <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
-                                                <div class="chat-log__message">BRB</div>
+                                                <div class="chat-log__message">Hola. ¿dime que puedo ayudarte?</div>
                                             </div>
 
                                             <div class="chat-log__item">
-                                                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                                                <div class="chat-log__message">Yo man</div>
+                                                <h3 class="chat-log__author">Felipe <small>14:31</small></h3>
+                                                <div class="chat-log__message">¿Me gustaria saber como puedo registrar mi vivienda?</div>
                                             </div>
 
                                             <div class="chat-log__item chat-log__item--own">
-                                                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
-                                                <div class="chat-log__message">BRB</div>
+                                                <h3 class="chat-log__author">Fabrício <small>14:31</small></h3>
+                                                <div class="chat-log__message">Puedes pedirle alagun administrador que registre tu vivienda</div>
                                             </div>      
 
                                             <div class="chat-log__item">
-                                                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                                                <div class="chat-log__message">Yo man</div>
+                                                <h3 class="chat-log__author">Felipe <small>14:32</small></h3>
+                                                <div class="chat-log__message">Okay, muchas gracias!!</div>
                                             </div>
 
                                             <div class="chat-log__item chat-log__item--own">
-                                                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
-                                                <div class="chat-log__message">BRB</div>
+                                                <h3 class="chat-log__author">Fabrício <small>14:32</small></h3>
+                                                <div class="chat-log__message">Cualquier duda puedes contactarnos,saludos!!</div>
                                             </div>   
 
                                         </div>
