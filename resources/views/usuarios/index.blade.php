@@ -7,6 +7,9 @@
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+</style>
 @toastr_css
 <div class="wrapper">
     <div class="container-fluid">
@@ -101,14 +104,17 @@
                                             <td class="text-center">
                                                 @if($usuario->estado == 1)
                                                     <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
+                                                        <label hidden>Habilitado</label>
                                                         <i class="fa fa-check fa-2x text-success"></i>
                                                     </a>
                                                 @elseif($usuario->estado == 2)
                                                     <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para cambiar estado">
+                                                        <label hidden>Desactivado</label>
                                                         <i class="fa fa-window-close fa-2x text-danger mb-0"></i>
                                                     </a>
                                                 @elseif($usuario->estado == 3)
                                                     <a id="{{ $usuario->id }}" href="" data-estado="{{ $usuario->estado }}" class="estado" title="Click para aprobar al usuario">
+                                                    <label hidden>Por Aprobar</label>
                                                         <i class="fa fa-user-plus fa-2x text-info mb-0"></i>
                                                     </a>
                                                 @endif
@@ -169,6 +175,18 @@
 
 <script>
 $(document).ready(function(){
+
+    var $tabla = $('.table-bordered');
+
+    $(window).resize(function() {
+        if (window.innerWidth <= 800){
+            $tabla.addClass('table-responsive');
+        } 
+        else{
+            $tabla.removeClass('table-responsive');
+        } 
+    });
+
     $('.estado').click(function(e){
         e.preventDefault();
         var id = this.id;

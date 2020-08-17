@@ -121,7 +121,9 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Escribe un mensaje" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">Enviar</button>
+                                    <button type="button" class="btn btn-primary bmd-btn-fab">
+                                        <i class="mdi mdi-send"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
