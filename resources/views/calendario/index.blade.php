@@ -8,6 +8,17 @@
 <link href="{{ asset('template/assets/fullcalendar/packages/timegrid/main.css') }}" rel="stylesheet" />
 <link href="{{ asset('template/assets/fullcalendar/packages/list/main.css') }}" rel="stylesheet" />
 <style type="text/css">
+    @media only screen and (min-width: 1025px) {
+
+        .card.m-b-50{
+            width: 80rem;
+            left: 14rem;
+        }
+    }    
+</style>
+
+
+<style type="text/css">
     .fc-toolbar.fc-header-toolbar {
         margin-bottom: 0.5em !important;
     }
