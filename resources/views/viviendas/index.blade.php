@@ -6,6 +6,16 @@
 <link href="{{ asset('template/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive datatable examples -->
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    @media only screen and (min-width: 600px) {
+
+        .table-responsive{
+            display: block;
+            overflow-x: auto;
+        }
+    }    
+</style>
+
 @toastr_css
 <div class="wrapper">
     <div class="container-fluid">
@@ -59,7 +69,7 @@
                             </p> 
                         </div>                        
                         <div class="pt-0">
-                            <table id="datatable" class="table table-bordered">
+                            <table id="datatable" class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

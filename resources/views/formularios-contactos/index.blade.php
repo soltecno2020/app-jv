@@ -61,7 +61,7 @@
                             </p> 
                         </div>                        
                         <div class="pt-0">
-                            <table id="datatable" class="table table-bordered">
+                            <table id="datatable" class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -188,6 +188,43 @@ $(document).ready(function(){
     //         },
     //     });
     // });
+    $('.estado').click(function(e){
+        e.preventDefault();
+        var id = this.id;
+        $.ajax({
+            url: 'eventos/cambiarEstado',
+            type:'POST',
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {id: id},
+            success: function(data){
+                console.log(data);
+                if(data.code == 400){
+                    alert('error 400');
+                }else if(data.code == 401){
+                    alert('error 401');
+                }else if(data.code == 200){ 
+                    if(data.eventos.estado == 2){
+                        $('#'+id).find('.fa-check').removeClass('fa-check').addClass('fa-window-close');
+                        $('#'+id).find('.text-success').removeClass('text-success').addClass('text-danger');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                    }else if(data.eventos.estado == 1){
+                        $('#'+id).find('.fa-window-close').removeClass('fa-window-close').addClass('fa-check');
+                        $('#'+id).find('.text-danger').removeClass('text-danger').addClass('text-success');
+                        toastr.success('Cambiaste el estado exitosamente!', 'Muy bien!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                    }
+                }
+            },
+            error: function(data, textStatus, errorThrown){
+                if(data.status >= 500 || data.status < 600){
+                    toastr.error('Se ha producido un error.', 'Error!', {"showMethod": "fadeIn", "hideMethod": "fadeOut", timeOut: 5000});
+                }else if(data.status == 419){
+                    window.location.href = 'login';
+                }
+            },
+        });
+    });
 });
 </script>
 
