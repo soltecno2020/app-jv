@@ -9,50 +9,47 @@
 <link href="{{ asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 @toastr_css
 <div class="wrapper">
-    <div class="container-fluid">
-
-        <!-- Page-Title -->
+    <div class="container-fluid">        
         <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <h4 class="page-title">Noticias</h4>
+            <div class="card col-sm-8 mx-auto bg-light">
+                <div class="card-header">
+                    <h4 class="page-title">Avisos/Noticias</h4>
+                </div>
+                <div class="card-body">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            {{ $noticias->links() }}
+                        </ul>    
+                    </nav>
+                    @if(count($noticias) > 0)
+                        @foreach($noticias as $noticia)
+                        <div class="col-sm-8 mx-auto">
+                            <div class="card m-b-20 shadow">
+                                <a href="{{ route('noticias.show', $noticia->id) }}">
+                                    <div class="card-header">
+                                        <h3 class="mt-0 header-title">{{ $noticia->titulo }}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <blockquote class="blockquote mb-0">
+                                        <p>{{ $noticia->descripcion_corta }}</p>
+                                        <footer class="blockquote-footer"><cite title="Source Title"><small>Editada el {{ $noticia->created_at }}</small></cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            {{ $noticias->links() }}
+                        </ul>    
+                    </nav>
                 </div>
             </div>
-        </div>
-        <!-- end page title end breadcrumb -->
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                {{ $noticias->links() }}
-            </ul>    
-        </nav>
-        
-        
-        <div class="row">
-            @if(count($noticias) > 0)
-                @foreach($noticias as $noticia)
-                <div class="col-sm-7 mx-auto">
-                    <div class="card m-b-30">
-                        <a href="{{ route('noticias.show', $noticia->id) }}">
-                            <div class="card-body">
-                                <h3 class="mt-0 header-title">{{ $noticia->titulo }}</h3>
-                                <h6 class="mt-0 header">{{ $noticia->descripcion_corta }}</h6>
-                            </div>
-                        </a>        
-                    </div>
-                </div>
-                @endforeach
-            @endif
         </div><!--end row-->
     </div>
-</div>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        {{ $noticias->links() }}
-    </ul>    
-</nav>
-            
+</div>   
 @toastr_js
 @toastr_render
 <!-- Required datatable js -->

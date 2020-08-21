@@ -180,10 +180,8 @@ class NoticiasController extends Controller
     
     public function mostrar()
     {
-        $users = User::all();
-        $imagenes = Imagenes::all();
         $noticias = Noticias::orderBy('id', 'desc')->paginate(5);
-        return view('noticias.mostrar', compact('noticias','imagenes'));
+        return view('noticias.mostrar', compact('noticias'));
     }
 
 }
