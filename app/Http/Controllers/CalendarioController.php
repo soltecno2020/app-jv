@@ -58,7 +58,7 @@ class CalendarioController extends Controller
      */
     public function show()
     {
-        $data['eventos']=Eventos::selectRaw('id, titulo as title, CONCAT(fecha_inicio, " ", hora_inicio) as start, CONCAT(fecha_termino, " ", hora_termino) as end, descripcion_corta, descripcion_larga, color, lugar')->where('estado','1')->get()->toArray();;
+        $data['eventos'] = Eventos::selectRaw('id, titulo as title, CONCAT(fecha_inicio, " ", hora_inicio) as start, CONCAT(fecha_termino, " ", hora_termino) as end, descripcion_corta, descripcion_larga, color, lugar')->where('estado','1')->get()->toArray();;
         return response()->json($data['eventos']);
     }
 

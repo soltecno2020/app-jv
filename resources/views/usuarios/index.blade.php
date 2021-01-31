@@ -179,7 +179,7 @@ $(document).ready(function(){
     var $tabla = $('.table-bordered');
 
     $(window).resize(function() {
-        if (window.innerWidth <= 800){
+        if (window.innerWidth <= 1800){
             $tabla.addClass('table-responsive');
         } 
         else{
